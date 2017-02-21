@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+1_Taquin/build/
+
+1_Taquin/1_Taquin\.txt
