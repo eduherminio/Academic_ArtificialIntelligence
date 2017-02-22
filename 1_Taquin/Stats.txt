@@ -12,4 +12,4 @@ unsigned i[]= {8,1,3,4,5,2,6,7,0};
 
 
 [1]: 	(i7 5550U 2.40Ghz (x4), 	8GB RAM,	Ubuntu 14.04)
-[2]: 	(2x AMD C-60, 			2GB RAM, 	Lubuntu 16.04)
+[2]: 	(2x AMD C-60, 			2GB RAM, 	Lubuntu 16.10)

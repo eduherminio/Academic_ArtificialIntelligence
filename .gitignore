@@ -28,6 +28,13 @@
 *.out
 *.app
 
-1_Taquin/build/
+# .pdf
+*.pdf
 
-1_Taquin/1_Taquin\.txt
+build/
+
+1_Taquin/1_Taquin.txt
+2_Taquin/2_Taquin.txt
+2_Taquin/explicacion.txt
+
+*.zip
