@@ -40,13 +40,14 @@ namespace taquin
       Nodo_taquin nodo;
       size_t padre;
       size_t coste_actual;  // coste hasta el nodo actual
+      bool visitado=false;
     };
 
     solucion.clear();
     // Contenerdores
     std::priority_queue<Nodo_prioridad> lista_prioridad;
     std::vector<Nodo> lista; // {nodo, padre, coste_actual}
-    std::unordered_map<std::string,size_t>claves;
+    std::unordered_map<std::string,size_t>claves; //{clave, puesto}
 
     //Inicializacion
     lista.push_back({nodo_inicial,0,0});
@@ -59,20 +60,27 @@ namespace taquin
 
     while(exito==false && !lista_prioridad.empty())
     {
-      ++nodos_expandidos;
-
       iter_lista=  lista_prioridad.top().indice_en_lista;
       lista_prioridad.pop();
+
+      if(lista[iter_lista].visitado== false)  // TO-CHECK
+        ++nodos_expandidos;
+      else
+        std::cout<<"*****************************************"<<std::endl;
+
       exito= lista[iter_lista].nodo== nodo_objetivo;
 
       if(exito== false)
       {
         auto v_hijos= lista[iter_lista].nodo.expandir();
+        lista[iter_lista].visitado= true;
 
         for(auto & hijo:v_hijos)
         {
           auto clave_hijo=hijo.get_clave();
-          if(claves.count(clave_hijo)==0) // No está -> añado //TO-CHECK
+
+/*
+          if(claves.count(clave_hijo)==0 ) // No está -> añado //TO-CHECK
           {
             Nodo newNodo {
               hijo,
@@ -88,11 +96,64 @@ namespace taquin
             lista_prioridad.push(newNodo_prioridad);
 
             claves[clave_hijo]= lista.size()-1;
-
-            auto coste_heur= heuristica(hijo, nodo_objetivo);
-            // std::cout<<"Coste heuristico: "<<coste_heur<<std::endl;
-            // std::cout<<"Coste actual: "<<newNodo.coste_actual<<std::endl;
           }
+
+*/
+          std::unordered_map<std::string,size_t>::iterator it= claves.find (clave_hijo);
+
+          if(it==claves.end())
+          {
+            Nodo newNodo {
+              hijo,
+              iter_lista,
+              lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo),
+              false
+            };
+            lista.push_back(newNodo); // Queda en la pos lista.size()-1
+
+            Nodo_prioridad newNodo_prioridad {
+              lista.size()-1,
+              newNodo.coste_actual + heuristica(hijo, nodo_objetivo)
+            };
+            lista_prioridad.push(newNodo_prioridad);
+
+            claves[clave_hijo]= lista.size()-1;
+
+            // std::cout<<heuristica(hijo, nodo_objetivo)<<std::endl;
+          }
+          else if (lista[it->second].coste_actual > (lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)) ) {
+
+            std::cout<<lista[it->second].coste_actual<<" "<<lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)<<std::endl;
+
+            // it->second= iter_lista;  // que la hash siga apuntando al mismo nodo, pasamos a modificar sus propiedades en la lista
+            lista[it->second].padre= iter_lista;
+            lista[it->second].coste_actual= lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo);
+
+            // lista.push_back({hijo, iter_lista, lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)});
+            //lista_prioridad.push({it->second, lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo) + heuristica(hijo, nodo_objetivo)}); // flotará automáticamente antes que su homólogo de mayor coste
+            lista_prioridad.push({it->second, lista[it->second].coste_actual + heuristica(hijo, nodo_objetivo)});
+
+
+/* Nice try, but not the solution
+            it->second= lista.size()-1;
+
+            Nodo newNodo {
+              hijo,
+              iter_lista,
+              lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo),
+              false
+            };
+            lista.push_back(newNodo); // Queda en la pos lista.size()-1
+
+            Nodo_prioridad newNodo_prioridad {
+              lista.size()-1,
+              newNodo.coste_actual + heuristica(hijo, nodo_objetivo)
+            };
+            lista_prioridad.push(newNodo_prioridad);
+*/
+            // std::cout<<heuristica(hijo, nodo_objetivo)<<std::endl;
+          }
+
         }
       }
     }
