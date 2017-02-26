@@ -1,20 +1,24 @@
 Problema de profundidad 31:
 - Descartando directamente nodos repetidos
 	Profundidad 		31
-	Nodos expandidos 	6778
+	Nodos expandidos 	6777
 	Tiempo empleado		54.039
 - Sustituyendo nodos de igual posición pero menor coste
 	Profundidad 		31
-	Nodos expandidos 	7252
-	Tiempo empleado		56.298
+	Nodos expandidos 	7326
+	Tiempo empleado		59.205
 
 Problema de profundidad 50:
 - Descartando directamente nodos repetidos
 	Profundidad 		50
-	Nodos expandidos 	64515
+	Nodos expandidos 	64514
 	Tiempo empleado		755.892
 - Sustituyendo nodos de igual posición pero menor coste
 	Profundidad 		50
-	Nodos expandidos 	56483
-	Tiempo empleado		662.644
+	Nodos expandidos 	92504
+	Tiempo empleado		1109.78
+
+Problema de profundidad 80:
+- Sustituyendo nodos de igual posición pero menor coste
+	Conseguido llegar hasta nodos con heurística 5
 		
