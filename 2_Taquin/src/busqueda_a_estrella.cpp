@@ -60,7 +60,7 @@ namespace taquin
 
     bool exito= false;
     nodos_expandidos= 0;
-    size_t iter_lista;  // indice a expandir en vector<Nodo> lista
+    size_t iter_lista=0;  // indice a expandir en vector<Nodo> lista
 
     // auto var_heuristica= 99999;
     while(exito==false && !lista_prioridad.empty())

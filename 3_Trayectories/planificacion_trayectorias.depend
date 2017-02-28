@@ -1,0 +1,324 @@
+# depslib dependency file v1.0
+1486995266 source:/home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/casilla.cpp
+	"casilla.h"
+
+1488111414 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/casilla.h
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/RectangleShape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Export.hpp
+	<SFML/Config.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Config.hpp
+	"TargetConditionals.h"
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Shape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/Vector2.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Drawable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/RenderStates.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/BlendMode.hpp
+	<SFML/Graphics/Export.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Transform.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Rect.hpp
+	<SFML/System/Vector2.hpp>
+	<algorithm>
+	<SFML/Graphics/Rect.inl>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Vector2.hpp
+	<SFML/System/Vector2.inl>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Vector2.inl
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Rect.inl
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Transformable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/VertexArray.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<vector>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Vertex.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/System/Vector2.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Color.hpp
+	<SFML/Graphics/Export.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/PrimitiveType.hpp
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/RenderTarget.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/View.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/View.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/System/Vector2.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/NonCopyable.hpp
+	<SFML/System/Export.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Export.hpp
+	<SFML/Config.hpp>
+
+1488279738 source:/home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/controlador.cpp
+	"controlador.h"
+	"nodo_trayectoria.h"
+	"problema_busqueda.h"
+	<thread>
+
+1488221842 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/controlador.h
+	<iostream>
+	<thread>
+	<chrono>
+	"vista.h"
+	"mapa.h"
+
+1488278960 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/vista.h
+	"observador.h"
+	"rejilla.h"
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Window/Keyboard.hpp>
+
+1479399940 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/observador.h
+	<functional>
+	<utility>
+	<map>
+	<vector>
+
+1488271370 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/rejilla.h
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<random>
+	"casilla.h"
+	<vector>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Font.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/String.hpp>
+	<map>
+	<string>
+	<vector>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Glyph.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Texture.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/GlResource.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Image.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<string>
+	<vector>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/GlResource.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/Export.hpp
+	<SFML/Config.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/String.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Utf.hpp>
+	<iterator>
+	<locale>
+	<string>
+	<SFML/System/String.inl>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Utf.hpp
+	<SFML/Config.hpp>
+	<algorithm>
+	<locale>
+	<string>
+	<cstdlib>
+	<SFML/System/Utf.inl>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Utf.inl
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/String.inl
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/Text.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/String.hpp>
+	<string>
+	<vector>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Clock.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Time.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Time.hpp
+	<SFML/System/Export.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Graphics/RenderWindow.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/Window.hpp>
+	<string>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/Window.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/Window/VideoMode.hpp>
+	<SFML/Window/WindowHandle.hpp>
+	<SFML/Window/WindowStyle.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/String.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/ContextSettings.hpp
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/VideoMode.hpp
+	<SFML/Window/Export.hpp>
+	<vector>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/WindowHandle.hpp
+	<SFML/Config.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/WindowStyle.hpp
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/Keyboard.hpp
+	<SFML/Window/Export.hpp>
+
+1488202904 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/mapa.h
+	<vector>
+	<unordered_set>
+	<unordered_map>
+	<math.h>
+
+1488276524 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/nodo_trayectoria.h
+	"mapa.h"
+	<vector>
+	<cassert>
+	<cstddef>
+	<cstdint>
+	<iostream>
+
+1488276652 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/problema_busqueda.h
+	"busqueda_amplitud.h"
+	"busqueda_profundidad.h"
+	"busqueda_a_estrella.h"
+	"busqueda_coste_uniforme.h"
+
+1488188632 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/busqueda_amplitud.h
+	<unordered_set>
+
+1488193366 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/busqueda_profundidad.h
+	<unordered_set>
+
+1488279834 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/busqueda_a_estrella.h
+	<unordered_map>
+	<queue>
+
+1488279318 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/busqueda_coste_uniforme.h
+	<unordered_map>
+	<queue>
+
+1488195032 source:/home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/main.cpp
+	"controlador.h"
+
+1488194178 source:/home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/mapa.cpp
+	"mapa.h"
+
+1488194188 source:/home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/nodo_trayectoria.cpp
+	"nodo_trayectoria.h"
+	<iostream>
+	<cmath>
+
+1488271636 source:/home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/rejilla.cpp
+	"rejilla.h"
+	<stdexcept>
+	<iostream>
+
+1488278960 source:/home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/P3_PLANIFICACION_TRAYECTORIAS_ALUMNOS/vista.cpp
+	"vista.h"
+	<iostream>
+	<sstream>
+	<SFML/Window/Mouse.hpp>
+	<SFML/Window/Event.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/Mouse.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/System/Vector2.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/Event.hpp
+	<SFML/Config.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
+	<SFML/Window/Sensor.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/Joystick.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/System/String.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/Window/Sensor.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/System/Vector3.hpp>
+	<SFML/System/Time.hpp>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Vector3.hpp
+	<SFML/System/Vector3.inl>
+
+1480005452 /home/eduardo/Escritorio/Repos/Academic_ArtificialIntelligence/3_Calculo_Trayectoria/SFML/include/SFML/System/Vector3.inl
+
