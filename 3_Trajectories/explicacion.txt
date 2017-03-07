@@ -1,0 +1,18 @@
+MVC
+
+Modelo
+Vista
+Controlador	-> relaciona vista y modelo
+
+Objetivo: modelo y vista en diferentes lenguajes, controlador une ambas 
+
+
+<decltype>
+Nos permite decidir el tipo de dato de una variable sin saberlo de antemano
+std::unordered_set<declype(nodo_inicial.get_clave())>
+Nos permite resolver distintos problemas para distintos tipos de clave (strings, unsigned ints, etc.)
+
+Deduce el tipo de dato que devuelve get_clave();7
+
+Las plantillas se resuelven en tiempo de compilación, las herencias se revuelven en tiempo de ejecución
+

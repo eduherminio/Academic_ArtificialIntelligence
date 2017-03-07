@@ -58,19 +58,24 @@ namespace controlador
 
     problema_busqueda::Problema_busqueda<nodo_trayectoria::Nodo_trayectoria> problema(nodo_inicial,nodo_objetivo);
     std::vector<std::pair<unsigned,unsigned>> solucion;
-    if(problema.profundidad())
+
+    // if(problema.amplitud())
+    // if(problema.profundidad())
+    // if(problema.profundidad())
+    // if(problema.coste_uniforme())
+    // if(problema.voraz())
+    if(problema.a_estrella())
     {
       for(auto nodo:problema.get_solucion())
       {
         solucion.push_back({nodo.get_x(),nodo.get_y()});
-
       }
 
-      std::cout<<"Encontrada\n";
+      std::cout<<"Found\n";
     }
     else
     {
-      std::cout<<"No se encontro\n";
+      std::cout<<"Not found\n";
     }
     vista->trayectoria_encontrada(solucion,problema.get_nodos_expandidos());
   }

@@ -78,7 +78,7 @@ const Casilla& Rejilla::get_casilla_inicial() const
       return casilla;
     }
   }
-  throw std::out_of_range("No hay casilla inicial\n");
+  throw std::out_of_range("No start square\n");
 }
 const Casilla& Rejilla::get_casilla_final() const
 {
@@ -89,7 +89,7 @@ const Casilla& Rejilla::get_casilla_final() const
       return casilla;
     }
   }
-  throw std::out_of_range("No hay casilla final\n");
+  throw std::out_of_range("No final square\n");
 }
 
 std::pair<unsigned,unsigned> Rejilla::pos_casilla_inicial() const
@@ -105,7 +105,7 @@ std::pair<unsigned,unsigned> Rejilla::pos_casilla_inicial() const
     }
     ++indice;
   }
-  throw std::out_of_range("No hay casilla inicial\n");
+  throw std::out_of_range("No start square\n");
 }
 std::pair<unsigned,unsigned> Rejilla::pos_casilla_final() const
 {

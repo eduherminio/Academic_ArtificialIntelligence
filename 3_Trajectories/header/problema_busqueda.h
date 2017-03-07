@@ -16,6 +16,7 @@ namespace problema_busqueda
     bool a_estrella_p_i();
     bool coste_uniforme();
     bool amplitud();
+    bool voraz();
     bool profundidad()
     {
       std::size_t max_valor = std::numeric_limits<std::size_t>::max();
@@ -44,9 +45,10 @@ namespace problema_busqueda
   };
 }
 
-#include "busqueda_amplitud.h" //Fichero de plantillas				// Plantillas necesarias para resolver el problema
-#include "busqueda_profundidad.h" //Fichero de plantillas
-#include "busqueda_a_estrella.h" //Fichero de plantillas
-#include "busqueda_coste_uniforme.h" //Fichero de plantillas
+#include "busqueda_amplitud.h"            	// Plantillas necesarias para resolver el problema
+#include "busqueda_profundidad.h"
+#include "busqueda_a_estrella.h"
+#include "busqueda_coste_uniforme.h"
+#include "busqueda_voraz.h"
 
 #endif // PROBLEMA_BUSQUEDA_H_INCLUDED

@@ -4,7 +4,7 @@ set -e
 source filedata.txt
 export env_filename=$filename
 mkdir -p build && cd build
-cmake ..  #&> /dev/null
+cmake ..  &> /dev/null
 make -B
 ./$filename #| tee ../$filename.txt
 

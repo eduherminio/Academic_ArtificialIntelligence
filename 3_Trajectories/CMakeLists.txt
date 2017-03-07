@@ -22,7 +22,7 @@ find_package(Threads REQUIRED)
 
 target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} Threads::Threads)
 
-install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
+#install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
 
 
 

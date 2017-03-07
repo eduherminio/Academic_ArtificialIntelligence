@@ -22,7 +22,7 @@ desplazamiento_diagonal_habilitado(false), existe_casilla_inicial(true), existe_
 
 void Vista::ejecutar()
 {
-  render_window.create(sf::VideoMode(columnas*tam_casilla,filas*tam_casilla),"Planificacion Trayectoria");
+  render_window.create(sf::VideoMode(columnas*tam_casilla,filas*tam_casilla),"Trajectory planification");
 
   carga_mensajes(filas*tam_casilla);
   while(render_window.isOpen())
@@ -119,7 +119,7 @@ void Vista::procesa_eventos_teclado(sf::Keyboard::Key& key)
     }
     else
     {
-      noCasillaText.setString("Falta casilla inicial y/o final");
+      noCasillaText.setString("Start/final square are missing");
     }
     break;
     case sf::Keyboard::C:
@@ -143,7 +143,7 @@ void Vista::procesa_eventos_raton()
     if(casilla==Tipo_casilla::fin)
     {
       existe_casilla_final = false;
-      noCasillaText.setString("Falta casilla final");
+      noCasillaText.setString("Final square is missing");
     }
     else
     noCasillaText.setString("");
@@ -155,7 +155,7 @@ void Vista::procesa_eventos_raton()
     if(casilla==Tipo_casilla::inicio)
     {
       existe_casilla_inicial = false;
-      noCasillaText.setString("Falta casilla inicial");
+      noCasillaText.setString("Start square is missing");
     }
     else
     noCasillaText.setString("");
@@ -178,12 +178,12 @@ void Vista::procesa_eventos_raton()
       case Tipo_casilla::inicio:
       rejilla.set_tipo_casilla(mousePosition, Tipo_casilla::vacia);
       existe_casilla_inicial = false;
-      noCasillaText.setString("Falta casilla inicial");
+      noCasillaText.setString("Start square is missing");
       break;
       case Tipo_casilla::fin:
       rejilla.set_tipo_casilla(mousePosition, Tipo_casilla::vacia);
       existe_casilla_final = false;
-      noCasillaText.setString("Falta casilla final");
+      noCasillaText.setString("Final square is missing");
       default:
       break;
     }
@@ -207,11 +207,11 @@ void Vista::render()
 void Vista::trayectoria_encontrada(const std::vector<std::pair<unsigned,unsigned>>& solucion,const unsigned num_movimientos)
 {
 
-  texto_tiempo.setString("Tiempo de resolucion: " +
+  texto_tiempo.setString("Resolve time: " +
   parche::to_string(solveTime.getElapsedTime().asMilliseconds()) +
-  " milisegundos");
-  texto_num_movimientos.setString("Se expandieron " +
-  parche::to_string(num_movimientos)+" nodos");
+  " ms");
+  texto_num_movimientos.setString("Finally, " +
+  parche::to_string(num_movimientos)+" nodes were expanded");
   if(!solucion.empty())
   {
     texto_trayectoria_encontrada.setString("");
@@ -219,6 +219,6 @@ void Vista::trayectoria_encontrada(const std::vector<std::pair<unsigned,unsigned
   }
   else
   {
-    texto_trayectoria_encontrada.setString("No se ha encontrado trayectoria");
+    texto_trayectoria_encontrada.setString("Not trajectory has been found");
   }
 }

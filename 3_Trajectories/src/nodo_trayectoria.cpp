@@ -10,7 +10,7 @@ namespace nodo_trayectoria
   std::vector<Nodo_trayectoria> Nodo_trayectoria::expandir() const
   {
     std::vector<Nodo_trayectoria> hijos;
-    Nodo_trayectoria hijo(*this);
+    Nodo_trayectoria hijo(*this); // copia el padre al hijo
     int hijo_x,hijo_y; //int pues podemos tener sumas negativas
     for(unsigned i=0; i<8; ++i) //Tenemos 8 posibles hijos
     {

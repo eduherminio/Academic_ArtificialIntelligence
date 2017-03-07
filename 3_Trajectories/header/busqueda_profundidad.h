@@ -3,6 +3,7 @@
 namespace problema_busqueda
 {
   template<typename T>
+
   bool Problema_busqueda<T>::profundidad(size_t limite)
   {
     solucion.clear();
@@ -14,20 +15,23 @@ namespace problema_busqueda
       bool visitado;
     };
     std::vector<Nodo> lista; //{nodo,padre,profundidad}
+    std::unordered_set<decltype(lista[0].nodo.get_clave())> claves;
+
     lista.push_back({nodo_inicial,0,0,false});
-    std::unordered_set<decltype(lista[0].nodo.get_clave())>claves;
     claves.insert(nodo_inicial.get_clave());
 
     size_t indice=0;
     bool exito=false;
     nodos_expandidos=0;
+
     while(exito==false && lista.size()>0)
     {
+      // if(claves.count(clave)==0 && lista[indice].profundidad<=limite)
       if(!lista[indice].visitado && lista[indice].profundidad<=limite)
       {
         lista[indice].visitado=true;
-        //    std::cout<<claves.bucket_count()<<"\n"; //Evolucion del tamanho de la tabla hash
-        //claves.insert(clave);
+        // std::cout<<claves.bucket_count()<<"\n"; //Evolucion del tamanho de la tabla hash
+        // claves.insert(clave);
         ++nodos_expandidos;
 
         exito=(lista[indice].nodo==nodo_objetivo); //Prueba de meta
@@ -41,7 +45,7 @@ namespace problema_busqueda
             auto clave_hijo=x.get_clave();
             if(claves.count(clave_hijo)==0)
             {
-              lista.push_back({x,indice,lista[indice].profundidad+1});
+              lista.push_back({x,indice,lista[indice].profundidad+1, false});
               claves.insert(clave_hijo);
             }
           }
