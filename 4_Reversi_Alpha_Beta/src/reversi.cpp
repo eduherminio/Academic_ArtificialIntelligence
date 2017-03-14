@@ -19,9 +19,11 @@ void Reversi::inicializar()
   posicion.set_pasa(Tipo_tablero::no_pasa);
   jugadas_validas_humano=posicion.calcula_jugadas();
   heuristica=0;
-  algoritmo=Algoritmo::minimax;
+
+  algoritmo=Algoritmo::alpha_beta;
+
   // TO-CHECK
-  profundidad_maxima=5;
+  profundidad_maxima=8;
 }
 
 void Reversi::ejecuta_movimiento(const unsigned fil,const unsigned col)
@@ -105,17 +107,119 @@ int Reversi::estrategia_alpha_beta()
 {
   //TO-DO
 
-  //A completar por el alumno
+  std::vector<Nodo_reversi_alpha_beta> lista;
 
-  //return(valor_alpha);  // sirve para visualizar en la consola
+  Nodo_reversi_alpha_beta nodo_inicial(posicion);
+  nodo_inicial.set_nodo_inicial();
+  lista.push_back(nodo_inicial);
+
+  auto valor_alpha=lista[0].get_alpha();  // debugging purposes
+
+  while(!lista.empty())
+  {
+    std::cout<<lista.size()<<std::endl;
+    if(!lista.back().get_visitado())
+    {
+      lista.back().set_visitado();
+      if(lista.back().get_pasa()==Tipo_tablero::terminal)  //Posici�n terminal: pasan los dos
+      {
+        lista.back().set_alpha_o_beta(lista.back().evalua_posicion(true));
+        // std::cout<<"Terminal: "<<lista.back().get_alpha()<<" "<<lista.back().get_beta()<<std::endl;
+      }
+      else if(lista.back().get_profundidad()==profundidad_maxima)  //Suspensi�n
+      {
+        lista.back().set_alpha_o_beta(lista.back().evalua_posicion(false));
+      }
+      else
+      {
+        auto tam_lista=lista.size();
+        auto alpha_actual= lista.back().get_alpha();
+        auto beta_actual= lista.back().get_beta();
+
+        for(auto &hijo:lista.back().expandir())
+        {
+          hijo.set_padre(tam_lista-1);
+          hijo.set_alpha(alpha_actual);
+          hijo.set_beta(beta_actual);
+
+          lista.push_back(hijo);
+        }
+      }
+    }
+    else     // TO-CHECK: visitado?
+    {
+      //          actualiza minimax padre
+      auto pos_padre=lista.back().get_padre();
+      if(pos_padre>=0)
+      {
+        auto alpha_padre= lista[pos_padre].get_alpha();
+        auto beta_padre=  lista[pos_padre].get_beta();
+
+        // auto alpha_actual=lista.back().get_alpha();
+        // auto beta_actual= lista.back().get_beta();
+
+        // if(alpha_padre > lista.back().get_alpha())
+        //   lista.back().set_alpha(alpha_padre);
+        // // else if(  alpha_actual  > lista.back().get_alpha())
+        //   lista.back().set_alpha(alpha_actual);
+        //
+        // if(beta_padre < lista.back().get_beta())
+        //   lista.back().set_beta(beta_padre);
+        // // else if ( beta_actual   < lista.back().get_beta())
+        //   lista.back().set_beta(beta_actual);
+
+
+        if(lista.back().get_turno()==Turno::ordenador) //El padre es humano: nodo MIN
+        {
+            if(lista.back().get_beta() > alpha_padre)
+              lista[pos_padre].set_alpha_o_beta(lista.back().get_beta());
+              //lista[padre].set_alpha(lista.back().get_beta());
+        }
+        else  //El padre es ordenador: nodo MAX
+        {
+          if(lista.back().get_alpha() < beta_padre)
+          {
+            lista[pos_padre].set_alpha_o_beta(lista.back().get_alpha());
+            // lista[padre].set_beta(lista.back().get_alpha());
+
+            if(pos_padre==0) //Mejoramos la puntuacion del nodo raiz
+            {
+              posicion.set_tablero(lista.back().get_tablero());
+              posicion.set_pasa(lista.back().get_pasa());
+
+              valor_alpha=lista.back().get_alpha(); // debugging purposes
+            }
+          }
+        }
+      }
+
+      lista.pop_back();  //Eliminamos el nodo actual
+
+      if((lista[pos_padre].get_beta() <= lista[pos_padre].get_alpha()))   // Recortamos
+      {
+        // std::cout<<pos_padre<<"xxx"<<lista.size()<<std::endl;
+        while( (lista.size()-1!= pos_padre) && lista.size())  {
+          // std::cout<<"podando"<<std::endl;
+          lista.pop_back();
+        }
+        // std::cout<<pos_padre<<" "<<lista.size()<<std::endl;
+      }
+      // else
+//        lista.resize(pos_padre+1);
+    }
+  }
+
+  return(valor_alpha);  // sirve para visualizar en la consola
 }
 
 int Reversi::estrategia_minimax()
 {
   std::vector<Nodo_reversi_minimax> lista;
+
   Nodo_reversi_minimax nodo_inicial(posicion);
   nodo_inicial.set_nodo_inicial();
   lista.push_back(nodo_inicial);
+
   auto valor_minimax=lista[0].get_minimax(); //valor final para MAX
 
   while(!lista.empty())
@@ -151,6 +255,7 @@ int Reversi::estrategia_minimax()
       {
         auto minimax_hijo=lista.back().get_minimax();
         auto minimax_padre=lista[padre].get_minimax();
+
         if(lista.back().get_turno()==Turno::ordenador) //El padre es humano: nodo MIN
         {
           if(minimax_hijo<minimax_padre)
@@ -158,6 +263,7 @@ int Reversi::estrategia_minimax()
             lista[padre].set_minimax(minimax_hijo);
           }
         }
+
         else  //El padre es ordenador: nodo MAX
         {
           if(minimax_hijo>minimax_padre)

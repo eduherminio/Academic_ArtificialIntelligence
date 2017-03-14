@@ -1,5 +1,6 @@
 #include "../header/posicion_reversi.h"
 #include <iostream>
+#include <cmath>
 
 const int Posicion_reversi::despl[8][2]= {{-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1}};
 
@@ -101,6 +102,24 @@ int Posicion_reversi::evalua_posicion(const bool es_terminal) const
       valor-=get_filas()*get_columnas();
     }
   }
+
+  else
+  {
+    for(const auto& jugada:calcula_jugadas())
+    {
+      if( ( (jugada.x == get_filas()-1)  &&  (jugada.y==get_columnas()-1) ) ||
+          ( (jugada.x == 0)              &&  (jugada.y==get_columnas()-1) ) ||
+          ( (jugada.x == get_filas()-1)  &&  (jugada.y==0)                ) ||
+          ( (jugada.x == 0)              &&  (jugada.y==0)                )  )
+      {
+        if(tablero[jugada.x] [jugada.y]== Turno::ordenador)
+          valor+=round((float)0.5*get_filas()*get_columnas());
+        else
+          valor-=round((float)0.5*get_filas()*get_columnas());
+      }
+    }
+  }
+
 
 
   //A mejorar la heuristica por el alumno
