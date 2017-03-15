@@ -91,10 +91,14 @@ public:
   }
   void set_alpha_o_beta(const int valor)
   {
-    if(get_turno()==Turno::ordenador)
-    alpha=valor;
-    else
-    beta=valor;
+    if(get_turno()==Turno::humano)
+    // if(get_turno()==Turno::ordenador)
+    {
+      alpha=valor;
+    }
+    else  {
+      beta=valor;
+    }
   }
   void set_beta(const int valor)
   {

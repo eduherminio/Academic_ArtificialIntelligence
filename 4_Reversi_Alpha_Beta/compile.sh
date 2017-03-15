@@ -6,7 +6,7 @@ export env_filename=$filename
 mkdir -p build && cd build
 cmake ..  &> /dev/null
 make #-B
-./$filename 4 4  #| tee ../$filename.txt
+./$filename 5 5  | tee ../$filename.txt
 
 
 

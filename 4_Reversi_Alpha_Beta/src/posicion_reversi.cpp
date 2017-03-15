@@ -102,7 +102,7 @@ int Posicion_reversi::evalua_posicion(const bool es_terminal) const
       valor-=get_filas()*get_columnas();
     }
   }
-
+/*
   else
   {
     for(const auto& jugada:calcula_jugadas())
@@ -119,7 +119,7 @@ int Posicion_reversi::evalua_posicion(const bool es_terminal) const
       }
     }
   }
-
+*/
 
 
   //A mejorar la heuristica por el alumno
