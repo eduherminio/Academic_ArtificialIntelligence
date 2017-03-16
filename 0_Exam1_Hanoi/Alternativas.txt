@@ -1,0 +1,7 @@
+vector<unsigned> poste1
+vector<unsigned> poste2
+vector<unsigned> poste3
+
+vector<unsigned> postes [num_postes]
+
+vector<vector<unsigned>> postes
