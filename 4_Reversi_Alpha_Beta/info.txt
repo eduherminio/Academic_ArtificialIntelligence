@@ -1,0 +1,15 @@
+	-1	-1	despl[0][0] y despl[0][1]
+	 0 	-1	despl[1]...
+	 1	-1	despl[2]..
+	-1	 0
+	 1	 0
+	-1	 1
+	 0	 1	despl[6]...
+	 1	 1	despl[7]...
+
+const int Posicion_reversi::despl[8][2]= {{-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1}};
+
+Posibles deslplazamientos desde X
+	6	7	8
+	4	X	5
+	1	2	3

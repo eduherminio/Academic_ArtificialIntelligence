@@ -89,6 +89,11 @@ private:
   Turno turno;
   Tipo_tablero tipo_tablero;
   static const int despl[8][2];
+
+  //  6 7 8
+  //  4 X 5
+  //  1 2 3
+
 };
 
 #endif // POSICION_REVERSI_INCLUDED
