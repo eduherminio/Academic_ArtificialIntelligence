@@ -8,13 +8,13 @@ class Textura
 public:
   Textura()
   {
-    if(!tile1.loadFromFile("../imgs/tile1.jpg")
-    || !tile2.loadFromFile("../imgs/tile2.jpg")
-    || !piece1.loadFromFile("../imgs/piece1.png")
-    || !piece2.loadFromFile("../imgs/piece2.png")
-    || !glow.loadFromFile("../imgs/glow.png")
-    || !wood.loadFromFile("../imgs/wood.jpg")
-    || !button.loadFromFile("../imgs/button.png"))
+    if(!tile1.loadFromFile("../pics/tile1.jpg")
+    || !tile2.loadFromFile("../pics/tile2.jpg")
+    || !piece1.loadFromFile("../pics/piece1.png")
+    || !piece2.loadFromFile("../pics/piece2.png")
+    || !glow.loadFromFile("../pics/glow.png")
+    || !wood.loadFromFile("../pics/wood.jpg")
+    || !button.loadFromFile("../pics/button.png"))
     {
       exit(1);
     }

@@ -44,22 +44,22 @@ void Vista::carga_mensajes(int alto)
   texto_num_movimientos.setPosition(20.f, alto - 110.f);
   texto_num_movimientos.setScale(0.5f, 0.5f);
   texto_num_movimientos.setFont(font);
-  texto_num_movimientos.setColor(green);
+  texto_num_movimientos.setFillColor(green);
 
   texto_tiempo.setPosition(20.f, alto - 90.f);
   texto_tiempo.setScale(0.5f, 0.5f);
   texto_tiempo.setFont(font);
-  texto_tiempo.setColor(green);
+  texto_tiempo.setFillColor(green);
 
   texto_trayectoria_encontrada.setPosition(20.f, alto - 50.f);
   texto_trayectoria_encontrada.setScale(0.5f, 0.5f);
   texto_trayectoria_encontrada.setFont(font);
-  texto_trayectoria_encontrada.setColor(green);
+  texto_trayectoria_encontrada.setFillColor(green);
 
   noCasillaText.setPosition(20.f, alto - 30.f);
   noCasillaText.setScale(0.7f, 0.7f);
   noCasillaText.setFont(font);
-  noCasillaText.setColor(sf::Color::Red);
+  noCasillaText.setFillColor(sf::Color::Red);
 }
 
 std::pair<unsigned,unsigned> Vista::pos_casilla_inicial()

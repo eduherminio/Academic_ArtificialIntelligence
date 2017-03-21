@@ -17,27 +17,27 @@ void Panel::inicializa(unsigned ancho,unsigned alto,unsigned ancho_panel)
   texto_boton_ordenador.setFont(font);
   texto_boton_ordenador.setString("1 player");
   texto_boton_ordenador.setPosition(ancho-ancho_panel+27,alto-115);
-  texto_boton_ordenador.setColor(sf::Color::Black);
+  texto_boton_ordenador.setFillColor(sf::Color::Black);
 
   boton_manual=sf::RectangleShape(sf::Vector2f(ancho_panel-30,50));
   boton_manual.setPosition(ancho-ancho_panel+15, alto-60);
   texto_boton_manual.setFont(font);
   texto_boton_manual.setString("2 players");
   texto_boton_manual.setPosition(ancho-ancho_panel+27,alto-55);
-  texto_boton_manual.setColor(sf::Color::Black);
+  texto_boton_manual.setFillColor(sf::Color::Black);
 
   texto_etiqueta_turno.setFont(font);
   texto_etiqueta_turno.setString("Current Turn:");
   texto_etiqueta_turno.setCharacterSize(18);
   texto_etiqueta_turno.setPosition(ancho-ancho_panel+15,15);
-  texto_etiqueta_turno.setColor(sf::Color::Blue);
+  texto_etiqueta_turno.setFillColor(sf::Color::Blue);
   texto_etiqueta_turno.setStyle(sf::Text::Bold);
 
   texto_turno.setFont(font);
   texto_turno.setString("WHITE");
   texto_turno.setCharacterSize(20);
   texto_turno.setPosition(ancho-ancho_panel+15,35);
-  texto_turno.setColor(sf::Color::White);
+  texto_turno.setFillColor(sf::Color::White);
   texto_turno.setStyle(sf::Text::Regular);
   texto_turno.setStyle(sf::Text::Bold);
 
@@ -45,7 +45,7 @@ void Panel::inicializa(unsigned ancho,unsigned alto,unsigned ancho_panel)
   texto_etiqueta_puntuacion.setString("Score");
   texto_etiqueta_puntuacion.setPosition(ancho-ancho_panel+15,60);
   texto_etiqueta_puntuacion.setCharacterSize(20);
-  texto_etiqueta_puntuacion.setColor(sf::Color::Blue);
+  texto_etiqueta_puntuacion.setFillColor(sf::Color::Blue);
   texto_etiqueta_puntuacion.setStyle(sf::Text::Bold);
 
   texto_puntuacion.setFont(font);
@@ -58,7 +58,7 @@ void Panel::inicializa(unsigned ancho,unsigned alto,unsigned ancho_panel)
   texto_puntuacion.setString("");
   texto_final.setPosition(ancho-ancho_panel+15,130);
   texto_final.setCharacterSize(35);
-  texto_final.setColor(sf::Color::Black);
+  texto_final.setFillColor(sf::Color::Black);
   texto_final.setStyle(sf::Text::Bold);
 }
 
@@ -77,11 +77,11 @@ void Panel::set_string_puntuacion(const std::string& texto)
 
 void Panel::color_string_turno_blanco()
 {
-  texto_turno.setColor(sf::Color::White);
+  texto_turno.setFillColor(sf::Color::White);
 }
 void Panel::color_string_turno_negro()
 {
-  texto_turno.setColor(sf::Color::Black);
+  texto_turno.setFillColor(sf::Color::Black);
 }
 void Panel::draw(sf::RenderTarget& target, sf::RenderStates ) const
 {
