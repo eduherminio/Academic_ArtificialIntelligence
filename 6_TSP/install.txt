@@ -1,0 +1,5 @@
+http://www.sfml-dev.org/download/sfml/2.4.2/
+MOver carpetas a mano a /usr y /usr/local
+
+https://tgui.eu/tutorials/v0.7/linux/
+
