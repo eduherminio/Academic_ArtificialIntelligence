@@ -33,7 +33,7 @@ namespace controlador
   public:
     Controlador()
     {
-      registra_observadores();
+      registra_observadores();    // TO-CHECK
       //Esta inicializacion es muy muy muy mejorable
       //El alumno deber� eliminar estos par�metros y obtnerlos de forma autom�tica dentro
       //de la clase TSP analizando las caracter�sticas del problema

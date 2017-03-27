@@ -35,6 +35,12 @@ public:
     {
       return(mejor_distancia);
     }
+    const std::vector<double> get_v_lookup_table()
+    {
+      return (v_lookup_table);
+    }
+    void set_v_lookup_table();
+    double get_v_lookup_table(int key);
   private:
     std::atomic<bool> abortar;
 
@@ -51,6 +57,8 @@ public:
     unsigned num_exitos_maximo;
     double temperatura;
     double factor_descenso;
+
+    std::vector<double> v_lookup_table;
   };
 
 

@@ -21,6 +21,8 @@ void Recocido_simulado_TSP::inicializacion(const unsigned n_d,const unsigned n_p
   // Calcula una ruta mediante recocido simulado
   void Recocido_simulado_TSP::ejecutar(ruta::Ruta& ruta)
   {
+    std::cout<<std::endl<<"Optimizing"<<std::endl<<"(...)"<<std::endl;
+    set_v_lookup_table();
     // TO-DO: Initialización
     std::mt19937 rng;
     auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
@@ -39,7 +41,6 @@ void Recocido_simulado_TSP::inicializacion(const unsigned n_d,const unsigned n_p
     observador.notifica(Evento_Modelo::nuevo_recorrido);
 
     abortar=false;
-
     for(;iteracion_actual<num_descensos;++iteracion_actual)   // Algoritmo que itera entre las temperaturas
     {
       unsigned num_exitos=0;
@@ -54,8 +55,14 @@ void Recocido_simulado_TSP::inicializacion(const unsigned n_d,const unsigned n_p
         auto distancia_provisional = ruta.get_distancia_provisional();
         auto incremento=distancia_actual-distancia_provisional;   // incremento>0 -> mejora
 
-        //Hacer una LUT para la funci�n exp(incremento/temperatura)   // TO-DO llamar a un vector que, dado el valor, devuelva otro valor
-        if(incremento>0 || aleatorio_0_a_1(rng)<exp(incremento/temperatura)) //DECISON METROPOLIS
+        // TO-DO: Hacer una LUT para la funcion exp(incremento/temperatura)
+        auto rnd_value= aleatorio_0_a_1(rng);
+        double actual= (double)incremento/temperatura;
+        size_t index= std::abs(round(1000 * (actual)));
+        if(index > 9999)
+          index=9999;
+        // if(incremento>0 || aleatorio_0_a_1(rng) < exp(incremento/temperatura)) //DECISON METROPOLIS
+        if(incremento>0 || rnd_value < v_lookup_table.at(index))
         {
           //Actualizamos la ruta actual
           ruta.actualiza_ruta();
@@ -68,11 +75,30 @@ void Recocido_simulado_TSP::inicializacion(const unsigned n_d,const unsigned n_p
             observador.notifica(Evento_Modelo::nuevo_recorrido);
           }
           if(++num_exitos>num_exitos_maximo)        // Si, para una temperatura, muchos exitos -> sistema muy caliente (acepto cualquier cosa) -> corto el bucle interno y enfrío la temperatura
-          break;
+            break;
         }
       }
       if(num_exitos==0)                                 // Si, para una temperatura, ningún éxito -> Fin del algoritmo ()
-      break;
+        break;
       temperatura*=factor_descenso;
     }
+    std::cout<<"**END**"<<std::endl;
+  }
+
+  void Recocido_simulado_TSP::set_v_lookup_table()
+  {
+    v_lookup_table.push_back(exp(0));
+    for(int i=1; i<10000; ++i)
+    {
+      double exponent= -(double)i/1000;         // [-0.001, -9.999];
+      v_lookup_table.push_back(exp(exponent));
+    }
+  }
+
+  double Recocido_simulado_TSP::get_v_lookup_table(int key)
+  {
+    if(key<0)
+      return v_lookup_table.at(-key);
+    else
+      return v_lookup_table.at(2*key);
   }

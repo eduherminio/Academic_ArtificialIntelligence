@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <cmath>
+#include <algorithm>
 
 namespace ciudades
 {
@@ -18,7 +19,7 @@ namespace ciudades
 
     if ( !fichero )
     {
-      std::cout << "Error al abrir el fichero\n";
+      std::cout << "Error while opening file\n";
       return false;
     }
 
@@ -26,101 +27,163 @@ namespace ciudades
     // Verificamos que es del tipo EUC_2D
     // Formamos el vector de coordenadas
 
-    std::string linea=" ";
-    std::string palabra;
-    std::string nombre_fich;
+    std::string name;
 
-    while(linea!="EOF")
+    while(true)
     {
+      std::string linea;
       getline(fichero,linea);
+      if(linea.find("EOF")!=std::string::npos)
+        break;
+
       linea= linea.substr(0, linea.size()-1);   // NEEDED
+      std::cout<<linea<<std::endl;
 
-      std::cout<<"**"<<linea<<std::endl;
-
-      if(linea=="NODE_COORD_SECTION")
+      if(linea.find("NODE_COORD_SECTION")!=std::string::npos)
       {
-        double x,y;
-        std::cout<<"COORDENADAS"<<std::endl;
-        for(unsigned i=0; i<num_ciudades; i++)
+        std::cout<<"(...)"<<std::endl;
+        for(int i=0; i<num_ciudades; ++i)
         {
-          getline(fichero,linea); //leemos las lineas con las coordenadas
+          std::string palabra;
+          int x, y;
+          getline(fichero,linea);                       // Line with coords
           std::stringstream linea_stream(linea);
-          getline(linea_stream,palabra,' ');  //Obtenemos el indice de ciudad. No lo utilizamos
-          getline(linea_stream,palabra,' ');  //Obtenemos la coordenada x;
+          getline(linea_stream,palabra,' ');            // City index (unused)
+          getline(linea_stream,palabra,' ');            // x
           std::stringstream palabra_stream_x(palabra);
-          palabra_stream_x >> x;  //Pasamos de string a double
-          getline(linea_stream,palabra,' ');  //Obtenemos la coordenada y;
+          palabra_stream_x >> x;                        // x to double
+          getline(linea_stream,palabra,' ');            // y;
           std::stringstream palabra_stream_y(palabra);
-          palabra_stream_y >> y;  //Pasamos de string a double
-          coordenadas.push_back({x,y}); //Almacenamos las coordenadas
+          palabra_stream_y >> y;                        // y to double
+
+          coordenadas.push_back({x, y});
         }
       }
-      else if(linea=="TOUR_SECTION")
+      else if(linea.find("TOUR_SECTION")!=std::string::npos)
       {
-        std::cout<<linea<<std::endl;
-        unsigned indice;
-        std::cout<<"num_ciudades"<<num_ciudades<<std::endl;
-        for(unsigned i=0; i<num_ciudades; i++)
+        std::cout<<"(...)"<<std::endl;
+        std::string stour;
+        int tour;
+        while(true)
         {
-          // std::cout<<"iter"<<i<<std::endl;
-          getline(fichero,linea); //leemos las lineas con las coordenadas
-          std::stringstream indice_stream(linea);
-          indice_stream >> indice;  //Pasamos de string a unsigned
-          recorrido_optimo.push_back({indice-1}); //Almacenamos los indices (restamos 1)
+          getline(fichero, stour);
+
+          tour=stoi(stour);
+          if(tour==-1)
+            break;
+
+          recorrido_optimo.push_back(tour-1);
         }
       }
       else
       {
+        if(linea.find("EDGE_WEIGHT_TYPE")!=std::string::npos)
+        {
+          if(linea.find("EUC_2D")!=std::string::npos)
+            exito=true;
+          else
+            std::cout<<"NOT EUC_2D"<<std::endl;
+        }
+        if(linea.find("DIMENSION")!=std::string::npos)
+        {
+          linea.erase(0, linea.find(":")+1);
+          num_ciudades= stoi(linea);
+        }
+        if(linea.find("NAME")!=std::string::npos)
+        {
+          linea.erase(0, linea.find(":")+1);
+          name=linea;
+          name.erase(std::remove_if(name.begin(), name.end(), isspace), name.end());
+          // ...
+        }
+      }
+    // Given (in Linux)
+/*
+while(linea!="EOF")
+{
+    getline(fichero,linea);
+    if(linea=="NODE_COORD_SECTION")
+    {
+        double x,y;
+        std::cout<< linea<<std::endl;
+        for(unsigned i=0; i<num_ciudades; i++)
+        {
+            getline(fichero,linea); //leemos las lineas con las coordenadas
+            std::stringstream linea_stream(linea);
+            getline(linea_stream,palabra,' ');  //Obtenemos el indice de ciudad. No lo utilizamos
+            getline(linea_stream,palabra,' ');  //Obtenemos la coordenada x;
+            std::stringstream palabra_stream_x(palabra);
+            palabra_stream_x >> x;  //Pasamos de string a double
+            getline(linea_stream,palabra,' ');  //Obtenemos la coordenada y;
+            std::stringstream palabra_stream_y(palabra);
+            palabra_stream_y >> y;  //Pasamos de string a double
+            coordenadas.push_back({x,y}); //Almacenamos las coordenadas
+        }
+    }
+    else if(linea=="TOUR_SECTION")
+    {
+        std::cout<<linea<<std::endl;
+        unsigned indice;
+        for(unsigned i=0; i<num_ciudades; i++)
+        {
+            getline(fichero,linea); //leemos las lineas con las coordenadas
+            std::stringstream indice_stream(linea);
+            indice_stream >> indice;  //Pasamos de string a unsigned
+            recorrido_optimo.push_back({indice-1}); //Almacenamos los indices (restamos 1)
+        }
+    }
+    else
+    {
         std::stringstream linea_stream(linea);
         getline(linea_stream,palabra,' ');  //Obtenemos la primera palabra de la linea de texto
         if(palabra=="EDGE_WEIGHT_TYPE")
         {
-          getline(linea_stream,palabra,' '); //Leemos el texto correspondiente a los dos puntos :
-          getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al tipo de distancia
-          exito=true;
-          if(palabra=="EUC_2D")              //solo trabajamos con ficheros TSPLIB con distancias euclideas 2D
-          {
-            exito=true;
-            std::cout<<"EUC_2D"<<std::endl;
-          }
+            getline(linea_stream,palabra,' '); //Leemos el texto correspondiente a los dos puntos :
+            getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al tipo de distancia
+            if(palabra=="EUC_2D")              //solo trabajamos con ficheros TSPLIB con distancias euclideas 2D
+            {
+                exito=true;
+                std::cout<<"EUC_2D"<<std::endl;
+            }
         }
         else if(palabra=="EDGE_WEIGHT_TYPE:")
         {
-          getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al tipo de distancia
-          exito=true;
-          if(palabra=="EUC_2D")              //solo trabajamos con ficheros TSPLIB con distancias euclideas 2D
-          {
-            exito=true;
-            std::cout<<"EUC_2D"<<std::endl;
-          }
+            getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al tipo de distancia
+            if(palabra=="EUC_2D")              //solo trabajamos con ficheros TSPLIB con distancias euclideas 2D
+            {
+                exito=true;
+                std::cout<<"EUC_2D"<<std::endl;
+            }
         }
         else if(palabra=="DIMENSION")
         {
-          getline(linea_stream,palabra,' '); //Leemos el texto correspondiente a los dos puntos :
-          getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al numero de ciudades
-          std::stringstream palabra_stream(palabra);
-          palabra_stream >> num_ciudades;  //Pasamos de string a int: �Ya tenemos el numero de ciudades!
-          std::cout<< num_ciudades<<std::endl;
+            getline(linea_stream,palabra,' '); //Leemos el texto correspondiente a los dos puntos :
+            getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al numero de ciudades
+            std::stringstream palabra_stream(palabra);
+            palabra_stream >> num_ciudades;  //Pasamos de string a int: ¡Ya tenemos el numero de ciudades!
+            std::cout<< num_ciudades<<std::endl;
         }
         else if(palabra=="DIMENSION:")
         {
-          getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al numero de ciudades
-          std::stringstream palabra_stream(palabra);
-          palabra_stream >> num_ciudades;  //Pasamos de string a int: �Ya tenemos el numero de ciudades!
-          std::cout<< num_ciudades<<std::endl;
+            getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al numero de ciudades
+            std::stringstream palabra_stream(palabra);
+            palabra_stream >> num_ciudades;  //Pasamos de string a int: ¡Ya tenemos el numero de ciudades!
+            std::cout<< num_ciudades<<std::endl;
         }
         else if(palabra=="NAME")
         {
-          getline(linea_stream,palabra,' '); //Leemos el texto correspondiente a los dos puntos :
-          getline(linea_stream,nombre_fich,' '); //Leemos el texto correspondiente al nombre del fichero
-          std::cout<<nombre_fich<<std::endl;
+            getline(linea_stream,palabra,' '); //Leemos el texto correspondiente a los dos puntos :
+            getline(linea_stream,nombre_fich,' '); //Leemos el texto correspondiente al nombre del fichero
+            std::cout<<nombre_fich<<std::endl;
         }
         else if(palabra=="NAME:")
         {
-          getline(linea_stream,nombre_fich,' '); //Leemos el texto correspondiente al nombre del fichero
-          std::cout<<nombre_fich<<std::endl;
+            getline(linea_stream,nombre_fich,' '); //Leemos el texto correspondiente al nombre del fichero
+            std::cout<<nombre_fich<<std::endl;
         }
-      }
+    }
+}
+*/
     }
     fichero.close();
 
@@ -128,7 +191,7 @@ namespace ciudades
     if(exito==true)
     {
       set_matriz_distancias();
-      std::cout<<"Set matriz distancias"<<std::endl;
+      std::cout<<std::endl<<"Setting distance matrix of "<<name<<" ("<<num_ciudades<<")"<<std::endl;
     }
     return exito;
   }

@@ -1,5 +1,6 @@
 #include "../header/controlador.h"
-#include "../header/dialogo_fichero_windows.h"
+// #include "../header/dialogo_fichero_windows.h"
+#include "../header/dialogo_fichero_linux.h"
 #include <thread>
 
 namespace controlador
@@ -27,7 +28,7 @@ namespace controlador
       if(set_coordenadas_visualizacion(ciudades))
       {
         vista.set_recorrido_optimo(ciudades.get_recorrido_optimo());
-        vista.set_texto_distancia_optima("�ptimo : "+parche::to_string(ciudades.calcula_distancia(ciudades.get_recorrido_optimo())));
+        vista.set_texto_distancia_optima("Optimum : "+parche::to_string(ciudades.calcula_distancia(ciudades.get_recorrido_optimo())));
         vista.set_texto_iteracion("");
         vista.set_texto_mejor_distancia("");
         ruta.inicializa_ruta(std::move(ciudades));
@@ -84,6 +85,7 @@ namespace controlador
 
     fin_vista=false;
 
+    //&Recocido_simulado_TSP::set_v_lookup_table();
     while(!fin_vista)
     {
       // Bloqueamos /////////////////
@@ -143,7 +145,7 @@ namespace controlador
         {
           auto dato=std::move(datos.front());
           datos.pop();
-          vista.actualiza_recorrido(dato.recorrido,"Iteraci�n: "+parche::to_string(dato.iteracion),"Distancia: "+parche::to_string(dato.mejor_distancia));
+          vista.actualiza_recorrido(dato.recorrido,"Iterations: "+parche::to_string(dato.iteracion),"Distance: "+parche::to_string(dato.mejor_distancia));
         }
       }
       else
@@ -151,7 +153,7 @@ namespace controlador
         auto dato=std::move(datos.front());
         datos.pop();
         u_l.unlock(); //Desbloqueamos lo antes posible
-        vista.actualiza_recorrido(dato.recorrido,"Iteraci�n: "+parche::to_string(dato.iteracion),"Distancia: "+parche::to_string(dato.mejor_distancia));
+        vista.actualiza_recorrido(dato.recorrido,"Iterations: "+parche::to_string(dato.iteracion),"Distance: "+parche::to_string(dato.mejor_distancia));
       }
     }
   }

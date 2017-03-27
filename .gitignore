@@ -28,29 +28,26 @@
 *.out
 *.app
 
-# .pdf
+# .pdf & .zip
 *.pdf
+*.zip
 
+# Specific folders
 build/
+other/
+
+# Specific files
+explicacion.txt
 
 1_Taquin/1_Taquin.txt
 2_Taquin/2_Taquin.txt
-2_Taquin/explicacion.txt
-3_Trayectories/explicacion.txt
-
-*.zip
-
-0_Exam1/Alternativas\.txt
-
-3_Trajectories/planificacion_trayectorias\.depend
-
-4_Reversi/Other/
-
-4_Reversi/Explicacion.txt
-
+3_Trajectories/3_Trajectories.txt
 4_Reversi/4_Reversi.txt
-
-6_TSP/Explicacion.txt
-
+5_Pi/5_Pi.txt
 6_TSP/6_TSP.txt
+
+
+0_Exam1/Alternativas/.txt
+
+3_Trajectories/planificacion_trayectorias.depend
 
