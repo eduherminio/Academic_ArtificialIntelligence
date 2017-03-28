@@ -42,7 +42,7 @@ namespace ruta
     void rotacion_3_puntos();
     void insercion_segmento();
     unsigned insert_function1(const std::vector<unsigned>& pos, unsigned& long_segmento);
-    unsigned insert_function2(const std::vector<unsigned>& pos, unsigned& long_segmento);
+    void insert_function2(const std::vector<unsigned>& pos, unsigned& long_segmento);
   };
 
   void crea_recorrido(unsigned num_ciudades,std::vector<unsigned>&);

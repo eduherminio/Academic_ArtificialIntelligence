@@ -28,6 +28,8 @@ namespace ciudades
 
     std::string name;
 
+    // Improved reading
+    // TO-DO: Make it able to deal with scientific notation
     while(true) {
       std::string linea;
       getline(fichero,linea);

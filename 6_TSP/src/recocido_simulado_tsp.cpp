@@ -13,11 +13,9 @@ void Recocido_simulado_TSP::inicializacion(const int& num_ciudades)
     num_permutaciones=  100*num_ciudades;
     num_exitos_maximo=  0.4*num_permutaciones;
     temperatura=        10*num_ciudades;
-    //factor_descenso=    0.99; // 0.99 slower, more effecive
-    factor_descenso=    0.8;  // 0.8 faster, less effective
+    factor_descenso=    0.99;
     set_v_lookup_table();
   }
-
 
   // Calcula una ruta mediante recocido simulado
   void Recocido_simulado_TSP::ejecutar(ruta::Ruta& ruta, int& num_ciudades)
@@ -52,19 +50,23 @@ void Recocido_simulado_TSP::inicializacion(const int& num_ciudades)
         ruta.crea_recorrido_vecino();                     // Crea un recorrido que se le parezca -> recorrido provisional
 
         auto distancia_provisional = ruta.get_distancia_provisional();
-        auto incremento=distancia_actual-distancia_provisional;   // incremento>0 -> mejora
+        auto incremento=distancia_actual-distancia_provisional;   // incremento > 0 -> mejora
+
 
         // TO-DO: Hacer una LUT para la funcion exp(incremento/temperatura)
-        auto rnd_value= aleatorio_0_a_1(rng);
         double actual= (double)incremento/temperatura;
         size_t index= std::abs(round(1000 * (actual)));
-        if(index > 9999)
-          index=9999;
-        // if(incremento>0 || aleatorio_0_a_1(rng) < exp(incremento/temperatura)) //DECISON METROPOLIS
-        if(incremento>0 || rnd_value < v_lookup_table.at(index))
+        if(index > 9999 && incremento<=0)
+          continue;
+        // if(incremento>0 || aleatorio_0_a_1(rng) < exp(incremento/temperatura))             //DECISON METROPOLIS
+        if(incremento>0 || (aleatorio_0_a_1(rng) < v_lookup_table2[index] && incremento>0))   // KEY-> incremento !=0
         {
-          //Actualizamos la ruta actual
-          ruta.actualiza_ruta();
+          // if(incremento<0){
+          //   std::cout<<index<<std::endl;
+          //   std::cout<<v_lookup_table2[index]<<" "<<exp(incremento/temperatura)<<std::endl;
+          // }
+
+          ruta.actualiza_ruta();  // Actualizamos la ruta actual
           distancia_actual=distancia_provisional;
 
           if(distancia_actual<mejor_distancia)        // Nofitica el controlador para que actualice la vista
@@ -80,26 +82,24 @@ void Recocido_simulado_TSP::inicializacion(const int& num_ciudades)
       if(num_exitos==0)                                 // Si, para una temperatura, ningún éxito -> Fin del algoritmo ()
         break;
       temperatura*=factor_descenso;
+      if(temperatura==0)
+        break;
 
-      std::cout<<"Ta: "<<temperatura<<" ex: "<<num_exitos<<std::endl;
+      // std::cout<<"Temp: "<<temperatura<<" exitos: "<<num_exitos<<std::endl;
     }
-    std::cout<<"**END**"<<std::endl;
+    std::cout<<std::endl<<"**END**"<<std::endl;
   }
 
   void Recocido_simulado_TSP::set_v_lookup_table()
   {
     v_lookup_table.push_back(exp(0));
+    v_lookup_table2[0]=exp(0);
     for(int i=1; i<10000; ++i)
     {
       double exponent= -(double)i/1000;         // [-0.001, -9.999];
       v_lookup_table.push_back(exp(exponent));
+      v_lookup_table2[i]=exp(exponent);
     }
-  }
-
-  double Recocido_simulado_TSP::get_v_lookup_table(int key)
-  {
-    if(key<0)
-      return v_lookup_table.at(-key);
-    else
-      return v_lookup_table.at(2*key);
+    // for(int i=0; i<10000; ++i)
+    //   std::cout<<v_lookup_table2[i]<<" ";
   }
