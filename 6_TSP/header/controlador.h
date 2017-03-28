@@ -52,7 +52,8 @@ namespace controlador
     unsigned num_exitos_maximo;
     double temperatura;
     double factor_descenso;
-
+    int num_ciudades;
+    
     Vista vista;
     Recocido_simulado_TSP algoritmo_sa_tsp;
     Observador<Evento_Vista> observador_vista;

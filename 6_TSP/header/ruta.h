@@ -11,45 +11,19 @@ namespace ruta
   class Ruta
   {
   public:
-    Ruta()
-    {
-      // Obtenci�n de semilla para generadores de aleatorios
+    Ruta();
+    ~Ruta();
 
-    }
-    void inicializa_ruta(ciudades::Ciudades&&ciu)
-    {
-      ciudades=ciu;
-      num_ciudades=ciudades.get_num_ciudades();
-
-      auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-      rng.seed(seed);
-      aleatorio_num_ciudades=std::uniform_int_distribution<unsigned>(0,num_ciudades-1);
-      aleatorio_0_a_1=std::uniform_real_distribution<double>(0,1);
-    }
-
+    void inicializa_ruta(ciudades::Ciudades&&ciu);
     double calcula_distancia(const std::vector<unsigned>& recorrido);
-
-    double get_distancia_actual() const
-    {
-      return distancia_actual;
-    }
-    double get_distancia_provisional() const
-    {
-      return distancia_provisional;
-    }
-
-    void actualiza_ruta()
-    {
-      recorrido_actual=std::move(recorrido_provisional);
-      distancia_actual=distancia_provisional;
-    }
-
-    const std::vector<unsigned> get_recorrido() const
-    {
-      return recorrido_actual;
-    }
+    void actualiza_ruta();
     void crea_recorrido_vecino();
     void inicializa_recorrido();
+
+    double get_distancia_actual()               const { return distancia_actual;      }
+    double get_distancia_provisional()          const { return distancia_provisional; }
+    const std::vector<unsigned> get_recorrido() const { return recorrido_actual;      }
+
   private:
 
     std::vector<unsigned> recorrido_actual;
@@ -59,12 +33,16 @@ namespace ruta
     unsigned num_ciudades;
     ciudades::Ciudades ciudades;    //Puntero a la clase Ciudades del problema
     std::mt19937 rng;
+    size_t seed;
     std::uniform_int_distribution<unsigned> aleatorio_num_ciudades;
     std::uniform_real_distribution<double> aleatorio_0_a_1;
 
     void rotacion_2_puntos();    //Crea recorrido provisional rotando el actual usando 2 puntos
     void intercambio_2_puntos(); //Crea recorrido provisional intercambiando 2 puntos
     void rotacion_3_puntos();
+    void insercion_segmento();
+    unsigned insert_function1(const std::vector<unsigned>& pos, unsigned& long_segmento);
+    unsigned insert_function2(const std::vector<unsigned>& pos, unsigned& long_segmento);
   };
 
   void crea_recorrido(unsigned num_ciudades,std::vector<unsigned>&);

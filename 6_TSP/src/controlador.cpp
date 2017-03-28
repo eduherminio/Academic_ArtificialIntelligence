@@ -1,6 +1,7 @@
 #include "../header/controlador.h"
 // #include "../header/dialogo_fichero_windows.h"
 #include "../header/dialogo_fichero_linux.h"
+#include "../header/recocido_simulado_tsp.h"
 #include <thread>
 
 namespace controlador
@@ -24,7 +25,7 @@ namespace controlador
     if(lee_nombre_fichero(fichero_tsp))
     {
       ciudades::Ciudades ciudades;
-      ciudades.carga_ciudades(fichero_tsp);  //Carga el vector de coordenadas y la matriz de distancias
+      ciudades.carga_ciudades(fichero_tsp, num_ciudades);  //Carga el vector de coordenadas y la matriz de distancias
       if(set_coordenadas_visualizacion(ciudades))
       {
         vista.set_recorrido_optimo(ciudades.get_recorrido_optimo());
@@ -33,7 +34,7 @@ namespace controlador
         vista.set_texto_mejor_distancia("");
         ruta.inicializa_ruta(std::move(ciudades));
         //Eliminar la llamada de inicializaci�n
-        algoritmo_sa_tsp.inicializacion(num_descensos,num_permutaciones,num_exitos_maximo,temperatura,factor_descenso);
+        // algoritmo_sa_tsp.inicializacion(num_descensos,num_permutaciones,num_exitos_maximo,temperatura,factor_descenso);
         vista.muestra_boton_ejecutar();
         return true;
       }
@@ -104,7 +105,8 @@ namespace controlador
         hilo_cola_datos=std::thread(&Controlador::pop_datos,this);
 
         fin_algoritmo=false;
-        hilo_modelo=std::thread(&Recocido_simulado_TSP::ejecutar,&algoritmo_sa_tsp,std::ref(ruta));
+        hilo_modelo=std::thread(&Recocido_simulado_TSP::ejecutar, &algoritmo_sa_tsp, std::ref(ruta), std::ref(num_ciudades));
+
         if(hilo_modelo.joinable())
         hilo_modelo.join();
         fin_algoritmo=true;

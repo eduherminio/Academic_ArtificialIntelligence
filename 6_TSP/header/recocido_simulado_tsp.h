@@ -10,10 +10,8 @@ enum class Evento_Modelo{nuevo_recorrido};
 class Recocido_simulado_TSP
 {
 public:
-  void inicializacion(const unsigned num_descensos,const unsigned num_permutaciones,
-    const unsigned num_exitos_maximo,const double temperatura,
-    const double factor_descenso);
-    void ejecutar(ruta::Ruta& ruta);
+    void inicializacion(const int& num_ciudades);
+    void ejecutar(ruta::Ruta& ruta, int& num_ciudades);
 
     Observador<Evento_Modelo>& get_observador()
     {

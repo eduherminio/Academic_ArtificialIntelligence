@@ -6,32 +6,31 @@
 
 #include "../header/recocido_simulado_tsp.h"
 
-void Recocido_simulado_TSP::inicializacion(const unsigned n_d,const unsigned n_p,const unsigned n_e_m,
-  const double t,const double f_d)
+void Recocido_simulado_TSP::inicializacion(const int& num_ciudades)
   {
-    //A completar: esta funci�n debe modificarse para que sintonice los par�metros de forma autom�tica
-    num_descensos=n_d;
-    num_permutaciones=n_p;
-    num_exitos_maximo=n_e_m;
-    temperatura=t;
-    factor_descenso=f_d;
+    // TO-DO: Initialization, sintonizing algorithm parameters
+    num_descensos=      50*num_ciudades;
+    num_permutaciones=  100*num_ciudades;
+    num_exitos_maximo=  0.4*num_permutaciones;
+    temperatura=        10*num_ciudades;
+    //factor_descenso=    0.99; // 0.99 slower, more effecive
+    factor_descenso=    0.8;  // 0.8 faster, less effective
+    set_v_lookup_table();
   }
 
 
   // Calcula una ruta mediante recocido simulado
-  void Recocido_simulado_TSP::ejecutar(ruta::Ruta& ruta)
+  void Recocido_simulado_TSP::ejecutar(ruta::Ruta& ruta, int& num_ciudades)
   {
+    inicializacion(num_ciudades);
+
     std::cout<<std::endl<<"Optimizing"<<std::endl<<"(...)"<<std::endl;
-    set_v_lookup_table();
-    // TO-DO: Initialización
+
     std::mt19937 rng;
     auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     rng.seed(seed);
     std::uniform_real_distribution<double> aleatorio_0_a_1(0,1);
 
-    //A completar: el alumno invocar� desde aqu� a inicializacion para
-    //sintonizar los parametros del algoritmo
-    //inicializacion()
     ruta.inicializa_recorrido();
     auto distancia_actual= ruta.get_distancia_actual();
     mejor_distancia = distancia_actual;
@@ -81,6 +80,8 @@ void Recocido_simulado_TSP::inicializacion(const unsigned n_d,const unsigned n_p
       if(num_exitos==0)                                 // Si, para una temperatura, ningún éxito -> Fin del algoritmo ()
         break;
       temperatura*=factor_descenso;
+
+      std::cout<<"Ta: "<<temperatura<<" ex: "<<num_exitos<<std::endl;
     }
     std::cout<<"**END**"<<std::endl;
   }

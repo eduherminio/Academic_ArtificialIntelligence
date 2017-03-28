@@ -9,7 +9,7 @@ namespace ciudades
   class Ciudades
   {
   public:
-    bool carga_ciudades(const std::string nombre_fichero);
+    bool carga_ciudades(const std::string nombre_fichero, int& num_ciudades);
     // Devuelve la distancia entre 2 ciudades
     double get_distancia(const unsigned ciudad1,const unsigned ciudad2) const
     {
