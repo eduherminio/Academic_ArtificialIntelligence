@@ -79,7 +79,7 @@ namespace problema_busqueda
 
           }
           else if (lista[it->second].coste_actual > (lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)) ) {    // Repetido, pero el nuevo con menor coste
-
+            // TO-DO: Add a new nodo, not change the existing one
             lista[it->second].padre= iter_lista;
             lista[it->second].coste_actual= lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo);
             lista_prioridad.push({it->second, lista[it->second].coste_actual + heuristica(hijo, nodo_objetivo)}); // flotará automáticamente antes que su homólogo de mayor coste

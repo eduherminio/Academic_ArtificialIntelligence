@@ -35,6 +35,7 @@
 # Specific folders
 build/
 other/
+zip/
 
 # Specific files
 explicacion.txt
