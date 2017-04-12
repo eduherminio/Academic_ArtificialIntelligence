@@ -8,7 +8,7 @@
 
 void Recocido_simulado_TSP::inicializacion(const int& num_ciudades)
   {
-    // TO-DO: Initialization, sintonizing algorithm parameters
+    // DONE: Initialization, sintonizing algorithm parameters
     num_descensos=      50*num_ciudades;
     num_permutaciones=  100*num_ciudades;
     num_exitos_maximo=  0.4*num_permutaciones;
@@ -53,7 +53,7 @@ void Recocido_simulado_TSP::inicializacion(const int& num_ciudades)
         auto incremento=distancia_actual-distancia_provisional;   // incremento > 0 -> mejora
 
 
-        // TO-DO: Hacer una LUT para la funcion exp(incremento/temperatura)
+        // DONE: Hacer una LUT para la funcion exp(incremento/temperatura)
         double actual= (double)incremento/temperatura;
         size_t index= std::abs(round(1000 * (actual)));
         if(index > 9999 && incremento<=0)

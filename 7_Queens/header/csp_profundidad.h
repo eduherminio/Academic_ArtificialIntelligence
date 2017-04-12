@@ -20,7 +20,7 @@ namespace problema_csp
 
     while(exito==false && lista.size()>0)
     {
-      // TO-DO - busqueda en profundidad
+      // DONE: busqueda en profundidad
 
       if(lista[indice].visitado == false)
       {

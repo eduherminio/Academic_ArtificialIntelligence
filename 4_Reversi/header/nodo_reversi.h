@@ -92,7 +92,7 @@ public:
   void set_alpha_o_beta(const int valor)
   {
     if(get_turno()==Turno::humano)
-    // if(get_turno()==Turno::ordenador)
+    // if(get_turno()==Turno::ordenador)    // TO-DO: Correct algorithm
     {
       alpha=valor;
     }

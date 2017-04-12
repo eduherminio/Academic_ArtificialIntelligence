@@ -186,6 +186,7 @@ namespace taquin
   }
 
   void Taquin::profundidad(size_t limite)  {
+    // DONE
     size_t indice_lista=0;
     inicializar_lista();
 
@@ -195,12 +196,11 @@ namespace taquin
       std::cout<<"Imposible encontrar solucion"<<std::endl;
     else
       std::cout<<"Habemus solucion"<<std::endl;
-
-    //Completar
-    // TO-DO
   }
 
   bool Taquin::repetido(const Nodo_Taquin& nodo,size_t indice)  {
+    //Estrategia buscar nodos repetidos en ancestros
+    // TO-DO
     bool repe=false;  // En amplitud, no se repiten
     /*
     for(int i=0; i<indice; i++){
@@ -211,8 +211,6 @@ namespace taquin
     }
     return true;
     */
-    //Estrategia buscar nodos repetidos en ancestros
-    //TO-DO
 
     return repe;
   }

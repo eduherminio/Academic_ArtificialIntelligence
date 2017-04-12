@@ -6,7 +6,7 @@ Nim::Nim(std::vector<int> v)
 }
 std::vector<Nim> Nim::expandir()
 {
-  // TO-DO
+  // DONE
     std::vector<Nim> hijos;
 
     for(int i=0; i<v_pilas.size(); ++i)

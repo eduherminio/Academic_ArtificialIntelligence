@@ -102,7 +102,7 @@ void Reversi::ejecuta_movimiento()    {
 
 
 int Reversi::estrategia_alpha_beta()  {
-  //TO-DO
+  // TO-DO: Correct algorithm
   std::vector<Nodo_reversi_alpha_beta> lista;
 
   Nodo_reversi_alpha_beta nodo_inicial(posicion);

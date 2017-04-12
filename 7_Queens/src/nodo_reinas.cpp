@@ -88,7 +88,7 @@ namespace nodo_reinas
   }
 
   vector<Nodo_reinas_set> Nodo_reinas_set::expandir() {
-    // TO-DO
+    // DONE
     if(posicion.size())
     {
       unsigned col_padre= posicion.back();

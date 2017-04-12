@@ -4,7 +4,7 @@
 namespace ruta
 {
   Ruta::Ruta()  {
-    // TO-DO: Complete
+    // DONE: Complete
     seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     rng.seed(seed);
     aleatorio_num_ciudades= std::uniform_int_distribution<unsigned>(0,num_ciudades);
@@ -63,7 +63,7 @@ namespace ruta
     }
   }
 
-  // TO-DO
+  // DONE
   // El alumno debe programar una cuarta modificacion del recorrido
   // Seleccionar un segmento del recorrido y un punto, e insertar el segmento a partir del punto
   // Elige una sección dada por 3 puntos de la ruta y la rota
@@ -213,7 +213,7 @@ namespace ruta
   }
 
   void Ruta::crea_recorrido_vecino()  {
-    // TO-DO
+    // DONE
     //El alumno debe programar una cuarta modificacion del recorrido
     //Seleccionar un segmento del recorrido y un punto, e insertar el segmento a partir del punto
 
