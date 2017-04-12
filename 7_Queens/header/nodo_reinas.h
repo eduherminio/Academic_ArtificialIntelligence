@@ -11,48 +11,72 @@ namespace nodo_reinas
 {
   using std::vector;
   using std::set;
+
   class Nodo_reinas
   {
   public:
-    Nodo_reinas(const unsigned dim,const vector<unsigned>& posicion):dim(dim),posicion(posicion)
+    Nodo_reinas(const unsigned dim, const vector<unsigned>& posicion)
+      :dim(dim), posicion(posicion)
     {}
-      vector<unsigned> get_posicion() const
-      {
-        return posicion;
-      }
-      vector<Nodo_reinas> expandir() const;
-      bool sucesor_aleatorio(std::mt19937& rng);
-      bool prueba_meta() const
-      {
-        return(posicion.size()==dim);
-      }
-    protected:
-      unsigned dim;               // Dimension del tablero
-      vector<unsigned> posicion;  // Permutacion que describe parcialmente el tablero
-    private:
-      bool columna_valida(const unsigned fil,const unsigned col) const;
+
+    vector<unsigned> get_posicion() const { return posicion; }
+    bool prueba_meta()              const { return(posicion.size() == dim); }
+
+    vector<Nodo_reinas> expandir() const;
+    virtual bool sucesor_aleatorio(std::mt19937& rng);
+
+  protected:
+    unsigned dim;               // Dimension del tablero
+    vector<unsigned> posicion;  // Stores, for each ocuppied row, the column where a queen is placed; so it's max size is dim
+
+  private:
+      bool columna_valida(const unsigned fil, const unsigned col) const;
     };
 
-    class Nodo_reinas_set:public Nodo_reinas
+    class Nodo_reinas_set
+      :public Nodo_reinas
     {
     public:
-      Nodo_reinas_set(const unsigned dim,const vector<unsigned>& posicion):Nodo_reinas(dim,posicion)
+      Nodo_reinas_set(const unsigned dim,const vector<unsigned>& posicion)
+        :Nodo_reinas(dim,posicion)
       {}
-        vector<Nodo_reinas_set> expandir() const;  // Sobreescritura
-        bool sucesor_aleatorio(std::mt19937& rng); // Sobreescritura
+
+        vector<Nodo_reinas_set> expandir();           // Sobreescritura - no virtual or override admitted due to the different return types (not covariant)
+        bool sucesor_aleatorio(std::mt19937& rng) override; // Sobreescritura - 'virtual' & 'override' added
+
+        void real_expansion(vector<Nodo_reinas_set>&) const;
       private:
         set<unsigned> columna;
         set<unsigned> diag_45;
         set<unsigned> diag_135;
-        bool columna_valida(const unsigned fil,const unsigned col) const;
+        bool columna_valida(const unsigned fil, const unsigned col) const;
       };
 
       template <typename T>
-      void imprime_posicion(const T& nodo)
+      void imprime_posicion(const T& nodo, const unsigned nodos_expandidos)
       {
-        for(auto v:nodo.get_posicion())
-        std::cout<<v<<" ";
-        std::cout<<"\n";
+        std::cout<<"Nodos exp: "<<nodos_expandidos<<std::endl;
+        for(const auto& x:nodo.get_posicion())
+          std::cout<<x<<" ";
+        std::cout<<std::endl;
+
+        imprime_tablero(nodo);
+      }
+
+      template <typename T>
+      void imprime_tablero(const T& nodo)
+      {
+        for(const auto& x:nodo.get_posicion())
+        {
+          for(unsigned i=0; i< nodo.get_posicion().size(); ++i)
+          {
+            if(i==x)
+              std::cout<<"Q ";
+            else
+              std::cout<<"- ";
+          }
+          std::cout<<std::endl;
+        }
       }
     }
 
