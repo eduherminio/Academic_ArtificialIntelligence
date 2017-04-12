@@ -59,7 +59,7 @@ namespace nodo_reinas
           std::cout<<x<<" ";
         std::cout<<std::endl;
 
-        // imprime_tablero(nodo);
+        imprime_tablero(nodo);  // Comment if not needed
       }
 
       template <typename T>
