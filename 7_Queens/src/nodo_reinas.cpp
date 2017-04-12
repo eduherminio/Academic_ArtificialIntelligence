@@ -2,16 +2,15 @@
 
 namespace nodo_reinas
 {
-
   //////////////////////////// SIN SET /////////////////////////////////////////////////////////
   bool Nodo_reinas::columna_valida(const unsigned fil_hijo, const unsigned col_hijo) const {
-    bool exito=true;
+    bool exito= true;
     for(unsigned fil_padre=0; fil_padre!=fil_hijo; ++fil_padre)
     {
-      auto col_padre=posicion.at(fil_padre);
+      auto col_padre= posicion.at(fil_padre);
       if(col_hijo==col_padre)
       {
-        exito=false;
+        exito= false;
         break;
       }
       else
@@ -28,7 +27,7 @@ namespace nodo_reinas
           dif_fil= fil_hijo-fil_padre;
         if(dif_fil==dif_col)          // same diagonal
         {
-          exito=false;
+          exito= false;
           break;
         }
       }
@@ -56,7 +55,7 @@ namespace nodo_reinas
     auto fil_hijo= posicion.size();
     vector<unsigned> v_columnas_candidatas;
 
-    for(unsigned col_hijo=0; col_hijo!=dim; ++col_hijo) //Todas las posibles v_columnas_candidatas
+    for(unsigned col_hijo=0; col_hijo!=dim; ++col_hijo) // Todas las posibles v_columnas_candidatas
     {
       if(columna_valida(fil_hijo, col_hijo))
       {
@@ -87,26 +86,26 @@ namespace nodo_reinas
       return false;
   }
 
-  vector<Nodo_reinas_set> Nodo_reinas_set::expandir() {
-    // DONE
+  void Nodo_reinas_set::update_sets() {
     if(posicion.size())
     {
       unsigned col_padre= posicion.back();
       unsigned fil_padre= posicion.size()-1;
 
-    columna.emplace(col_padre);
-    diag_45.emplace(col_padre + fil_padre);
-    diag_135.emplace(col_padre - fil_padre);
+      columna.emplace(col_padre);                 // Non const function due to the need of modifying private class members (sets)
+      diag_45.emplace(col_padre + fil_padre);
+      diag_135.emplace(col_padre - fil_padre);
+    }
   }
+
+  vector<Nodo_reinas_set> Nodo_reinas_set::expandir() {
+    // DONE
+
+    update_sets();  // non const part
 
     vector<Nodo_reinas_set> lista_hijos;
-    real_expansion(lista_hijos);    // const function
-
-    return lista_hijos;
-  }
-
-  void  Nodo_reinas_set::real_expansion(vector<Nodo_reinas_set>& lista_hijos) const {
     auto fil_hijo= posicion.size();
+
     for(unsigned col_hijo=0; col_hijo!=dim; ++col_hijo) // Todas las posibles columnas
     {
       if(columna_valida(fil_hijo, col_hijo))
@@ -116,9 +115,15 @@ namespace nodo_reinas
         lista_hijos.push_back(hijo);
       }
     }
+
+    return lista_hijos;
   }
 
   bool Nodo_reinas_set::sucesor_aleatorio(std::mt19937& rng)  {
+    // DONE
+
+    update_sets();  // non const part
+
     auto fil_hijo= posicion.size();
     std::vector<unsigned> v_columnas_candidatas;
 

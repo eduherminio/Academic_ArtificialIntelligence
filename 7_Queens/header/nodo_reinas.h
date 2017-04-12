@@ -40,11 +40,10 @@ namespace nodo_reinas
       Nodo_reinas_set(const unsigned dim,const vector<unsigned>& posicion)
         :Nodo_reinas(dim,posicion)
       {}
-
-        vector<Nodo_reinas_set> expandir();           // Sobreescritura - no virtual or override admitted due to the different return types (not covariant)
+        void update_sets();
+        vector<Nodo_reinas_set> expandir();                 // Sobreescritura - no virtual or override admitted due to the different return types (not covariant)
         bool sucesor_aleatorio(std::mt19937& rng) override; // Sobreescritura - 'virtual' & 'override' added
 
-        void real_expansion(vector<Nodo_reinas_set>&) const;
       private:
         set<unsigned> columna;
         set<unsigned> diag_45;
@@ -60,7 +59,7 @@ namespace nodo_reinas
           std::cout<<x<<" ";
         std::cout<<std::endl;
 
-        imprime_tablero(nodo);
+        // imprime_tablero(nodo);
       }
 
       template <typename T>

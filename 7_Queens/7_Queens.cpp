@@ -32,7 +32,7 @@ int main()
     nodo_reinas::imprime_posicion(problema_set.get_solucion(), problema.get_nodos_expandidos());
   }
 
-  iteraciones=iteraciones_max;
+  iteraciones= iteraciones_max;
 
   //LAS_VEGAS_EXPANDIR SIN SET
   if(problema.las_vegas_expandir(iteraciones))
@@ -43,7 +43,7 @@ int main()
   std::cout<<"Numero de iteraciones: "<<iteraciones<<std::endl;
 
   //LAS_VEGAS_EXPANDIR CON SET
-  iteraciones=iteraciones_max;
+  iteraciones= iteraciones_max;
   if(problema_set.las_vegas_expandir(iteraciones))
   {
     std::cout<<"\nLAS_VEGAS_EXPANDIR CON SET\n";
@@ -52,7 +52,7 @@ int main()
   std::cout<<"Numero de iteraciones: "<<iteraciones<<std::endl;
 
   //LAS_VEGAS_SUCESOR_ALEATORIO SIN SET
-  iteraciones=iteraciones_max;
+  iteraciones= iteraciones_max;
   if(problema.las_vegas_sucesor_aleatorio(iteraciones))
   {
     std::cout<<"\nLAS VEGAS SUCESOR ALEATORIO SIN SET\n";
@@ -61,7 +61,7 @@ int main()
   std::cout<<"Numero de iteraciones: "<<iteraciones<<std::endl;
 
   //LAS_VEGAS_SUCESOR_ALEATORIO CON SET
-  iteraciones=iteraciones_max;
+  iteraciones= iteraciones_max;
   if(problema_set.las_vegas_sucesor_aleatorio(iteraciones))
   {
     std::cout<<"\nLAS VEGAS SUCESOR ALEATORIO CON SET\n";
