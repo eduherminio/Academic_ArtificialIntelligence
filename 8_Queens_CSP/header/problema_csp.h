@@ -18,12 +18,12 @@ namespace csp
   public:
     Problema_csp() {}
 
-    bool resolver(Seleccion_variable sel_var=Seleccion_variable::estatica,Algoritmo algoritmo=Algoritmo::fc)
+    bool resolver(Seleccion_variable sel_var= Seleccion_variable::estatica, Algoritmo algoritmo= Algoritmo::fc)   // default arguments
     {
       tipo_seleccion_variable(sel_var);
 
       if(algoritmo==Algoritmo::bt)
-      return (backtracking());
+        return (backtracking());
       else
       {
         seleccion_algoritmo_look_ahead(algoritmo);

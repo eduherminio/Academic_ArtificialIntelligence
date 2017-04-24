@@ -7,7 +7,9 @@ int main()
   Cronometro<std::milli> crono;
 
   crono.inicio();
-  if(reinas.resolver(csp::Seleccion_variable::aleatoria,csp::Algoritmo::bt))
+  if(reinas.resolver(csp::Seleccion_variable::aleatoria, csp::Algoritmo::bt))
+  // if(reinas.resolver(csp::Seleccion_variable::estatica, csp::Algoritmo::bt))
+  // if(reinas.resolver(csp::Seleccion_variable::estatica, csp::Algoritmo::fc)) // or if(reinas.resolver()) // due to default parameters of bool resolver()
   {
     std::cout<<"SOLUCION"<<std::endl;
     reinas::imprime_solucion(reinas.get_solucion());
