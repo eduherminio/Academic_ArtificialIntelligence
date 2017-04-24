@@ -6,6 +6,7 @@
 #include <random>
 #include <chrono>
 #include <iostream>
+#include <cassert>
 
 namespace csp
 {
@@ -39,11 +40,11 @@ namespace csp
     }
   protected:
     unsigned num_variables;
-    std::vector<std::vector<T>>dominio;
+    std::vector<std::vector<T>> dominio;
     std::vector<std::vector<std::pair<unsigned,T>>> lista_exclusiones_dominio;
-    std::vector<std::pair<unsigned,T>>solucion;
+    std::vector<std::pair<unsigned,T>> solucion;
   private:
-    std::vector<unsigned>variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
+    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
     unsigned nodos_expandidos; //Para comparar entre algoritmos
 
     void inicializa();
@@ -57,6 +58,9 @@ namespace csp
     //SELECCION Y BLOQUEO VARIABLE
     void tipo_seleccion_variable(const Seleccion_variable sel_var);
     std::function<unsigned (void)> seleccion_variable; //Puntero a funcion seleccion_variable
+    // TO-DO
+    // seleccion_variables es un puntero a una función que recibe un void (nada) y devuelve un unsigned
+    // Apliaccion: ver archivo de backtracking: auto variable= seleccion_variable()
     unsigned seleccion_variable_estatica();
     unsigned seleccion_variable_aleatoria();
     unsigned seleccion_variable_mrv();

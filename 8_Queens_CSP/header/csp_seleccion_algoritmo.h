@@ -1,8 +1,6 @@
 #ifndef CSP_SELECCION_ALGORITMO_H_INCLUDED
 #define CSP_SELECCION_ALGORITMO_H_INCLUDED
 
-#include <cassert>
-
 template <typename T>
 void Problema_csp<T>::seleccion_algoritmo_look_ahead(const csp::Algoritmo algoritmo)
 {
@@ -17,7 +15,7 @@ void Problema_csp<T>::seleccion_algoritmo_look_ahead(const csp::Algoritmo algori
     };
     break;
     default:
-    assert(false && "Tipo de algoritmo no implementado");
+    assert(false && "Algorithm type not implemented");
     break;
   }
 }

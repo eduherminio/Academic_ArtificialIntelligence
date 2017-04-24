@@ -1,15 +1,16 @@
 #ifndef CSP_SELECCION_VARIABLE_H_INCLUDED
 #define CSP_SELECCION_VARIABLE_H_INCLUDED
 
-#include <cassert>
-
 template <typename T>
 void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_var)
 {
   switch(sel_var)
   {
     case Seleccion_variable::estatica:
-    seleccion_variable = [this]() -> unsigned
+    seleccion_variable = [this]() -> unsigned   // TO-DO: Funcion lambda para definir aqui la funcion.
+    // Entre corchetes, las variables que queremos sean accesibles desde dentro (el this nos permite acceder a todas las variables miembro)
+    // Entre paréntesis, argumentos. La flecha: nueva manera de hacer un return:
+    // auto funcion() -> variable_retornada
     {
       return(seleccion_variable_estatica());
     };
@@ -21,7 +22,7 @@ void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_
     };
     break;
     default:
-    assert(false && "Tipo de seleccion de variable no implementado");
+    assert(false && "Variable selection type not implemented");
     break;
   }
 }
@@ -35,11 +36,12 @@ unsigned Problema_csp<T>::seleccion_variable_estatica()
 template <typename T>
 unsigned Problema_csp<T>::seleccion_variable_aleatoria()
 {
+  // DONE
   std::uniform_int_distribution<unsigned>aleatorio(0,variables_sin_etiquetar.size()-1);
-  //Colocamos la variable seleccionada al final del vector
-  //para su f�cil bloqueo o liberaci�n
-  //Completar
-  //return(variable);
+  unsigned selection= aleatorio(rng);
+  std::iter_swap(variables_sin_etiquetar.begin()+selection, variables_sin_etiquetar.end()-1);
+
+  return variables_sin_etiquetar.back();    //variables_sin_etiquetar[selection];
 }
 
 template <typename T>
