@@ -5,7 +5,7 @@ source filedata.txt
 export env_filename=$filename
 mkdir -p build && cd build
 cmake ..  &> /dev/null
-make -B
+make -j5 -B
 ./$filename #| tee ../$filename.txt
 
 
@@ -16,16 +16,23 @@ make -B
 # source filedata.txt
 #   Reads variables from filedata.txt
 
+# mkdir -p
+#   creates a folder only if it doesn't exist
+
 # &> /dev/null
 #   Suppreses output
 
-# 2> file.txt
-#   Copies the output to the file, keeping a copy in the 
-# echo $filename > filename.txt
-#   aux. file to be read by CMakeList.txt
+# | tee ../$filename.txt
+#   Copies the output to a file
 
-# rm filename.txt
-#   deletion of aux. file
 
-# BASEDIR=$(dirname "$0")
-#   creates BASEDIR variable to host script directory
+#
+# Author:      Eduardo Cáceres de la Calle
+# Subject:     Visión Artificial
+# Degree:      Industrial Electronics and Automatic Control Engineering
+# University:  Universidad de Valladolid (UVa) - EII
+#
+# Code written in 2017.
+# Uploaded for educational purposes only.
+#
+#
