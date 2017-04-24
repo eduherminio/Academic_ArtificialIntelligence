@@ -20,7 +20,10 @@ namespace reinas
     diag_135.clear();
   }
 
-  void Reinas::actualiza_estado(const std::pair<unsigned,unsigned> &asignacion)
+// Cada tipo de problema (reinas, sudoku) tendra sus funciones actualiza_Estado y restaura_Estado();
+// Por eso en problema_csp.h son virtuales
+// DONE: add 'override' specifier in function declarations
+  void Reinas::actualiza_estado(const std::pair<unsigned,unsigned> &asignacion)   // variable: fila, valor: columna
   {
     auto variable=asignacion.first;
     auto valor=asignacion.second;
@@ -29,7 +32,7 @@ namespace reinas
     diag_135.insert(num_variables+variable-valor);
   }
 
-  void Reinas::restaura_estado(const std::pair<unsigned,unsigned> &asignacion)
+  void Reinas::restaura_estado(const std::pair<unsigned,unsigned> &asignacion)  // cuando una solucion no vale
   {
     auto variable=asignacion.first;
     auto valor=asignacion.second;
