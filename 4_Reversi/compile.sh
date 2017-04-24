@@ -1,11 +1,12 @@
 #!/bin/bash
 clear
 set -e
+../system_info.sh
 source filedata.txt
 export env_filename=$filename
 mkdir -p build && cd build
 cmake ..  &> /dev/null
-make -j5 #-B
+make -j$n_cores #-B
 ./$filename 5 5  #| tee ../$filename.txt
 
 
