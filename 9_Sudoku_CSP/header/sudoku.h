@@ -1,7 +1,7 @@
 #ifndef SUDOKU_H_INCLUDED
 #define SUDOKU_H_INCLUDED
 
-#include "problema_csp.h"
+#include "../header/problema_csp.h"
 #include <vector>
 #include <set>
 #include <string>

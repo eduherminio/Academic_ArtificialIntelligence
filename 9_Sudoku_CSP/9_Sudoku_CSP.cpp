@@ -3,12 +3,13 @@
 
 int main()
 {
-  sudoku::Sudoku sud1("sudoku3.txt");
+  sudoku::Sudoku sud1("../samples/sudoku3.txt");
 
   Cronometro<std::milli> crono;
 
   crono.inicio();
-  if(sud1.resolver(csp::Seleccion_variable::mrv,csp::Algoritmo::fc_ac1))
+  // if(sud1.resolver(csp::Seleccion_variable::mrv,csp::Algoritmo::fc_ac1))
+  if(sud1.resolver(csp::Seleccion_variable::estatica,csp::Algoritmo::bt))
   {
     std::cout<<"SOLUCION"<<std::endl;
     sudoku::imprime_solucion(sud1.get_solucion());

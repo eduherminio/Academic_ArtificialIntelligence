@@ -1,8 +1,6 @@
 #ifndef CSP_SELECCION_VARIABLE_H_INCLUDED
 #define CSP_SELECCION_VARIABLE_H_INCLUDED
 
-#include <cassert>
-
 template <typename T>
 void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_var)
 {

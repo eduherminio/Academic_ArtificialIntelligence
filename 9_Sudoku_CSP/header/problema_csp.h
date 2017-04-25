@@ -6,6 +6,7 @@
 #include <random>
 #include <chrono>
 #include <iostream>
+#include <cassert>
 
 namespace csp
 {
@@ -125,10 +126,10 @@ namespace csp
     }
   }
 
-  #include "csp_seleccion_variable.h"
-  #include "csp_seleccion_algoritmo.h"
-  #include "csp_backtracking.h" //Fichero de plantillas
-  #include "csp_look_ahead.h" //Fichero de plantillas
+  #include "../header/csp_seleccion_variable.h"
+  #include "../header/csp_seleccion_algoritmo.h"
+  #include "../header/csp_backtracking.h" //Fichero de plantillas
+  #include "../header/csp_look_ahead.h" //Fichero de plantillas
 
 }
 

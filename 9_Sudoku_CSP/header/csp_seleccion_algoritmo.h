@@ -1,8 +1,6 @@
 #ifndef CSP_SELECCION_ALGORITMO_H_INCLUDED
 #define CSP_SELECCION_ALGORITMO_H_INCLUDED
 
-#include <cassert>
-
 template <typename T>
 void Problema_csp<T>::seleccion_algoritmo_look_ahead(const csp::Algoritmo algoritmo)
 {
@@ -28,7 +26,7 @@ void Problema_csp<T>::seleccion_algoritmo_look_ahead(const csp::Algoritmo algori
   }
 }
 
-#include "csp_fc.h" //Fichero de plantillas
-#include "csp_fc_ac1.h" //Fichero de plantillas
+#include "../header/csp_fc.h" //Fichero de plantillas
+#include "../header/csp_fc_ac1.h" //Fichero de plantillas
 
 #endif // CSP_SELECCION_ALGORITMO_H_INCLUDED
