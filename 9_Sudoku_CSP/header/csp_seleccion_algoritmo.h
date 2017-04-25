@@ -7,22 +7,22 @@ void Problema_csp<T>::seleccion_algoritmo_look_ahead(const csp::Algoritmo algori
   switch(algoritmo)
   {
     case Algoritmo::bt:
-    break;
+      break;
     case Algoritmo::fc:
-    actualiza_dominio = [this](const std::pair<unsigned,T> &asignacion) -> bool
-    {
-      return(actualiza_dominio_fc(asignacion));
-    };
-    break;
+      actualiza_dominio = [this](const std::pair<unsigned,T> &asignacion) -> bool
+      {
+        return(actualiza_dominio_fc(asignacion));
+      };
+      break;
     case Algoritmo::fc_ac1:
-    actualiza_dominio = [this](const std::pair<unsigned,T> &asignacion) -> bool
-    {
-      return(actualiza_dominio_fc_ac1(asignacion));
-    };
-    break;
+      actualiza_dominio = [this](const std::pair<unsigned,T> &asignacion) -> bool
+      {
+        return(actualiza_dominio_fc_ac1(asignacion));
+      };
+      break;
     default:
-    assert(false && "Tipo de algoritmo no implementado");
-    break;
+      assert(false && "Algorithm type not implemented");
+      break;
   }
 }
 

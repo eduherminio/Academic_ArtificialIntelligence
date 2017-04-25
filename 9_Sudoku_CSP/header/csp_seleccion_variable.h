@@ -40,6 +40,7 @@ template <typename T>
 unsigned Problema_csp<T>::seleccion_variable_aleatoria()
 {
   std::uniform_int_distribution<unsigned>aleatorio(0,variables_sin_etiquetar.size()-1);
+  //TO-DO
   //Colocamos la variable seleccionada al final del vector
   //para su f�cil bloqueo o liberaci�n
   //Completar
@@ -49,6 +50,7 @@ template <typename T>
 unsigned Problema_csp<T>::seleccion_variable_mrv()
 {
   //Completar
+  // TO-DO: La que tenga menor dominio
 
   //Colocamos la variable seleccionada al final del vector
   //para su f�cil bloqueo o liberaci�n

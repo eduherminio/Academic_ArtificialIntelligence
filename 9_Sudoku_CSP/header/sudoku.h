@@ -27,7 +27,7 @@ namespace sudoku
       }
     }
 
-    bool consistente(const unsigned variable,const unsigned valor)
+    bool consistente(const unsigned variable,const unsigned valor) override
     {
       unsigned fil=get_fila[variable];
       unsigned col=get_columna[variable];
@@ -46,7 +46,7 @@ namespace sudoku
       return false;
     }
 
-    bool consistente(const unsigned var_1,const unsigned val_1,const unsigned var_2,const unsigned val_2)
+    bool consistente(const unsigned var_1,const unsigned val_1,const unsigned var_2,const unsigned val_2) override
     {
       if(val_1!=val_2)
       return true;
@@ -55,7 +55,7 @@ namespace sudoku
     }
 
     //Todas las variables relacionadas entre si en el grafo retornan true
-    bool relacionadas(const unsigned var_1,const unsigned var_2)
+    bool relacionadas(const unsigned var_1,const unsigned var_2) override
     {
       //Verificamos si las variables estan en la misma fila, columna o cuadrado
       if(get_fila[var_1]==get_fila[var_2] || get_columna[var_1]==get_columna[var_2] || get_cuadrado[var_1]==get_cuadrado[var_2])
@@ -65,9 +65,9 @@ namespace sudoku
     }
 
 
-    void restaura_estado(const std::pair<unsigned,unsigned> &asignacion);
-    void actualiza_estado(const std::pair<unsigned,unsigned> &asignacion);
-    void inicializa_dominio();
+    void restaura_estado(const std::pair<unsigned,unsigned> &asignacion)  override;
+    void actualiza_estado(const std::pair<unsigned,unsigned> &asignacion) override;
+    void inicializa_dominio() override;
 
   private:
     std::string nombre_fichero;

@@ -12,6 +12,7 @@ namespace csp
 {
   enum class Seleccion_variable {aleatoria,estatica,mrv};
   enum class Algoritmo {bt,fc,fc_ac1};
+  
   template<typename T>
   class Problema_csp
   {
