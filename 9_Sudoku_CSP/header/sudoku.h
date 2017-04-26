@@ -49,9 +49,9 @@ namespace sudoku
     bool consistente(const unsigned var_1,const unsigned val_1,const unsigned var_2,const unsigned val_2) override
     {
       if(val_1!=val_2)
-      return true;
+      	return true;
       else
-      return false;
+      	return false;
     }
 
     //Todas las variables relacionadas entre si en el grafo retornan true

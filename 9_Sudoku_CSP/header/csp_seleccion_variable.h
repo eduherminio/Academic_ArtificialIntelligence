@@ -7,26 +7,26 @@ void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_
   switch(sel_var)
   {
     case Seleccion_variable::estatica:
-    seleccion_variable = [this]() -> unsigned
-    {
-      return(seleccion_variable_estatica());
-    };
-    break;
+      seleccion_variable = [this]() -> unsigned
+      {
+        return(seleccion_variable_estatica());
+      };
+      break;
     case Seleccion_variable::aleatoria:
-    seleccion_variable = [this]() -> unsigned
-    {
-      return(seleccion_variable_aleatoria());
-    };
-    break;
+      seleccion_variable = [this]() -> unsigned
+      {
+        return(seleccion_variable_aleatoria());
+      };
+      break;
     case Seleccion_variable::mrv:
-    seleccion_variable = [this]() -> unsigned
-    {
-      return(seleccion_variable_mrv());
-    };
-    break;
+      seleccion_variable = [this]() -> unsigned
+      {
+        return(seleccion_variable_mrv());
+      };
+      break;
     default:
-    assert(false && "Tipo de seleccion de variable no implementado");
-    break;
+      assert(false && "Tipo de seleccion de variable no implementado");
+      break;
   }
 }
 
@@ -46,6 +46,7 @@ unsigned Problema_csp<T>::seleccion_variable_aleatoria()
   //Completar
   //return(variable);
 }
+
 template <typename T>
 unsigned Problema_csp<T>::seleccion_variable_mrv()
 {
@@ -56,6 +57,7 @@ unsigned Problema_csp<T>::seleccion_variable_mrv()
   //para su f�cil bloqueo o liberaci�n
 
 }
+
 template <typename T>
 void Problema_csp<T>::bloquea_variable()
 {

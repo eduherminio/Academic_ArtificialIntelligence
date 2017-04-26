@@ -12,7 +12,7 @@ namespace csp
 {
   enum class Seleccion_variable {aleatoria,estatica,mrv};
   enum class Algoritmo {bt,fc,fc_ac1};
-  
+
   template<typename T>
   class Problema_csp
   {
@@ -31,19 +31,17 @@ namespace csp
         return (look_ahead());
       }
     }
-    std::vector<std::pair<unsigned,T>>& get_solucion()
-    {
-      return solucion;
-    }
-    std::size_t get_nodos_expandidos() const
-    {
-      return nodos_expandidos;
-    }
+
+    std::vector<std::pair<unsigned,T>>& get_solucion()  { return solucion; }
+
+    std::size_t get_nodos_expandidos() const            { return nodos_expandidos; }
+
   protected:
     unsigned num_variables;
     std::vector<std::vector<T>>dominio;
     std::vector<std::vector<std::pair<unsigned,T>>> lista_exclusiones_dominio;
     std::vector<std::pair<unsigned,T>>solucion;
+
   private:
     std::vector<unsigned>variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
     unsigned nodos_expandidos; //Para comparar entre algoritmos
@@ -129,8 +127,8 @@ namespace csp
 
   #include "../header/csp_seleccion_variable.h"
   #include "../header/csp_seleccion_algoritmo.h"
-  #include "../header/csp_backtracking.h" //Fichero de plantillas
-  #include "../header/csp_look_ahead.h" //Fichero de plantillas
+  #include "../header/csp_backtracking.h"         // Template files
+  #include "../header/csp_look_ahead.h"           // Template files
 
 }
 

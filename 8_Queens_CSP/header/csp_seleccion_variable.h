@@ -6,7 +6,8 @@ void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_
 {
   switch(sel_var)
   {
-    // Use of lambdas functions to define them here:
+    // seleccion_variable is a pointer to function, defined in problema_csp
+    // Here we use lambdas functions to define those functions to whom selecion_variable can point here:
     // seleccion_variable = [this]() -> unsigned
     // [this]:        variable capture: variables declared outside the lambda which needs to be used inside of it
     // ()_:           parameters, as a normal function
