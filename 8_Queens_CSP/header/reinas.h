@@ -57,7 +57,7 @@ namespace reinas
   };
 
   void imprime_solucion(std::vector<std::pair<unsigned,unsigned>>& solucion);
-
+  
 }
 
 #endif // REINAS_H_INCLUDED

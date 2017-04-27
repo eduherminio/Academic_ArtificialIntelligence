@@ -2,7 +2,7 @@
 #include "header/problema_csp.h"
 #include "header/cronometro.h"
 
-const int n_reinas= 6;
+const int n_reinas= 8;
 
 int main()
 {

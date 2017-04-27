@@ -7,6 +7,7 @@
 #include <chrono>
 #include <iostream>
 #include <cassert>
+#include <algorithm>
 
 /*
 ********
@@ -116,6 +117,10 @@ namespace csp
 
     //PARA DEPURACION
     void imprime_dominio();
+    void imprime_lista_asignaciones(std::vector< std::pair<unsigned, T> > lista_asignaciones);
+    void imprime_variables_sin_etiquetar();
+    void imprime_solucion_debug();
+    void imprime_lista_exclusiones_dominio();
   };
 
 
@@ -143,14 +148,51 @@ namespace csp
   template <typename T>
   void Problema_csp<T>::imprime_dominio()
   {
-    for(unsigned i=0; i!=num_variables; ++i)
+    std::cout<<"\nDominio:"<<std::endl;
+    for(unsigned i=0; i<num_variables; ++i)
     {
-      std::cout<<"Q"<<i+1<<":"<<std::endl;
+      std::cout<<"Q"<<i<<": ";
       for(const auto& j : dominio[i])
         std::cout<<j<<" ";
       std::cout<<std::endl;
     }
   }
+
+  template <typename T>
+  void Problema_csp<T>::imprime_lista_asignaciones(std::vector< std::pair<unsigned, T> > lista_asignaciones)
+  {
+    std::cout<<"\nLista de asignaciones: ";
+    for(const auto& valor : lista_asignaciones)
+      std::cout<<"{"<<valor.first<<","<<valor.second<<"}"<<" ";
+  }
+
+  template <typename T>
+  void Problema_csp<T>::imprime_variables_sin_etiquetar()
+  {
+    std::cout<<"\nvariables_sin_etiquetar: ";
+    for(const auto& var: variables_sin_etiquetar)
+      std::cout<<var<<" ";
+  }
+
+  template <typename T>
+  void Problema_csp<T>::imprime_solucion_debug()
+  {
+    std::cout<<"\nSolucion: ";
+    for(const auto& v: solucion)
+      std::cout<<"{"<<v.first<<","<<v.second<<"}"<<" - ";
+  }
+
+  template <typename T>
+  void Problema_csp<T>::imprime_lista_exclusiones_dominio()
+  {
+    std::cout<<"\nlista_exclusiones_dominio: ";
+    for(int i=0; i<lista_exclusiones_dominio.size(); ++i)
+      for(const auto& excl : lista_exclusiones_dominio[i])
+        std::cout<<i<<": {"<<excl.first<<","<<excl.second<<"}"<<" - ";
+      std::cout<<std::endl;
+  }
+
+
 
   #include "../header/csp_seleccion_variable.h"
   #include "../header/csp_seleccion_algoritmo.h"

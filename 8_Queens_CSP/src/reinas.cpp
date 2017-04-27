@@ -44,7 +44,18 @@ namespace reinas
   void imprime_solucion(std::vector<std::pair<unsigned,unsigned>>& solucion)  {
     std::sort(solucion.begin(),solucion.end());
 
-    for(auto v:solucion)
-      std::cout<<"("<<v.first<<","<<v.second<<")"<<std::endl;
+    // for(auto v:solucion)
+    //   std::cout<<"("<<v.first<<","<<v.second<<")"<<std::endl;
+    for(const auto& queen : solucion)
+    {
+      for(unsigned i=0; i< solucion.size(); ++i)
+      {
+        if(i==queen.second)
+          std::cout<<"Q ";
+        else
+          std::cout<<"- ";
+      }
+      std::cout<<std::endl;
+    }
   }
 }
