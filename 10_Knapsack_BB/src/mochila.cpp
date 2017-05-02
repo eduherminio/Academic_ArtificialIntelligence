@@ -30,7 +30,7 @@ namespace mochila
       }
       else
       {
-        throw std::invalid_argument("No existe el fichero Mochila.\nSe resolvera un Mochila vacio 9x9.\n");
+        throw std::invalid_argument("Knapsack file does not exist.\nAn empty 9x9 Knapsack will be resolved.\n");
       }
     }
     catch(const std::invalid_argument &mensaje)
@@ -41,23 +41,33 @@ namespace mochila
     for(unsigned i=0; i!=num_variables; ++i) //Todas las variables sin etiquetar(sin asignar un valor) inicialmente
     variables_sin_etiquetar.push_back(i);
     solucion.clear();
-    peso_actual=0;
-    valor_actual=0;
-    valor_optimo=0;
+    peso_actual=  0;
+    valor_actual= 0;
+    valor_optimo= 0;
   }
 
   void Mochila::ordenacion_estatica_variables_ad_hoc()
   {
-    // TO-DO
+    // DONE: order by increasing specific value (valor/peso)
 
-    // la de mayor valor específico al final. Usar sort STL
-    //Se ordenan de menor a mayor seg�n valor espec�fico dado que la ordenacion estatica elige siempre desde el final
-    return;
+
+    // for(const auto& variable : variables_sin_etiquetar)
+    //   std::cout<<variable<<"("<<valores[variable]/pesos[variable]<<") ";
+    // std::cout<<std::endl;
+
+    std::sort(variables_sin_etiquetar.begin(), variables_sin_etiquetar.end(), [this](const unsigned a, const unsigned b) -> bool
+    {
+      return valores[a]/pesos[a] < valores[b]/pesos[b];
+    });
+
+    // for(const auto& variable : variables_sin_etiquetar)
+    //   std::cout<<variable<<"("<<valores[variable]/pesos[variable]<<") ";
+    // std::cout<<std::endl;
   }
 
   bool Mochila::consistente(const unsigned variable,const unsigned valor) // Una asignación se puede hacer o no
   {
-    if(valor==0)  // No introduzco nada
+    if(valor == 0)  // No introduzco nada
       return true;
     else
     {
@@ -122,7 +132,7 @@ namespace mochila
         break;
       }
     }
-    
+
     return cota_superior;
   }
 
