@@ -10,6 +10,7 @@ int main()
   Cronometro<std::milli> crono;
 
   crono.inicio();
+
   // if(reinas.resolver(csp::Seleccion_variable::estatica, csp::Algoritmo::bt))
   // if(reinas.resolver(csp::Seleccion_variable::aleatoria, csp::Algoritmo::bt))
   if(reinas.resolver(csp::Seleccion_variable::estatica, csp::Algoritmo::fc))
@@ -20,7 +21,9 @@ int main()
     reinas::imprime_solucion(reinas.get_solucion());
     std::cout<<"\nVisited nodes= "<<reinas.get_nodos_expandidos()<<std::endl;
   }
+
   crono.fin();
+
   std::cout<<"Spent time:: "<<crono<<" ms.\n"<<std::endl;
 
   return 0;
