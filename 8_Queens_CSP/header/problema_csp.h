@@ -121,6 +121,7 @@ namespace csp
     void imprime_variables_sin_etiquetar();
     void imprime_solucion_debug();
     void imprime_lista_exclusiones_dominio();
+    void imprime_tablero();
   };
 
 
@@ -192,8 +193,26 @@ namespace csp
       std::cout<<std::endl;
   }
 
-
-
+  template <typename T>
+  void Problema_csp<T>::imprime_tablero()  {
+    std::sort(solucion.begin(),solucion.end());
+    std::cout<<std::endl;
+    // for(auto v:solucion)
+    //   std::cout<<"("<<v.first<<","<<v.second<<")"<<std::endl;
+    unsigned cont=0;
+    for(const auto& queen : solucion)
+    {
+      std::cout<<++cont<<".\t";
+      for(unsigned i=0; i< num_variables; ++i)
+      {
+        if(i==queen.second)
+          std::cout<<"Q ";
+        else
+          std::cout<<"- ";
+      }
+      std::cout<<std::endl;
+    }
+  }
   #include "../header/csp_seleccion_variable.h"
   #include "../header/csp_seleccion_algoritmo.h"
   #include "../header/csp_backtracking.h"         // Template file

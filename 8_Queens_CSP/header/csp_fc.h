@@ -50,7 +50,7 @@ bool Problema_csp<T>::actualiza_dominio_fc(const std::pair<unsigned, T> &asignac
     auto fila_1= variables_sin_etiquetar[queen];
     for(auto& fila_2 : variables_sin_etiquetar)
     {
-      if(fila_1==fila_2)
+      if(fila_1 == fila_2)
         continue;
 
       // std::cout<<std::endl<<fila_1<<"vs"<<fila_2<<std::endl;
@@ -91,7 +91,6 @@ bool Problema_csp<T>::actualiza_dominio_fc(const std::pair<unsigned, T> &asignac
             dominio[fila_1].pop_back();
             imprime_lista_exclusiones_dominio();
             return true;
-
           }
         }
       }

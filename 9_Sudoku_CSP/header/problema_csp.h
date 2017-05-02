@@ -7,6 +7,7 @@
 #include <chrono>
 #include <iostream>
 #include <cassert>
+#include <algorithm>
 
 namespace csp
 {
@@ -38,21 +39,21 @@ namespace csp
 
   protected:
     unsigned num_variables;
-    std::vector<std::vector<T>>dominio;
+    std::vector<std::vector<T>> dominio;
     std::vector<std::vector<std::pair<unsigned,T>>> lista_exclusiones_dominio;
-    std::vector<std::pair<unsigned,T>>solucion;
+    std::vector<std::pair<unsigned,T>> solucion;
 
   private:
-    std::vector<unsigned>variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
+    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
     unsigned nodos_expandidos; //Para comparar entre algoritmos
 
     void inicializa();
     //FUNCIONES QUE CARGAN EL DOMINIO Y DESCRIBEN EL GRAFO DE RESTRICCIONES
     //virtuales pues dependen de cada problema particular
-    virtual bool relacionadas(const unsigned var_1,const unsigned var_2)=0;
-    virtual bool consistente(const unsigned var_1,const T val_1,const unsigned var_2,const T val_2)=0;
-    virtual bool consistente(const unsigned variable,const T valor)=0;
-    virtual void inicializa_dominio()=0;
+    virtual bool relacionadas(const unsigned var_1,const unsigned var_2)= 0;
+    virtual bool consistente(const unsigned var_1,const T val_1,const unsigned var_2,const T val_2)= 0;
+    virtual bool consistente(const unsigned variable,const T valor)= 0;
+    virtual void inicializa_dominio()= 0;
 
     //SELECCION Y BLOQUEO VARIABLE
     void tipo_seleccion_variable(const Seleccion_variable sel_var);

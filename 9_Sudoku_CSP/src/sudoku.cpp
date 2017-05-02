@@ -12,7 +12,7 @@ namespace sudoku
     {
       for(unsigned j=0; j!=dim; ++j)
       {
-        dominio[i].at(j)=j+1;
+        dominio[i].at(j)= j+1;
       }
     }
     for(unsigned i=0; i!=dim; ++i)
@@ -21,8 +21,8 @@ namespace sudoku
       fila.push_back(std::set<unsigned>());
       cuadrado.push_back(std::set<unsigned>());
     }
-    //LOOK UP TABLES para c�lculo r�pido de la fila, columna y cuadrado
-    //correspondiente a una variable
+    // LOOK UP TABLES para calculo rápido de la fila, columna y cuadrado
+    // correspondiente a una variable
     calcula_get_fila();
     calcula_get_columna();
     calcula_get_cuadrado();
@@ -33,7 +33,7 @@ namespace sudoku
       if(fichero)
       {
         fichero>>dim; //Dimension del Sudoku
-        unsigned contador=0;
+        unsigned contador= 0;
         unsigned valor;
         for(unsigned i=0; i!=num_variables; ++i)
         {
@@ -42,28 +42,25 @@ namespace sudoku
           {
             dominio[contador].clear();
             dominio[contador].push_back(valor);
-
           }
           ++contador;
         }
       }
       else
       {
-        throw std::invalid_argument("No existe el fichero Sudoku.\nSe resolvera un Sudoku vacio 9x9.\n");
+        throw std::invalid_argument("Sudoku file doesn't exist.\nAn emptu Sudoku will be resolver.\n");
       }
     }
     catch(const std::invalid_argument &mensaje)
     {
       std::cout<<mensaje.what()<<std::endl;
     }
-
-
   }
 
   void Sudoku::actualiza_estado(const std::pair<unsigned,unsigned> &asignacion)
   {
-    auto variable=asignacion.first;
-    auto valor=asignacion.second;
+    auto variable= asignacion.first;
+    auto valor= asignacion.second;
     fila[get_fila[variable]].insert(valor);
     columna[get_columna[variable]].insert(valor);
     cuadrado[get_cuadrado[variable]].insert(valor);
@@ -71,8 +68,8 @@ namespace sudoku
 
   void Sudoku::restaura_estado(const std::pair<unsigned,unsigned> &asignacion)
   {
-    auto variable=asignacion.first;
-    auto valor=asignacion.second;
+    auto variable= asignacion.first;
+    auto valor= asignacion.second;
     fila[get_fila[variable]].erase(valor);
     columna[get_columna[variable]].erase(valor);
     cuadrado[get_cuadrado[variable]].erase(valor);
@@ -82,13 +79,13 @@ namespace sudoku
   {
     auto dim=sqrt(solucion.size());
     std::sort(solucion.begin(),solucion.end());
-    unsigned contador=0;
+    unsigned contador= 0;
     for(auto v:solucion)
     {
       std::cout<<v.second<<" ";
-      if(++contador==dim)
+      if(++contador == dim)
       {
-        contador=0;
+        contador= 0;
         std::cout<<std::endl;
       }
     }

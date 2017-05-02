@@ -23,15 +23,15 @@ namespace sudoku
       }
       else
       {
-        dim=9;
+        dim= 9;
       }
     }
 
     bool consistente(const unsigned variable,const unsigned valor) override
     {
-      unsigned fil=get_fila[variable];
-      unsigned col=get_columna[variable];
-      unsigned cuad=get_cuadrado[variable];
+      unsigned fil= get_fila[variable];
+      unsigned col= get_columna[variable];
+      unsigned cuad= get_cuadrado[variable];
 
       if(fila[fil].find(valor) == fila[fil].end())
       {
@@ -48,7 +48,7 @@ namespace sudoku
 
     bool consistente(const unsigned var_1,const unsigned val_1,const unsigned var_2,const unsigned val_2) override
     {
-      if(val_1!=val_2)
+      if(val_1 != val_2)
       	return true;
       else
       	return false;
@@ -76,18 +76,20 @@ namespace sudoku
     void calcula_get_fila()
     {
       for(unsigned i=0; i!=num_variables; ++i)
-      get_fila.push_back(i/dim);
+        get_fila.push_back(i/dim);
     }
+
     void calcula_get_columna()
     {
       for(unsigned i=0; i!=num_variables; ++i)
-      get_columna.push_back(i%dim);
+        get_columna.push_back(i%dim);
     }
+
     void calcula_get_cuadrado()
     {
       unsigned aux=static_cast<unsigned>(sqrt(dim));
       for(unsigned i=0; i!=num_variables; ++i)
-      get_cuadrado.push_back(aux*((i/dim)/aux)+((i%dim)/aux));
+        get_cuadrado.push_back(aux*((i/dim)/aux)+((i%dim)/aux));
     }
 
     std::vector<unsigned> get_fila;
@@ -98,6 +100,7 @@ namespace sudoku
     std::vector<std::set<unsigned>> cuadrado;
 
   };
+
   void imprime_solucion(std::vector<std::pair<unsigned,unsigned>>& solucion);
 }
 

@@ -17,6 +17,10 @@ bool Problema_csp<T>::look_ahead()
   // pasan a lista_exclusiones_dominio, desde donde podrán ser restauradas después en caso de bloqueo
   while(!exito)
   {
+    std::cout<<std::endl;
+    imprime_tablero();
+    std::cout<<std::endl;
+
     ++nodos_expandidos;
     if(!bloqueo)
     {
@@ -39,7 +43,7 @@ bool Problema_csp<T>::look_ahead()
       {
                 std::cout<<"Volvamos atrás:"<<std::endl;
         bool eliminar= true;
-        while(eliminar)
+        while(eliminar || solucion.size()==0)
         {
                 std::cout<<"¿"<<solucion.back().first<<"="<<lista_asignaciones.back().first<<"? ";
           if(solucion.back().first == lista_asignaciones.back().first)
@@ -81,8 +85,8 @@ bool Problema_csp<T>::look_ahead()
               std::cout<<"\nAcualicemos el dominio: "<<std::endl;
       bloqueo= actualiza_dominio(solucion.back());  // equivalente a expandir_bt: comprueba la existencia de bloqueos
       lista_asignaciones.pop_back();
-                imprime_dominio();
-                imprime_lista_asignaciones(lista_asignaciones);
+              imprime_dominio();
+              imprime_lista_asignaciones(lista_asignaciones);
     }
   }
   return exito;

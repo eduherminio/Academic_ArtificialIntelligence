@@ -38,8 +38,8 @@ namespace mochila
       std::cout<<mensaje.what()<<std::endl;
     }
     variables_sin_etiquetar.clear();
-    for(unsigned i=0; i!=num_variables; ++i) //Todas las variables sin etiquetar(sin asignar un valor) inicialmente
-    variables_sin_etiquetar.push_back(i);
+    for(unsigned i=0; i!=num_variables; ++i) // Todas las variables sin etiquetar(sin asignar un valor) inicialmente
+      variables_sin_etiquetar.push_back(i);
     solucion.clear();
     peso_actual=  0;
     valor_actual= 0;
@@ -72,6 +72,7 @@ namespace mochila
     else
     {
       // DONE
+
       // Añadir la poda de la cota superior obtenida mediante mochila fraccional
       // coste acumulado + coste_fraccional < valor_optimo
       // cota_superior_mochila_fraccional incluye el valor acumulado
@@ -116,7 +117,7 @@ namespace mochila
     double peso_fraccional= 0;
     double cota_superior= valor_actual;
 
-    //Las variables se suponen ordenadas de menor a mayor segun valor especifico
+    // Las variables se suponen ordenadas de menor a mayor segun valor especifico
 
     for(int i=variables_sin_etiquetar.size()-1; i>=0; --i)
     {
