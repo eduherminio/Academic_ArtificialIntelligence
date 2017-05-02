@@ -3,8 +3,8 @@
 
 int main()
 {
-    mochila::Mochila m("../Knapsack_files/4.txt");
-    // mochila::Mochila m("../Knapsack_files/24.txt");
+    // mochila::Mochila m("../Knapsack_files/4.txt");
+    mochila::Mochila m("../Knapsack_files/24.txt");
     Cronometro<std::milli> crono;
 
     crono.inicio();

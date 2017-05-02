@@ -65,18 +65,18 @@ namespace mochila
     // std::cout<<std::endl;
   }
 
-  bool Mochila::consistente(const unsigned variable,const unsigned valor) // Una asignación se puede hacer o no
+  bool Mochila::consistente(const unsigned variable, const unsigned valor) // Una asignación se puede hacer o no
   {
     if(valor == 0)  // No introduzco nada
       return true;
     else
     {
-      // TO-DO
+      // DONE
       // Añadir la poda de la cota superior obtenida mediante mochila fraccional
+      // coste acumulado + coste_fraccional < valor_optimo
+      // cota_superior_mochila_fraccional incluye el valor acumulado
 
-      //if(coste_acumulador + coste_fraccional < solucion.valor_optimo)
-      // cota_superior_mochila_fraccional
-      if(peso_actual+pesos[variable] <= capacidad_maxima)
+      if((peso_actual + pesos[variable] <= capacidad_maxima) && (cota_superior_mochila_fraccional() > valor_optimo))
         return true;
       else
         return false;
@@ -112,7 +112,7 @@ namespace mochila
 
   double Mochila::cota_superior_mochila_fraccional()
   {
-    double capacidad_fraccional= capacidad_maxima-peso_actual;
+    double capacidad_fraccional= capacidad_maxima - peso_actual;
     double peso_fraccional= 0;
     double cota_superior= valor_actual;
 
@@ -146,6 +146,6 @@ namespace mochila
         std::cout<<v.first<<" "<<pesos[v.first]<<" "<<valores[v.first]<<"\n";
       }
     }
-    std::cout<<"Valor de la mochila:"<<valor_optimo<<std::endl;
+    std::cout<<"Value: "<<valor_optimo<<std::endl;
   }
 }
