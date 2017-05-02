@@ -10,7 +10,7 @@
 namespace bb
 {
   enum class Seleccion_variable {aleatoria, estatica, mrv};
-  
+
   template<typename T>
   class Problema_bb
   {
@@ -35,18 +35,18 @@ namespace bb
     }
   protected:
     unsigned num_variables;
-    std::vector<std::vector<T>>dominio;
-    std::vector<std::pair<unsigned,T>>solucion;
-    std::vector<unsigned>variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
+    std::vector<std::vector<T>> dominio;
+    std::vector<std::pair<unsigned,T>> solucion;
+    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
   private:
     unsigned nodos_expandidos; //Para comparar entre algoritmos
 
     //FUNCIONES QUE CARGAN EL DOMINIO Y DESCRIBEN EL GRAFO DE RESTRICCIONES
     //virtuales pues dependen de cada problema particular
-    virtual void inicializa()=0;
-    virtual bool consistente(const unsigned variable,const T valor)=0;
-    virtual void actualiza_solucion(std::vector<std::pair<unsigned,T>>&)=0;
-    virtual void ordenacion_estatica_variables_ad_hoc()=0;
+    virtual void inicializa()= 0;
+    virtual bool consistente(const unsigned variable,const T valor)= 0;
+    virtual void actualiza_solucion(std::vector< std::pair<unsigned,T> >&)= 0;
+    virtual void ordenacion_estatica_variables_ad_hoc() =0;
 
     //SELECCION Y BLOQUEO VARIABLE
     void tipo_seleccion_variable(const Seleccion_variable sel_var);
