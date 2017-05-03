@@ -10,7 +10,7 @@ int main()
   crono.inicio();
 
   // if(sud1.resolver(csp::Seleccion_variable::mrv, csp::Algoritmo::bt))
-  if(sud1.resolver(csp::Seleccion_variable::mrv, csp::Algoritmo::fc_ac1))
+  if(sud1.resolver(csp::Seleccion_variable::mrv, csp::Algoritmo::fc))
   // if(sud1.resolver(csp::Seleccion_variable::estatica,csp::Algoritmo::bt))
   {
     std::cout<<std::endl<<"Solution:"<<std::endl;

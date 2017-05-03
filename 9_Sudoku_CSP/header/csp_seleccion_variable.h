@@ -2,8 +2,7 @@
 #define CSP_SELECCION_VARIABLE_H_INCLUDED
 
 template <typename T>
-void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_var)
-{
+void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_var)  {
   switch(sel_var)
   {
     case Seleccion_variable::estatica:
@@ -31,15 +30,14 @@ void Problema_csp<T>::tipo_seleccion_variable(const csp::Seleccion_variable sel_
 }
 
 template <typename T>
-unsigned Problema_csp<T>::seleccion_variable_estatica()
-{
+unsigned Problema_csp<T>::seleccion_variable_estatica() {
   return(variables_sin_etiquetar.back());
 }
 
 template <typename T>
-unsigned Problema_csp<T>::seleccion_variable_aleatoria()
-{
+unsigned Problema_csp<T>::seleccion_variable_aleatoria()  {
   // DONE
+
   // fast erase: now variables_sin_etiquetar is ready for a pop_back(), later in Problema_csp<T>::bloquea_variable()
   std::uniform_int_distribution<unsigned> aleatorio(0, variables_sin_etiquetar.size() - 1);
 
@@ -55,9 +53,8 @@ unsigned Problema_csp<T>::seleccion_variable_aleatoria()
 }
 
 template <typename T>
-unsigned Problema_csp<T>::seleccion_variable_mrv()
-{
-  // TO-DO
+unsigned Problema_csp<T>::seleccion_variable_mrv()  {
+  // DONE
 
   // Order decreasingly by dominio
   // Colocamos la variable seleccionada al final del vector
@@ -83,14 +80,12 @@ unsigned Problema_csp<T>::seleccion_variable_mrv()
 }
 
 template <typename T>
-void Problema_csp<T>::bloquea_variable()
-{
+void Problema_csp<T>::bloquea_variable()  {
   variables_sin_etiquetar.pop_back();
 }
 
 template <typename T>
-void Problema_csp<T>::libera_variable(const unsigned variable)
-{
+void Problema_csp<T>::libera_variable(const unsigned variable)  {
   variables_sin_etiquetar.push_back(variable);
 }
 

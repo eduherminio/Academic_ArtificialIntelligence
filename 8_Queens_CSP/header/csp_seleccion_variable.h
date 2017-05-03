@@ -40,6 +40,7 @@ template <typename T>
 unsigned Problema_csp<T>::seleccion_variable_aleatoria()
 {
   // DONE
+  
   // fast erase: now variables_sin_etiquetar is ready for a pop_back(), later in Problema_csp<T>::bloquea_variable()
   std::uniform_int_distribution<unsigned> aleatorio(0, variables_sin_etiquetar.size() - 1);
 

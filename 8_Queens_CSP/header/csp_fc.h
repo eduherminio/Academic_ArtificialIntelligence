@@ -7,7 +7,6 @@ bool Problema_csp<T>::actualiza_dominio_fc(const std::pair<unsigned, T> &asignac
 {
   // TO-DO
   // DONE
-
   auto assigned_queen= asignacion.first;
   auto assigned_value= asignacion.second;
 
@@ -19,6 +18,9 @@ bool Problema_csp<T>::actualiza_dominio_fc(const std::pair<unsigned, T> &asignac
   {
     if(relacionadas(assigned_queen, queen))
     {
+      if(dominio[queen].empty())
+        return true;
+        
       for(int val=0; val<dominio[queen].size(); ++val)
       {
         if( (dominio[queen][val] ==   assigned_value) ||
@@ -31,9 +33,11 @@ bool Problema_csp<T>::actualiza_dominio_fc(const std::pair<unsigned, T> &asignac
           auto it= dominio[queen].begin() + val;
           *it= std::move(dominio[queen].back());
           dominio[queen].pop_back();
+          if(dominio[queen].empty())
+            return true;
                 // imprime_dominio();
                 // imprime_lista_exclusiones_dominio();
-          val--; // Chceck again that position, since there's a new valor
+          --val; // Check again that position, since there's a new valor
         }
       }
     }
@@ -41,7 +45,8 @@ bool Problema_csp<T>::actualiza_dominio_fc(const std::pair<unsigned, T> &asignac
 
   imprime_dominio();
   imprime_lista_exclusiones_dominio();
-
+  return false;
+  /*
   // Forward checking: comparamos consistencia de las variables no asignadas
   bool bloqueo= false;
   // for(auto& fila_1 : variables_sin_etiquetar) //int para fil y col para no tener problemas al restar en funcion abs()
@@ -101,7 +106,7 @@ bool Problema_csp<T>::actualiza_dominio_fc(const std::pair<unsigned, T> &asignac
 
   }
   return false;
-
+*/
   // ver reinas::funcion relacionadas (en este caso, todas)
   // en el caso del sudoku, por ejemplo, devolvera true si están en el mismo cuadrado, fila o columna
 

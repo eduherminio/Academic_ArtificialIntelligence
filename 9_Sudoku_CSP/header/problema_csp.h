@@ -20,8 +20,7 @@ namespace csp
   public:
     Problema_csp() {}
 
-    bool resolver(Seleccion_variable sel_var=Seleccion_variable::estatica,Algoritmo algoritmo=Algoritmo::fc)
-    {
+    bool resolver(Seleccion_variable sel_var=Seleccion_variable::estatica,Algoritmo algoritmo=Algoritmo::fc)  {
       tipo_seleccion_variable(sel_var);
 
       if(algoritmo==Algoritmo::bt)
@@ -95,8 +94,7 @@ namespace csp
 
 
   template <typename T>
-  void Problema_csp<T>::inicializa()
-  {
+  void Problema_csp<T>::inicializa()  {
     inicializa_dominio(); //Llamada virtual diferente para cada problema
 
     //Borra listas
@@ -114,8 +112,7 @@ namespace csp
 
   //Para depuracion
   template <typename T>
-  void Problema_csp<T>::imprime_dominio()
-  {
+  void Problema_csp<T>::imprime_dominio() {
     for(unsigned i=0; i!=num_variables(); ++i)
     {
       for(auto j:dominio(i))

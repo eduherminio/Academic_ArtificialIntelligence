@@ -59,9 +59,9 @@ namespace sudoku
     {
       //Verificamos si las variables estan en la misma fila, columna o cuadrado
       if(get_fila[var_1]==get_fila[var_2] || get_columna[var_1]==get_columna[var_2] || get_cuadrado[var_1]==get_cuadrado[var_2])
-      return true;
+        return true;
       else
-      return false;
+        return false;
     }
 
 
