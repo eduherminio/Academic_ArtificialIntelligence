@@ -69,7 +69,7 @@ namespace csp
     std::vector<std::pair<unsigned,T>> solucion;
 
   private:
-    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
+    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables aun fuera de la solucion
     unsigned nodos_expandidos; //Para comparar entre algoritmos
 
     void inicializa();
@@ -149,7 +149,18 @@ namespace csp
   }
 
   //Para depuracion
-  template <typename T>
+    template <typename T>
+    void Problema_csp<T>::imprime_dominio()
+    {
+      for(unsigned i=0; i!=num_variables(); ++i)
+      {
+        for(auto j:dominio(i))
+          std::cout<<j<<" ";
+        std::cout<<std::endl;
+      }
+    }
+
+    template <typename T>
     void Problema_csp<T>::imprime_lista_asignaciones(std::vector< std::pair<unsigned, T> > lista_asignaciones)
     {
       std::cout<<"\nLista de asignaciones: ";

@@ -2,7 +2,7 @@
 clear
 set -e
 ../system_info.sh
-source filedata.txt
+source filedata_queens.txt
 export env_filename=$filename
 mkdir -p build && cd build
 cmake ..  #&> /dev/null

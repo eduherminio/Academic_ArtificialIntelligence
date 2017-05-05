@@ -2,7 +2,7 @@
 clear
 set -e
 ../system_info.sh
-source filedata.txt
+source filedata_sudoku.txt
 export env_filename=$filename
 mkdir -p build && cd build
 cmake ..  #&> /dev/null
@@ -29,7 +29,7 @@ make -j$n_cores #-B
 
 #
 # Author:      Eduardo Cáceres de la Calle
-# Subject:     Inteligencia Artificial
+# Subject:     Visión Artificial
 # Degree:      Industrial Electronics and Automatic Control Engineering
 # University:  Universidad de Valladolid (UVa) - EII
 #

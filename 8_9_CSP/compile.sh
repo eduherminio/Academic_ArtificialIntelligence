@@ -2,13 +2,17 @@
 clear
 set -e
 ../system_info.sh
-source filedata.txt
-export env_filename=$filename
+source filedata_queens.txt
+export env_filename=$filename_queens
+source filedata_sudoku.txt
+export env_filename=$filename_sudoku
 mkdir -p build && cd build
-cmake ..  #&> /dev/null
+cmake ..  #&> /dev/nulls
 make -j$n_cores #-B
-./$filename #| tee ../$filename.txt
-
+echo 8_Queens_CSP:
+./$filename_queens #| tee ./$filename.txt
+echo 9_Sudoku_CSP:
+./$filename_sudoku #| tee ./$filename.txt
 
 
 # set -e
@@ -36,4 +40,4 @@ make -j$n_cores #-B
 # Code written in 2017.
 # Uploaded for educational purposes only.
 #
-#
+#_queens
