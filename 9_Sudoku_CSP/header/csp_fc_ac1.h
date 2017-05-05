@@ -42,28 +42,17 @@ bool Problema_csp<T>::actualiza_dominio_ac1(const unsigned variable)
 template <typename T>
 bool Problema_csp<T>::revisar_ac1(const unsigned variable, const unsigned var_i, const unsigned var_j)
 {
+  // DONE
+
+
   bool cambio=false;
-  // TO-DO
 
-  // REVISA SI ALGÍUN VALOR DEL DOMINIO DE LA VARIABLE ES INCOMPATIBLE CON EL DOMINIO DE ALGÚN VALOR DE LA OTRA
-  // ELIMINA SI ES INCOMPATIBLE: Notifica cambio:
-  // var_j es la variable que he asignado
-  // doble bucle for por los dominis
-  // for(i)
-  // for(j)
-  // if(valor(i) no tiene valor compatible valor(j))
-  //
-
-  // for(const auto& dom_i : dominio[var_i])
   for(int i=0; i<dominio[var_i].size(); ++i)
   {
     auto dom_i= dominio[var_i][i];
     bool consistency= false;
     for(const auto& dom_j : dominio[var_j])
-    // for(int j=0; j<dominio[var_j].size(); ++j)
     {
-      // auto dom_j= dominio[var_j][j];
-      // if(dom_i == dom_j)
       if(consistente(var_i, var_j, dom_i, dom_j)==true)
       {
         consistency= true;
