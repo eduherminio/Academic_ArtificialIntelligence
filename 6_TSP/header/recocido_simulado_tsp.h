@@ -60,7 +60,4 @@ public:
     double v_lookup_table2[10000];
   };
 
-
-
-
   #endif // RECOCIDO_SIMULADO_H_INCLUDED
