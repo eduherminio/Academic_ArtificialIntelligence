@@ -92,8 +92,8 @@ namespace csp
     // 1) Backtracking
     bool backtracking(); //--> Funcion general bactracking
     bool expandir_bt(const unsigned variable,std::vector<std::pair<unsigned, T>>& lista_asignaciones);
-    virtual void restaura_estado(const std::pair<unsigned, T> &asignacion)= 0;        // =0: pure virtual functions
-    virtual void actualiza_estado(const std::pair<unsigned, T> &asignacion)= 0;
+    virtual void restaura_estado(const std::pair<unsigned, T>& asignacion)= 0;        // =0: pure virtual functions
+    virtual void actualiza_estado(const std::pair<unsigned, T>& asignacion)= 0;
 
     // 2) Look ahead
     bool look_ahead(); //--> Funci�n general look ahead
@@ -102,12 +102,12 @@ namespace csp
     // std::function <return_type(arg)> name;
     void restaura_dominio(const unsigned variable);
 
-    //2) ->Forward checking
-    bool actualiza_dominio_fc(const std::pair<unsigned, T> &asignacion);
+    // 2) ->Forward checking
+    bool actualiza_dominio_fc(const std::pair<unsigned, T>& asignacion);
     //////////////////////////////////////////////////////////////////////////////////////
 
-    //2) ->Forward checking con ac1
-    bool actualiza_dominio_fc_ac1(const std::pair<unsigned, T> &asignacion);
+    // 2) ->Forward checking con ac1
+    bool actualiza_dominio_fc_ac1(const std::pair<unsigned, T>& asignacion);
     bool actualiza_dominio_ac1(const unsigned variable);
     bool revisar_ac1(const unsigned variable, const unsigned var_i, const unsigned var_j);
     //////////////////////////////////////////////////////////////////////////////////////
