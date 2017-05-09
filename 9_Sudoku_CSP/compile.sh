@@ -29,7 +29,7 @@ make -j$n_cores #-B
 
 #
 # Author:      Eduardo Cáceres de la Calle
-# Subject:     Visión Artificial
+# Subject:     Intelicencia Artificial
 # Degree:      Industrial Electronics and Automatic Control Engineering
 # University:  Universidad de Valladolid (UVa) - EII
 #
