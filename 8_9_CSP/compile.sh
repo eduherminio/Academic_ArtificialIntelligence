@@ -1,18 +1,12 @@
 #!/bin/bash
 clear
 set -e
-../system_info.sh
-source filedata_queens.txt
-export env_filename=$filename_queens
-source filedata_sudoku.txt
-export env_filename=$filename_sudoku
-mkdir -p build && cd build
-cmake ..  #&> /dev/nulls
-make -j$n_cores #-B
-echo 8_Queens_CSP:
-./$filename_queens #| tee ./$filename.txt
-echo 9_Sudoku_CSP:
-./$filename_sudoku #| tee ./$filename.txt
+
+./compile_queens.sh
+
+read -rsp $'---> Press any key to continue <---\n' -n 1 key
+
+./compile_sudoku.sh
 
 
 # set -e
@@ -29,6 +23,9 @@ echo 9_Sudoku_CSP:
 
 # | tee ../$filename.txt
 #   Copies the output to a file
+
+# make -j N
+#   For minimum build times, you want to use a value of N that is one more than the number of cores on the machine
 
 
 #

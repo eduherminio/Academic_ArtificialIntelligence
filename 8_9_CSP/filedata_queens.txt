@@ -1,2 +1,2 @@
-filename_queens="8_Queens_CSP"
+filename="8_Queens_CSP"
 

@@ -1,2 +1,2 @@
-filename_sudoku="9_Sudoku_CSP"
+filename="9_Sudoku_CSP"
 
