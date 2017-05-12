@@ -1,13 +1,14 @@
 #!/bin/bash
 clear
 set -e
-../system_info.sh
+n_cores=`cat /proc/cpuinfo | grep processor | wc -l`
+let "n_cores++"
 source filedata.txt
 export env_filename=$filename
 mkdir -p build && cd build
 cmake ..  &> /dev/null
 make -j$n_cores #-B
-./$filename 5 5  | tee ../$filename.txt
+./$filename  | tee ../$filename.txt
 
 
 
@@ -25,6 +26,9 @@ make -j$n_cores #-B
 
 # | tee ../$filename.txt
 #   Copies the output to a file
+
+# make -j N
+#   For minimum build times, you want to use a value of N that is one more than the number of cores on the machine
 
 
 #
