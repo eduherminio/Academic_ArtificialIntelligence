@@ -1,19 +1,12 @@
 #!/bin/bash
 clear
 set -e
-mkdir -p samples_sol
 
-glpsol --math samples/ejemplo1.mod 	> samples_sol/ejemplo1.txt
-glpsol --math samples/ejemplo2.mod 	> samples_sol/ejemplo2.txt
-glpsol --math samples/ejemplo3.mod 	> samples_sol/ejemplo3.txt
-glpsol --math samples/ejemplo4.mod 	> samples_sol/ejemplo4.txt
-glpsol --math samples/ejemplo51.mod 	> samples_sol/ejemplo51.txt
-glpsol --math samples/ejemplo52.mod 	> samples_sol/ejemplo52.txt
-glpsol --math samples/ejemplo6.mod	> samples_sol/ejemplo_6.txt
-glpsol --math samples/queens.mod 	> samples_sol/queens.txt
+glpsol --math Empaquetado_Balanceado_1.mod
 
-glpsol --math Knapsack.mod			> Knapsack.txt
-#glpsol --math Sogatira.mod			> Sogatira.txt
+read -rsp $'---> Press any key to continue <---\n' -n 1 key
+
+glpsol --math Empaquetado_Balanceado_2.mod
 
 
 #
