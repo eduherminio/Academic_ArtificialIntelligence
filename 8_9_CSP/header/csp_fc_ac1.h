@@ -56,14 +56,17 @@ bool Problema_csp<T>::revisar_ac1(const unsigned variable, const unsigned var_i,
       if(consistente(var_i, var_j, dom_i, dom_j)==true)
       {
         consistency= true;
+        break;
       }
     }
 
     if(consistency== false)
     {
       lista_exclusiones_dominio[variable].push_back({var_i, dom_i});
-      auto it= dominio[var_i].begin() + i;
-      *it= std::move(dominio[var_i].back());
+      dominio[var_i][i]=dominio[var_i].back();
+
+      // auto it= dominio[var_i].begin() + i;
+      // *it= std::move(dominio[var_i].back());
       dominio[var_i].pop_back();
 
       cambio= true;

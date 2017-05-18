@@ -57,4 +57,17 @@ param pesos:=
 9 1
 10 2;   # ->  4
 #10 1;  # ->  3
+
+
+# 6, 8
+
+#param num_grupos:= 4;
+#param num_vehiculos:= 2;
+#param capacidad:= 8;
+#param pesos:=
+#1 8
+#2 2
+#3 2
+#4 2;
+
 end;
