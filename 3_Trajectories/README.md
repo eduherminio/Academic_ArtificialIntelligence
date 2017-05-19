@@ -1,4 +1,4 @@
-Parte de los gr·ficos est·n basados en este programa
+Parte de los gr√°ficos est√°n basados en este programa
 
 https://github.com/juanchi35/A-star-C-11-SFML-implementation
 

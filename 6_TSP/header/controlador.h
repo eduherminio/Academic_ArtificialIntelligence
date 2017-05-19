@@ -35,8 +35,8 @@ namespace controlador
     {
       registra_observadores();    // TO-CHECK
       //Esta inicializacion es muy muy muy mejorable
-      //El alumno deber� eliminar estos par�metros y obtnerlos de forma autom�tica dentro
-      //de la clase TSP analizando las caracter�sticas del problema
+      //El alumno debera eliminar estos parametros y obtnerlos de forma automatica dentro
+      //de la clase TSP analizando las caracteristicas del problema
       ////////////////////////////////////////////////////////////////////////////////////
       num_descensos=10000;
       num_permutaciones=5000;
@@ -53,7 +53,7 @@ namespace controlador
     double temperatura;
     double factor_descenso;
     int num_ciudades;
-    
+
     Vista vista;
     Recocido_simulado_TSP algoritmo_sa_tsp;
     Observador<Evento_Vista> observador_vista;

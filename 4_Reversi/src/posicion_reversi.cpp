@@ -90,9 +90,9 @@ int Posicion_reversi::evalua_posicion(const bool es_terminal) const
       --valor;
     }
   }
-  if(es_terminal) //La puntuaci�n de una posici�n terminal ganadora siempre ser� mayor que la   -- TO-CHECK
-  {               //puntuaci�n de una heur�stica. Es mejor saber que ganas seguro por 3 fichas
-    //que una heur�stica eval�e que posiblemente ganes por 10 fichas
+  if(es_terminal) //La puntuacion de una posicion terminal ganadora siempre ser mayor que la   -- TO-CHECK
+  {               //puntuacion de una heuristica. Es mejor saber que ganas seguro por 3 fichas
+    //que una heuristica evalue que posiblemente ganes por 10 fichas
     if(valor>0)
     {
       valor+=get_filas()*get_columnas();

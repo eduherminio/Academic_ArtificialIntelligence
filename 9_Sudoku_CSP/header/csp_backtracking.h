@@ -37,7 +37,7 @@ bool Problema_csp<T>::backtracking()
     }
     solucion.push_back(lista_asignaciones.back());  //Tenemos nuevo nodo disponible
 
-    bloquea_variable();  //La variable seleccionada siempre es la �ltima del vector variables_sin_etiquetar
+    bloquea_variable();  //La variable seleccionada siempre es la ultima del vector variables_sin_etiquetar
     if(variables_sin_etiquetar.empty())
     {
       exito=true;
@@ -57,12 +57,12 @@ bool Problema_csp<T>::expandir_bt(const unsigned variable,std::vector<std::pair<
   auto tam=lista_asignaciones.size();
   for(auto valor:dominio[variable])
   {
-    if(consistente(variable,valor))   //Esta funci�n depende de cada problema
+    if(consistente(variable,valor))   //Esta Función depende de cada problema
     {
       lista_asignaciones.push_back({variable,valor});
     }
   }
-  return(tam!=lista_asignaciones.size());  //Devolvemos true si se han a�adido nodos
+  return(tam!=lista_asignaciones.size());  //Devolvemos true si se han añadido nodos
 }
 
 #endif // CSP_BACKTRACKING_H_INCLUDED

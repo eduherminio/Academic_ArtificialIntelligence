@@ -37,7 +37,7 @@ namespace bb
     unsigned num_variables;
     std::vector<std::vector<T>> dominio;
     std::vector<std::pair<unsigned,T>> solucion;
-    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
+    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables aún fuera de la solución
   private:
     unsigned nodos_expandidos; //Para comparar entre algoritmos
 
@@ -60,7 +60,7 @@ namespace bb
     //ALGORITMOS
 
     //1) Backtracking
-    bool bb_backtracking(); //--> Funci�n general bactracking
+    bool bb_backtracking(); //--> Función general bactracking
     bool expandir_bt(const unsigned variable,std::vector<std::pair<unsigned,T>>& lista_asignaciones);
     virtual void restaura_estado(const std::pair<unsigned,T> &asignacion)=0;  //Llamada virtual diferente para cada problema
     virtual void actualiza_estado(const std::pair<unsigned,T> &asignacion)=0; //Llamada virtual diferente para cada problema

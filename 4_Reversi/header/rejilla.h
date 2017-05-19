@@ -9,7 +9,7 @@ public:
 
   Rejilla() = default;
   void set_rejilla(unsigned f,unsigned c,unsigned dim_cas,unsigned hueco_entre_casillas,unsigned hueco_al_borde,const Textura& textura);
-  // Traduce de coordenadas pixel del rat�n a coordenadas filas,columnas del tablero
+  // Traduce de coordenadas pixel del raton a coordenadas filas,columnas del tablero
   // Devuelve 0 si las coordenasdas estan fuera de la rejilla
   bool get_fila_columna(unsigned x_pos,unsigned y_pos, unsigned &fila,unsigned &columna) const;
 

@@ -1,6 +1,6 @@
 #ifndef HANOI_H_INCLUDED
 #define HANOI_H_INCLUDED
-//A�adir las cabeceras que necesiteis
+//Añadir las cabeceras que necesiteis
 #include <iostream>
 #include <vector>
 
@@ -28,7 +28,7 @@ namespace hanoi
           //
           // std::cout<<v1.back();
 
-          //Aqu� podeis rellenar "a mano" el estado inicial
+          //Aqui podeis rellenar "a mano" el estado inicial
           // usando vuestras variables miembro que describen el estado
        }
        bool operador_valido(unsigned,unsigned) const;

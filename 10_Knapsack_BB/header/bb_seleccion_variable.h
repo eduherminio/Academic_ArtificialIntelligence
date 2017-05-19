@@ -42,7 +42,7 @@ unsigned Problema_bb<T>::seleccion_variable_aleatoria()
   std::uniform_int_distribution<unsigned>aleatorio(0, variables_sin_etiquetar.size()-1);
   auto indice= aleatorio(rng);
   //Colocamos la variable seleccionada al final del vector
-  //para su f�cil bloqueo o liberaci�n
+  //para su fácil bloqueo o liberación
   auto variable= variables_sin_etiquetar[indice];
   variables_sin_etiquetar[indice]= variables_sin_etiquetar.back();
   variables_sin_etiquetar.back()= variable;
@@ -64,7 +64,7 @@ unsigned Problema_bb<T>::seleccion_variable_mrv()
     }
   }
   //Colocamos la variable seleccionada al final del vector
-  //para su f�cil bloqueo o liberaci�n
+  //para su fácil bloqueo o liberación
   auto variable= variables_sin_etiquetar[indice];
   variables_sin_etiquetar[indice]= variables_sin_etiquetar.back();
   variables_sin_etiquetar.back()= variable;

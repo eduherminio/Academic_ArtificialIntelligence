@@ -33,7 +33,7 @@ namespace controlador
         vista.set_texto_iteracion("");
         vista.set_texto_mejor_distancia("");
         ruta.inicializa_ruta(std::move(ciudades));
-        //Eliminar la llamada de inicializaci�n
+        //Eliminar la llamada de inicializacion
         // algoritmo_sa_tsp.inicializacion(num_descensos,num_permutaciones,num_exitos_maximo,temperatura,factor_descenso);
         vista.muestra_boton_ejecutar();
         return true;
@@ -45,7 +45,7 @@ namespace controlador
   void Controlador::inicia_programa()
   {
     inicio_vista=true;
-    //La vista nos garantiza que todos sus recursos est�n listos
+    //La vista nos garantiza que todos sus recursos están listos
   }
   void Controlador::finaliza_programa()
   {
@@ -57,7 +57,7 @@ namespace controlador
   }
   void Controlador::ejecuta_sa_tsp()
   {
-    std::unique_lock<std::mutex>u_l(barrera_tsp);    //Bloqueamos a�adir nuevo recorrido
+    std::unique_lock<std::mutex>u_l(barrera_tsp);    //Bloqueamos añadir nuevo recorrido
     vista.oculta_boton_cargar();
     vista.oculta_boton_ejecutar();
     vista.muestra_boton_detener();
@@ -72,8 +72,8 @@ namespace controlador
   }
   void Controlador::ejecutar()
   {
-    //Estas dimensiones podr�an ser leidas desde un fichero de configuracion
-    //o elegidas por l�nea de comandos
+    //Estas dimensiones podrian ser leidas desde un fichero de configuracion
+    //o elegidas por linea de comandos
     const unsigned ancho=960; //Dimensiones de la ventana
     const unsigned alto=720;
     const unsigned ancho_panel=250;
@@ -135,7 +135,7 @@ namespace controlador
   {
     while(!fin_algoritmo)
     {
-      std::unique_lock<std::mutex>u_l(barrera_datos);    //Bloqueamos a�adir nuevo recorrido
+      std::unique_lock<std::mutex>u_l(barrera_datos);    //Bloqueamos añadir nuevo recorrido
       while(datos.empty() && !fin_algoritmo)
       {
         c_v_barrera_datos.wait(u_l);
@@ -171,9 +171,9 @@ namespace controlador
   {
     double x_min,x_max,y_min,y_max;
     ciudades.calcula_valores_extremos(x_min,x_max,y_min,y_max);
-    if(x_min==x_max || y_min==y_max) //Las ciudades est�n en una vertical o en una horizontal
+    if(x_min==x_max || y_min==y_max) //Las ciudades están en una vertical o en una horizontal
     {
-      return false;  //El problema es trivial y no tiene sentido buscar una soluci�n
+      return false;  //El problema es trivial y no tiene sentido buscar una solución
     }
 
     std::vector<std::pair<unsigned,unsigned>> coordenadas_canvas; //Coordenadas de las ciudades normalizadas a las dimensiones del CANVAS
@@ -188,7 +188,7 @@ namespace controlador
     {
       x=p.first;
       y=p.second;
-      xn=(x-x_min)/(x_max-x_min);  //No tenemos divisi�n por 0 al garantizarlo m�s arriba
+      xn=(x-x_min)/(x_max-x_min);  //No tenemos division por 0 al garantizarlo mas arriba
       yn=(y-y_min)/(y_max-y_min);
       xv=unsigned(x_sup_izq+xn*(x_inf_der-x_sup_izq));
       yv=unsigned(y_sup_izq+yn*(y_inf_der-y_sup_izq));

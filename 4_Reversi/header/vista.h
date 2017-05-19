@@ -18,7 +18,7 @@ class Vista
   unsigned filas;
   unsigned columnas;
 
-  // Dejamos 5 pixeles desde el tablero a los l�mites
+  // Dejamos 5 pixeles desde el tablero a los limites
   // Dejamos 1 pixel entre casillas
   const unsigned hueco_entre_casillas=1;
   const unsigned hueco_al_borde=5;

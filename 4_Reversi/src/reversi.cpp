@@ -274,11 +274,11 @@ int Reversi::estrategia_minimax()
     if(!lista.back().get_visitado())
     {
       lista.back().set_visitado();
-      if(lista.back().get_pasa()==Tipo_tablero::terminal)  //Posici�n terminal: pasan los dos
+      if(lista.back().get_pasa()==Tipo_tablero::terminal)  //Posicion terminal: pasan los dos
       {
         lista.back().set_minimax(lista.back().evalua_posicion(true));
       }
-      else if(lista.back().get_profundidad()==profundidad_maxima)  //Suspensi�n
+      else if(lista.back().get_profundidad()==profundidad_maxima)  //Suspension
       {
         lista.back().set_minimax(lista.back().evalua_posicion(false));
       }

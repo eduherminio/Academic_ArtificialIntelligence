@@ -1,6 +1,6 @@
 //FELIX MIGUEL TRESPADERNE
-//INTELIGENCIA ARTIFICIAL APLICADA A�O 2017
-//Inspirado en Simulated Annealing Methods, secci�n 10.9 del libro
+//INTELIGENCIA ARTIFICIAL APLICADA AÑO 2017
+//Inspirado en Simulated Annealing Methods, seccion 10.9 del libro
 //NUMERICAL RECIPES IN C
 
 

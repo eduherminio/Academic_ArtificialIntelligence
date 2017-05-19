@@ -13,7 +13,7 @@ namespace ruta
   public:
     Ruta()
     {
-      // Obtenci�n de semilla para generadores de aleatorios
+      // Obtencion de semilla para generadores de aleatorios
 
     }
     void inicializa_ruta(ciudades::Ciudades&&ciu)

@@ -69,7 +69,7 @@ namespace mapa
     double calcula_heuristica(const Punto_2d &p) const;
     unsigned nodo_to_clave(const Punto_2d &p) const;
     Punto_2d clave_to_nodo(unsigned clave) const;
-    std::unordered_map<unsigned,unsigned> padre;    //Podr�an juntarse padre y coste_actual en un pair<unsigned,float>
+    std::unordered_map<unsigned,unsigned> padre;    //Podrian juntarse padre y coste_actual en un pair<unsigned,float>
     std::unordered_map<unsigned,double>coste_actual;
     bool hijo_valido(const Punto_2d &punto_padre,const Punto_2d &punto_hijo,double &);
   private:

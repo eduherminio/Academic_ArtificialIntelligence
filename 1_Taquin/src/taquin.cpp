@@ -49,7 +49,7 @@ namespace taquin
   }
 
   void Taquin::expandir(const size_t indice, const bool amplitud)  {
-    // Te dice qu� nodos son tus hijos
+    // Te dice que nodos son tus hijos
     static const unsigned matriz_expansion[9][5]= {{2,1,7,0,0},{3,0,2,8,0},{2,1,3,0,0},{3,2,4,8,0},{2,3,5,0,0},{3,4,6,8,0},{2,5,7,0,0},{3,0,6,8,0},{4,1,3,5,7}};
     // filas: numero de casilla
     // columnas: nodos hijo
@@ -62,7 +62,7 @@ namespace taquin
     // Caracteristicas comunes a cualquier hijo que pueda existir:
     hijo.profundidad=lista[indice].profundidad+1;
     hijo.padre=indice;
-    hijo.visitado=false; //Este campo no es necesario en la B�squeda en Amplitud
+    hijo.visitado=false; //Este campo no es necesario en la Busqueda en Amplitud
 
     if(amplitud && prof!= hijo.profundidad) {   // Sólo nos interesa ver cómo va el tema en el caso de amplitud, que será más lento
       prof= hijo.profundidad;
@@ -89,7 +89,7 @@ namespace taquin
       hijo.posicion[hijo.pos_cas_vac]=0;
 
       if(!repetido(hijo,indice, amplitud))  {
-        lista.push_back(hijo);	
+        lista.push_back(hijo);
       }
     }
   }
@@ -147,11 +147,11 @@ namespace taquin
         //   std::cout<<std::endl;
         // }
         // std::cout<<std::endl;
-        
+
         // for(int i=0; i<9; i++)
         // std::cout<<lista[indice_lista].posicion[i];
         // std::cout<<std::endl;
-      if(lista[indice_lista].profundidad >= limite) { 
+      if(lista[indice_lista].profundidad >= limite) {
         for(int i= lista.size() -2 ; i>-1; i--) {
           if(lista[i].visitado== false) {
             indice_lista= i;
@@ -197,7 +197,7 @@ namespace taquin
   bool Taquin::repetido(const Nodo_Taquin& nodo, size_t indice_lista, const bool amplitud)  {  //   Tarea a completar
     bool repe= true;
 
-    if(amplitud== true) {     // Amplitud: búsqueda de nodos repetidos solo en ancestros 
+    if(amplitud== true) {     // Amplitud: búsqueda de nodos repetidos solo en ancestros
       int i=indice_lista;
       while(i>=0)
       {
@@ -233,7 +233,7 @@ namespace taquin
           // std::cout<<std::endl;
           // for(auto pos=0; pos<9; pos++)
           //   std::cout<<nodo.posicion[pos];
-          // std::cout<<std::endl;       
+          // std::cout<<std::endl;
 
         for(auto pos=0; pos<9; ++pos)  {
 
@@ -267,7 +267,7 @@ namespace taquin
     else  {
       unsigned num_posiciones=lista[indice_objetivo].profundidad+1;
       unsigned solucion[num_posiciones][9];
-      int indice=indice_objetivo;  //indice tomar� el vaor -1
+      int indice=indice_objetivo;  //indice tomara el vaor -1
 
       for(i=num_posiciones; i--;) { //Mucho cuidado con los unsigned cuando decrementamos
         for(j=0; j<9; ++j)  {

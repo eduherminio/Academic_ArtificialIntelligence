@@ -7,7 +7,7 @@
 namespace ciudades
 {
   //Lee un fichero normalizado TSPLIB
-  //Para simplificar, sin p�rdida de generalidad, solo contemplamos distancias euclideas 2D
+  //Para simplificar, sin perdida de generalidad, solo contemplamos distancias euclideas 2D
   bool Ciudades::carga_ciudades(const std::string nombre_fichero)
   {
     bool exito=false;
@@ -92,14 +92,14 @@ namespace ciudades
           getline(linea_stream,palabra,' '); //Leemos el texto correspondiente a los dos puntos :
           getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al numero de ciudades
           std::stringstream palabra_stream(palabra);
-          palabra_stream >> num_ciudades;  //Pasamos de string a int: �Ya tenemos el numero de ciudades!
+          palabra_stream >> num_ciudades;  //Pasamos de string a int: Ya tenemos el numero de ciudades!
           std::cout<< num_ciudades<<std::endl;
         }
         else if(palabra=="DIMENSION:")
         {
           getline(linea_stream,palabra,' '); //Leemos el texto correspondiente al numero de ciudades
           std::stringstream palabra_stream(palabra);
-          palabra_stream >> num_ciudades;  //Pasamos de string a int: �Ya tenemos el numero de ciudades!
+          palabra_stream >> num_ciudades;  //Pasamos de string a int: Ya tenemos el numero de ciudades!
           std::cout<< num_ciudades<<std::endl;
         }
         else if(palabra=="NAME")
@@ -164,7 +164,7 @@ namespace ciudades
       {
         distancia+=distancias[codigo[i]][codigo[i+1]];
       }
-      // Distancia entre la �ltima y la primera
+      // Distancia entre la ultima y la primera
       distancia += distancias[codigo[num_ciudades-1]][codigo[0]];
     }
     return(distancia);

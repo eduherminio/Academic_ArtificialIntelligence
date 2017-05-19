@@ -13,7 +13,7 @@ filas(filas),columnas(columnas),tam_casilla(tam_casilla),ancho(columnas*tam_casi
       casillas.push_back(t);
     }
   }
-  //Fija por defecto la inicial y la final en los v�rtices superior izquierda e inferior derecha respectivamente
+  //Fija por defecto la inicial y la final en los vertices superior izquierda e inferior derecha respectivamente
   casillas[0].set_tipo(Tipo_casilla::inicio);
   casillas[filas*columnas-1].set_tipo(Tipo_casilla::fin);
 }

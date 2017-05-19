@@ -42,7 +42,7 @@ namespace ruta
       set_codigo(codigo_provisional);
     }
 
-    // Elige una secci�n dada por 2 puntos de la ruta y la rota
+    // Elige una seccion dada por 2 puntos de la ruta y la rota
     void Ruta::rotacion_2_puntos()
     {
       // Copiamos codigo actual en el posible nuevo codigo

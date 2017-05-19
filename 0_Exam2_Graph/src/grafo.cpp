@@ -44,7 +44,7 @@ namespace grafo
 
   double heuristica(const Nodo_grafo& nodo1, const Nodo_grafo& nodo2) {       // To complete (choose 1)
     //nodo2 en heuristica() no se utiliza pues se conoce de antemano
-    //Se mantiene como argumento para que la interfaz sea id�ntica al resto de problemas de busqueda
+    //Se mantiene como argumento para que la interfaz sea identica al resto de problemas de busqueda
 
   }
 

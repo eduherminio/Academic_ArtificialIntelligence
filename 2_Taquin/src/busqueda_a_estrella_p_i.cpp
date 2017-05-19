@@ -51,7 +51,7 @@ namespace taquin
             for(auto& x:hijos)
             {
               auto clave_hijo=x.get_clave();
-              if(claves.count(clave_hijo)==0) //�Repetido?
+              if(claves.count(clave_hijo)==0) // Repetido?
               {
                 auto coste_actual_hijo=lista[indice].coste_actual+coste_operador(lista[indice].nodo,x);
                 auto coste_total=coste_actual_hijo+heuristica(x,nodo_objetivo);

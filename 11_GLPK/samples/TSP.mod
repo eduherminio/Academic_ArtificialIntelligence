@@ -37,7 +37,7 @@ s.t. enter{j in Nodos}: sum{(i,j) in Arcos} x[i,j] = 1;
 
 /* Existen muchas formas de expresar las restricciones que aseguran que solo se genera un ciclo
     El autor de este programa propone una estrategia consistente en suponer que el viajante tiene
-    inicialmente n items. Cada vez que abandona un nodo, disminuye en 1 el numero de items, Adem�s
+    inicialmente n items. Cada vez que abandona un nodo, disminuye en 1 el numero de items, Además
     a un nodo debe llegar con un item mas del que tiene al salir                                     */
 
 /* y[i,j] es el numero de items (capacidad) que el viajante tiene tras abandonar el nodo i, y antes de entrar al nodo j*/

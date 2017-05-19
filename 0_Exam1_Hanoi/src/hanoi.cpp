@@ -3,7 +3,7 @@
 
 namespace hanoi
 {
-  unsigned Hanoi::num_clavijas=0; //Inicializa la variable est�tica, com�n a todos los nodos Hanoi
+  unsigned Hanoi::num_clavijas=0; //Inicializa la variable estatica, comun a todos los nodos Hanoi
 
   bool Hanoi::operador_valido(unsigned origen,unsigned destino) const     //A completar
   {
@@ -61,12 +61,12 @@ namespace hanoi
       // std::cout<<origen<<"=="<<destino<<std::endl;
       return false;
     }
-  } 
+  }
 
   Hanoi Hanoi::crea_hijo(unsigned origen,unsigned destino) const        // A completar
   {
     Hanoi hijo(*this); //Copia el padre (*this) en hijo
-    
+
     if(origen==1 && destino==2)
     {
       hijo.v2.push_back(v1.back());

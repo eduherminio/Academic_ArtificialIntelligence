@@ -159,7 +159,7 @@ namespace ruta
       distancia_provisional=calcula_distancia(recorrido_provisional);
     }
 
-  // Elige una secci�n dada por 2 puntos de la ruta y la rota
+  // Elige una seccion dada por 2 puntos de la ruta y la rota
   void Ruta::rotacion_2_puntos()  {
     // Copiamos recorrido actual en el posible nuevo recorrido
     recorrido_provisional=recorrido_actual;
@@ -272,7 +272,7 @@ namespace ruta
       // Añadimos ciudad
       recorrido.push_back(ciudad);
       // Eliminamos la ciudad de nuestro conjunto
-      it = set_ciudades.find(ciudad); //Al estar ordenadas dentro de set su b�squeda es r�pida
+      it = set_ciudades.find(ciudad); //Al estar ordenadas dentro de set su busqueda es rapida
       set_ciudades.erase(it);
       ciudad=get_vecino_mas_proximo(ciudad,set_ciudades,ciudades);
     }

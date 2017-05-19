@@ -242,7 +242,7 @@ namespace ciudades
       {
         distancia+=distancias[recorrido[i]][recorrido[i+1]];
       }
-      // Distancia entre la �ltima y la primera
+      // Distancia entre la ultima y la primera
       distancia += distancias[recorrido[num_ciudades-1]][recorrido[0]];
     }
     return(distancia);

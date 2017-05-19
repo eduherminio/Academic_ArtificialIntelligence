@@ -15,7 +15,7 @@ class Casilla: public sf::Drawable, public sf::Transformable
 
   static sf::Color color_casilla(Tipo_casilla) ;
 public:
-  explicit Casilla(sf::Rect<unsigned> rect,Tipo_casilla tipo_casilla=Tipo_casilla::vacia); //Por defecto, vac�a
+  explicit Casilla(sf::Rect<unsigned> rect,Tipo_casilla tipo_casilla=Tipo_casilla::vacia); //Por defecto, vacia
   Casilla();
 
   void set_tipo(Tipo_casilla);

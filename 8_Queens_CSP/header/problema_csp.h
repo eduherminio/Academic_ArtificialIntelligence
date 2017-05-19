@@ -68,7 +68,7 @@ namespace csp
     std::vector<std::vector<std::pair<unsigned,T>>> lista_exclusiones_dominio;
     std::vector<std::pair<unsigned,T>> solucion;
   private:
-    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables a�n fuera de la soluci�n
+    std::vector<unsigned> variables_sin_etiquetar; //Vector instrumental que almacena las variables aun fuera de la solución
     unsigned nodos_expandidos; //Para comparar entre algoritmos
 
     void inicializa();
@@ -98,7 +98,7 @@ namespace csp
     virtual void actualiza_estado(const std::pair<unsigned, T>& asignacion)= 0;
 
     // 2) Look ahead
-    bool look_ahead(); //--> Funci�n general look ahead
+    bool look_ahead(); //--> Función general look ahead
     void seleccion_algoritmo_look_ahead(const Algoritmo algoritmo);
     std::function<bool (const std::pair<unsigned, T>&)> actualiza_dominio; // Puntero a funcion actualiza_dominio
     // std::function <return_type(arg)> name;

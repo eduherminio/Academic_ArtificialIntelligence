@@ -1,4 +1,4 @@
-//Cargamos los par�metros del algoritmo genetico
+//Cargamos los parametros del algoritmo genetico
 template<typename T>
 void Genetico_Tsp<T>::inicializacion(const unsigned n_i,const double p_e,const unsigned n_g,const double p_m,const unsigned t_t)
 {
@@ -48,11 +48,10 @@ void Genetico_Tsp<T>::ejecutar(T& individuo)
 {
   assert(estado_inicializacion==2 && "No se ha inicializado correctamente el algoritmo genetico");    // Selección del tipo de selección / inicializar parámetros antes de empezar
 
-  // 1.
-  // se pasa individuo porque tiene la matriz de ciudades (podía haberse mandado directamente esto)
+  // 1. Se pasa individuo porque tiene la matriz de ciudades (podía haberse mandado directamente esto)
   crea_poblacion_inicial(individuo);
 
-  //2. Ordenamos la poblaci�n por orden de puntuaci�n
+  //2. Ordenamos la poblacion por orden de puntuacion
   ordena_por_puntuacion();
 
   std::vector<ruta::Ruta> poblacion_nueva;    // Población a generar, en paralelo con la vieja, y que pasará a sustituir a estas
@@ -76,7 +75,7 @@ void Genetico_Tsp<T>::ejecutar(T& individuo)
       return;
     }
     //ELITISMO
-    //Completar Alumno ---> A�ade a poblacion_nueva los individuos de la elite
+    //Completar Alumno ---> Añade a poblacion_nueva los individuos de la elite
     // TO-DO
     // Muy parecido a uno de las transparencias
     // Meter a la población nueva las élites de la población nueva, con un bucle for
@@ -86,19 +85,19 @@ void Genetico_Tsp<T>::ejecutar(T& individuo)
       // Generar hijos hasta completar el nº de individuos
       // No es un bucle for porque puede haber epetidos
 
-      //SELECCI�N
+      //SELECCION
       //Suponemos que los hijos se hacen con operadores de 2 padres
 
       unsigned indice_padre_1, indice_padre_2;  // Padres seleccionados por el algoritmo de selección (llamar a función correspondiente)
       //Alumno ---> Obten mediante seleccion 2 indices de padre
-      //Alumno ---> Asegura que no est�n repetidos
+      //Alumno ---> Asegura que no estan repetidos
       // do while
       // Primer padre, seleccion
       // Segundo: do nuevo padre while nuevo padre == viejo padre
 
 
       //CRUCE
-      //El cruce genera una lista de hijos, t�picamente 1 o 2
+      //El cruce genera una lista de hijos, tipicamente 1 o 2
       // Mando a los dos padres, y nos devuelve una lista de hijos (lo habitual es que sean 1 o 2)
       // cruce_orden_1()
 
@@ -107,19 +106,19 @@ void Genetico_Tsp<T>::ejecutar(T& individuo)
       //MUTACION
       // Multar con cierta probabilidad, y comprobar que no está repetido
       // Si la mutación coincide, no se le añade
-      for(auto &h:hijos) //Al compilar inicialmente dar� error pues hijos no est� creada
+      for(auto &h:hijos) //Al compilar inicialmente dara error pues hijos no esta creada
       {
         //Alumno ---> Muta al hijo h segun aleatorio_0_a_1(rng)<probabilidad_mutacion
-        //Alumno ---> A�ade el hijo a la poblacion nueva
-        //Alumno ---> Si poblacion nueva esta completa  -->�break!
+        //Alumno ---> Añade el hijo a la poblacion nueva
+        //Alumno ---> Si poblacion nueva esta completa  --> break!
       }
 
     }
     // actualiza_poblacion();
 
     //Alumno ---> Actualiza la poblacion, cambiando la vieja por la nueva
-    //Alumno ---> ordena por puntuacion la poblacion. As� nos aseguramos que poblacion[0]
-    //Alumno ---> es nuestro mejor individuo y accedemos f�cilmente a la elite
+    //Alumno ---> ordena por puntuacion la poblacion. Asi nos aseguramos que poblacion[0]
+    //Alumno ---> es nuestro mejor individuo y accedemos facilmente a la elite
 
     if(poblacion[0].puntuacion()<mejor_puntuacion) //Notificamos al Controlador: el mejor de la poblaciòn es mejor que el que tenía hasta el momento
     {
@@ -139,7 +138,7 @@ void Genetico_Tsp<T>::crea_poblacion_inicial(T& individuo)
   do
   {
     individuo.crea_aleatoria();
-    //Verificamos que no est� repetido
+    //Verificamos que no esta repetido
     if(!permutacion_repetida(individuo))
     {
       poblacion.push_back(individuo);

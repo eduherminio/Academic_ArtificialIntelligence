@@ -123,7 +123,7 @@ std::vector<Nodo> Nodo_reversi<Nodo>::expandir() const
   std::vector<Nodo>lista_hijos;
   for(auto &jugada:posicion.calcula_jugadas())
   {
-    Nodo hijo(posicion);          //Crea un hijo con la misma posici�n del padre
+    Nodo hijo(posicion);          //Crea un hijo con la misma posicion del padre
     hijo.posicion.actualiza_tablero(jugada);      //y actualiza el tablero con la jugada
     hijo.set_pasa(Tipo_tablero::no_pasa);
     hijo.visitado=false;
@@ -133,7 +133,7 @@ std::vector<Nodo> Nodo_reversi<Nodo>::expandir() const
   }
   if(!lista_hijos.size())
   {
-    Nodo hijo(posicion);              //Crea un hijo con la misma posici�n del padre
+    Nodo hijo(posicion);              //Crea un hijo con la misma posicion del padre
     hijo.visitado=false;
     hijo.posicion.set_turno(posicion.get_turno_contrario());
     hijo.profundidad=profundidad+1;
