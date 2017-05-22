@@ -11,7 +11,7 @@ void Panel::inicializa(unsigned anc,unsigned alt,unsigned px,unsigned py)
   alto=alt;
   pos_x=px;
   pos_y=py;
-  tgui::Theme::Ptr theme = std::make_shared<tgui::Theme>("resources/Black.txt");
+  tgui::Theme::Ptr theme = std::make_shared<tgui::Theme>("../resources/Black.txt");
   boton_cargar=tgui::Button::Ptr(theme->load("button"));
   boton_cargar->setText("CARGAR TSP");
   boton_cargar->setSize(ancho-20, 40);

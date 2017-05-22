@@ -3,12 +3,13 @@
 #include <fstream>
 #include <sstream>
 #include <cmath>
+#include <algorithm>
 
 namespace ciudades
 {
   //Lee un fichero normalizado TSPLIB
   //Para simplificar, sin perdida de generalidad, solo contemplamos distancias euclideas 2D
-  bool Ciudades::carga_ciudades(const std::string nombre_fichero)
+  bool Ciudades::carga_ciudades(const std::string nombre_fichero, int& num_ciudades_controlador)
   {
     bool exito=false;
     coordenadas.clear();
@@ -27,6 +28,89 @@ namespace ciudades
     // Verificamos que es del tipo EUC_2D
     // Formamos el vector de coordenadas
 
+   std::string name;
+
+   // Improved reading
+   // TO-DO: Make it able to deal with scientific notation
+   while(true) {
+     std::string linea;
+     getline(fichero,linea);
+
+     if(linea.find("EOF")!=std::string::npos)
+     break;
+
+     if (!linea.empty() && linea[linea.size() - 2] == '\r')
+       linea.erase(linea.size() - 2);
+     std::cout<<linea<<std::endl;
+
+     if(linea.find("NODE_COORD_SECTION")!=std::string::npos)
+     {
+       std::cout<<"(...)"<<std::endl;
+       for(int i=0; i<num_ciudades; ++i)
+       {
+         std::string palabra;
+         int x, y;
+         getline(fichero,linea);                       // Line with coords
+         std::stringstream linea_stream(linea);
+         getline(linea_stream,palabra,' ');            // City index (unused)
+         getline(linea_stream,palabra,' ');            // x
+         std::stringstream palabra_stream_x(palabra);
+         palabra_stream_x >> x;                        // x to double
+         getline(linea_stream,palabra,' ');            // y;
+         std::stringstream palabra_stream_y(palabra);
+         palabra_stream_y >> y;                        // y to double
+
+         coordenadas.push_back({x, y});
+       }
+     }
+     else if(linea.find("TOUR_SECTION")!=std::string::npos)
+     {
+       std::cout<<"(...)"<<std::endl;
+       std::string stour;
+       int tour;
+       while(true)
+       {
+         getline(fichero, stour);
+
+         tour=stoi(stour);
+         if(tour==-1)
+         break;
+
+         codigo_optimo.push_back(tour-1);
+       }
+     }
+     else
+     {
+       if(linea.find("EDGE_WEIGHT_TYPE")!=std::string::npos)
+       {
+         if(linea.find("EUC_2D")!=std::string::npos)
+         exito=true;
+         else
+         {
+           std::cout<<"NOT EUC_2D"<<std::endl;
+           return false;
+         }
+       }
+       if(linea.find("DIMENSION")!=std::string::npos)
+       {
+         linea.erase(0, linea.find(":")+1);
+         num_ciudades= stoi(linea);
+         num_ciudades_controlador= num_ciudades;
+       }
+       if(linea.find("NAME")!=std::string::npos)
+       {
+         linea.erase(0, linea.find(":")+1);
+         name=linea;
+         name.erase(std::remove_if(name.begin(), name.end(), isspace), name.end());
+         // ...
+       }
+       else{}
+     }
+
+   }
+
+   // Given (buggy in Linux):
+    /*
     std::string linea=" ";
     std::string palabra;
     std::string nombre_fich;
@@ -115,6 +199,8 @@ namespace ciudades
         }
       }
     }
+    */
+
     fichero.close();
 
     //Formamos la matriz de distancias y calculamos los valores extremos

@@ -34,7 +34,7 @@ namespace controlador
     if(lee_nombre_fichero(fichero_tsp))
     {
       ciudades::Ciudades ciudades;
-      ciudades.carga_ciudades(fichero_tsp);  //Carga el vector de coordenadas y la matriz de distancias
+      ciudades.carga_ciudades(fichero_tsp, num_ciudades);  //Carga el vector de coordenadas y la matriz de distancias
       if(set_coordenadas_visualizacion(ciudades))
       {
         vista.set_recorrido_optimo(ciudades.get_codigo_optimo());
@@ -119,10 +119,10 @@ namespace controlador
         // auto ff=[this](){&Genetico_Tsp<ruta::Ruta>::ejecutar(std::ref(ruta));};
         // hilo_modelo=std::thread(&ff);
 
-       hilo_modelo=std::thread(&Genetico_Tsp<ruta::Ruta>::ejecutar,&genetico_tsp,std::ref(ruta));
+        hilo_modelo=std::thread(&Genetico_Tsp<ruta::Ruta>::ejecutar,&genetico_tsp,std::ref(ruta), std::ref(num_ciudades));
 
         if(hilo_modelo.joinable())
-        hilo_modelo.join();
+          hilo_modelo.join();
 
         fin_algoritmo=true;
 

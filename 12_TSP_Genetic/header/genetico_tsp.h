@@ -5,6 +5,8 @@
 #include <atomic>
 #include <algorithm>
 #include <cassert>
+#include <map>
+#include <utility>
 #include <iostream>
 
 enum class Evento_Modelo{nuevo_codigo};
@@ -14,9 +16,9 @@ template<typename T>
 class Genetico_Tsp
 {
 public:
-  void inicializacion(const unsigned n_i,const double p_e,const unsigned n_g,const double p_m,const unsigned t_t);
+  void inicializacion(const unsigned num_ciudades);
   void set_seleccion(const Seleccion);
-  void ejecutar(T&);
+  void ejecutar(T&, unsigned num_ciudades);
 
   Observador<Evento_Modelo>& get_observador()
   {

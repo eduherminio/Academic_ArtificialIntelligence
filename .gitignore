@@ -52,9 +52,8 @@ explicacion.txt
 8_9_CSP/8_Queens_CSP.txt
 8_9_CSP/9_Sudoku_CSP.txt
 10_Knapsack_BB/10_Knapsack_BB.txt
-11_GLPK/Knapsack.txt
-11_GLPK/Sogatira.txt
-11_GLPK/samples_sol/
+11_GLPK/samples_sol/ 
+12_TSP_Genetic/12_TSP_Genetic.txt
 
 0_Exam1/Alternativas/.txt
 

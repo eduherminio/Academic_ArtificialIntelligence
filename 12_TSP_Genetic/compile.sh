@@ -8,7 +8,7 @@ export env_filename=$filename
 mkdir -p build && cd build
 cmake ..  #&> /dev/null
 make -j$n_cores #-B
-./$filename  | tee ../$filename.txt
+./$filename  #| tee ../$filename.txt
 
 
 

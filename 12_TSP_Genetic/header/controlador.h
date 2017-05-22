@@ -45,6 +45,7 @@ namespace controlador
     double temperatura;
     double factor_descenso;
 
+    int num_ciudades;
 
     Vista &vista;
     Genetico_Tsp<ruta::Ruta> &genetico_tsp;

@@ -1,25 +1,32 @@
 //Cargamos los parametros del algoritmo genetico
 template<typename T>
-void Genetico_Tsp<T>::inicializacion(const unsigned n_i,const double p_e,const unsigned n_g,const double p_m,const unsigned t_t)
+void Genetico_Tsp<T>::inicializacion(const unsigned num_ciudades)
 {
   // Inicializa parametros
-  num_individuos=n_i;
-  num_generaciones=n_g;
-  probabilidad_mutacion=p_m;
-  tam_torneo=t_t;
-  if(p_e<0 || p_e>0.5)
+  num_individuos=           num_ciudades*0.5;
+  num_generaciones=         num_ciudades*200;
+  probabilidad_mutacion=    0.02;
+  double porcentaje_elite=  0.1;
+  tam_torneo=               num_ciudades/10;
+  if(porcentaje_elite<0 || porcentaje_elite>0.5)
   {
-    std::cout<<"Porcentaje usado en elitismo incorrecto\n";
+    std::cout<<"Wrong elitism percentage\n";
   }
-  num_individuos_elite=static_cast<unsigned>(p_e*num_individuos+0.5);
+  num_individuos_elite=     static_cast<unsigned>(porcentaje_elite*num_individuos+0.5);
   if(num_individuos_elite%2==1)  //Numero par para facilitar que los cruces sean pares
-  ++num_individuos_elite;
+    ++num_individuos_elite;
 
   auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
   rng.seed(seed);
   aleatorio_0_a_1=std::uniform_real_distribution<double>(0,1);
   aleatorio_num_individuos=std::uniform_int_distribution<unsigned>(0,num_individuos-1);
   ++estado_inicializacion;
+
+  std::cout<<"num_individuos:\t"       <<num_individuos       <<std::endl;
+  std::cout<<"num_generaciones:\t"     <<num_generaciones     <<std::endl;
+  std::cout<<"tam_torneo:\t"           <<tam_torneo           <<std::endl;
+  std::cout<<"porcentaje_elite:\t"     <<porcentaje_elite     <<std::endl;
+  std::cout<<"probabilidad_mutacion:\t"<<probabilidad_mutacion<<std::endl;
 }
 
 template<typename T>
@@ -44,57 +51,65 @@ void Genetico_Tsp<T>::set_seleccion(const Seleccion tipo_seleccion)
 }
 
 template<typename T>
-void Genetico_Tsp<T>::ejecutar(T& individuo)
+void Genetico_Tsp<T>::ejecutar(T& individuo, unsigned num_ciudades)
 {
+  inicializacion(num_ciudades);
+
   assert(estado_inicializacion==2 && "No se ha inicializado correctamente el algoritmo genetico");    // Selección del tipo de selección / inicializar parámetros antes de empezar
 
   // 1. Se pasa individuo porque tiene la matriz de ciudades (podía haberse mandado directamente esto)
   crea_poblacion_inicial(individuo);
 
-  //2. Ordenamos la poblacion por orden de puntuacion
+  // 2. Ordenamos la poblacion por orden de puntuacion
   ordena_por_puntuacion();
 
-  std::vector<ruta::Ruta> poblacion_nueva;    // Población a generar, en paralelo con la vieja, y que pasará a sustituir a estas
+  std::vector<ruta::Ruta> poblacion_nueva;            // Población a generar, en paralelo con la vieja, y que pasará a sustituir a estas
   poblacion_nueva.reserve(num_individuos);
 
-  // 3
-  mejor_puntuacion=poblacion[0].puntuacion();
-  iteracion_actual=0;
-  // Mejor recorrido, en el caso de TSP
-  mejor_codigo = poblacion[0].get_codigo();
+  // 3. Evaluación
+  mejor_puntuacion= poblacion[0].puntuacion();
+  iteracion_actual= 0;
+  mejor_codigo= poblacion[0].get_codigo();           // Mejor recorrido, en el caso de TSP
 
-  // Notificamos a la vista de un nuevo recorrido, para pintarlo (el mejor)
-  observador.notifica(Evento_Modelo::nuevo_codigo);
+  observador.notifica(Evento_Modelo::nuevo_codigo);   // Notificamos a la vista de un nuevo mejor recorrido, para que lo pinte
 
-
-  abortar=false;
+  abortar= false;
   for(unsigned i=0; i!=num_generaciones; ++i)
   {
     if(abortar)
     {
       return;
     }
+
+    // DONE
+
     //ELITISMO
     //Completar Alumno ---> Añade a poblacion_nueva los individuos de la elite
-    // TO-DO
     // Muy parecido a uno de las transparencias
     // Meter a la población nueva las élites de la población nueva, con un bucle for
 
+    for(unsigned n_elite=0; n_elite<num_individuos_elite; ++n_elite)
+    {
+      poblacion_nueva.push_back(poblacion[0 + n_elite]);
+    }
+
+    // Generar hijos hasta completar el nº de individuos
+    // No es un bucle for porque puede haber repetidos
     while(poblacion_nueva.size()!=num_individuos)
     {
-      // Generar hijos hasta completar el nº de individuos
-      // No es un bucle for porque puede haber epetidos
-
       //SELECCION
       //Suponemos que los hijos se hacen con operadores de 2 padres
-
-      unsigned indice_padre_1, indice_padre_2;  // Padres seleccionados por el algoritmo de selección (llamar a función correspondiente)
       //Alumno ---> Obten mediante seleccion 2 indices de padre
       //Alumno ---> Asegura que no estan repetidos
-      // do while
-      // Primer padre, seleccion
-      // Segundo: do nuevo padre while nuevo padre == viejo padre
 
+      unsigned indice_padre_1, indice_padre_2;
+      indice_padre_1= seleccion();
+
+      do {
+        indice_padre_2= seleccion();
+      } while(indice_padre_1 == indice_padre_2);
+
+      // std::cout<<indice_padre_1<< " -- "<<indice_padre_2<<std::endl;
 
       //CRUCE
       //El cruce genera una lista de hijos, tipicamente 1 o 2
@@ -102,6 +117,8 @@ void Genetico_Tsp<T>::ejecutar(T& individuo)
       // cruce_orden_1()
 
       //Alumno ---> Calcula la lista de hijos (2 en este caso) mediante el operador cruce_orden_1()
+
+      auto hijos= cruce_orden_1(poblacion[indice_padre_1], poblacion[indice_padre_2]);
 
       //MUTACION
       // Multar con cierta probabilidad, y comprobar que no está repetido
@@ -111,18 +128,28 @@ void Genetico_Tsp<T>::ejecutar(T& individuo)
         //Alumno ---> Muta al hijo h segun aleatorio_0_a_1(rng)<probabilidad_mutacion
         //Alumno ---> Añade el hijo a la poblacion nueva
         //Alumno ---> Si poblacion nueva esta completa  --> break!
-      }
+        if(aleatorio_0_a_1(rng) < probabilidad_mutacion)
+          h.mutacion();
 
+        if(permutacion_repetida(h))
+          continue;
+
+        poblacion_nueva.push_back(h);
+        if(poblacion_nueva.size() == num_individuos)
+          break;
+      }
     }
-    // actualiza_poblacion();
 
     //Alumno ---> Actualiza la poblacion, cambiando la vieja por la nueva
+    actualiza_poblacion(poblacion_nueva);
     //Alumno ---> ordena por puntuacion la poblacion. Asi nos aseguramos que poblacion[0]
     //Alumno ---> es nuestro mejor individuo y accedemos facilmente a la elite
+    ordena_por_puntuacion();
 
     if(poblacion[0].puntuacion()<mejor_puntuacion) //Notificamos al Controlador: el mejor de la poblaciòn es mejor que el que tenía hasta el momento
     {
       mejor_puntuacion = poblacion[0].puntuacion();
+      // std::cout<<" Best: "<<mejor_puntuacion<<std::endl;
       iteracion_actual=i;
       mejor_codigo = poblacion[0].get_codigo();
 
@@ -206,17 +233,33 @@ void Genetico_Tsp<T>::ordena_por_puntuacion()
 }
 
 template<typename T>
-unsigned Genetico_Tsp<T>::seleccion_torneo_determinista()                                 // TO-DO
+unsigned Genetico_Tsp<T>::seleccion_torneo_determinista()
+// DONE
 // Tantos aleatorios como tamaño del torneo, y selecciono el mejor
+//Ahora mismo el torneo tiene un unico contendiente, luego siempre gana
+//Notese que en este problema es de minimizacion
+//Completar por el alumno
+//Recuerde: la variable tam_torneo contiene el numero de contendientes en el torneo
 {
-  unsigned valor_aleatorio=aleatorio_num_individuos(rng); //Valor entre 0 y num_individuos-1
-  unsigned ganador=valor_aleatorio;
+  // unsigned valor_aleatorio=aleatorio_num_individuos(rng); //Valor entre 0 y num_individuos-1
+  // unsigned ganador=valor_aleatorio;
+  // return ganador;
+  typedef std::pair<double, unsigned> myType;
+  std::vector<myType> v_candidatos;
+  // We don't use a map since no repetitive values can be stored. It would avoid sort();
+  v_candidatos.reserve(tam_torneo);  // Not a vector!
+  while(v_candidatos.size() != tam_torneo)
+  {
+    unsigned valor_aleatorio= aleatorio_num_individuos(rng);  // [0, num_individuos-1]
+    v_candidatos.push_back(std::make_pair(poblacion[valor_aleatorio].puntuacion(), valor_aleatorio));
+  }
 
-  //Ahora mismo el torneo tiene un unico contendiente, luego siempre gana
-  //Notese que en este problema es de minimizacion
-  //Completar por el alumno
-  //Recuerde: la variable tam_torneo contiene el numero de contendientes en el torneo
-  return ganador;
+  std::sort(v_candidatos.begin(),v_candidatos.end(),[](const myType& a, const myType& b)  // not a vector
+  {
+    return(a.first < b.first);
+  });
+
+  return v_candidatos.front().second;
 }
 
 template<typename T>
@@ -350,5 +393,5 @@ void Genetico_Tsp<T>::actualiza_poblacion(std::vector<T> &poblacion_nueva)
   poblacion.clear();                   //Borramos la poblacion actual
   poblacion_nueva.swap(poblacion);     //Cargamos la nueva en la actual
   calcula_media_puntuaciones();
-  std::cout<<media_puntuaciones; // DONE
+  std::cout<<media_puntuaciones<<std::endl; // DONE
 }
