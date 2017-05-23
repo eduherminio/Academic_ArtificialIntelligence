@@ -10,12 +10,18 @@
 #include <cassert>
 
 template<typename Dato>
-double distancia(const Dato &im1,const Dato & im2)
+double distancia(const Dato& im1,const Dato& im2)
 {
-  // TO-DO
-  //Completar
-  return 0.;
+  // DONE
 
+  double dis=0;
+  assert(im1.size()==im2.size() && "Different size!");
+  for(unsigned i=0; i<im1.size(); ++i)
+  {
+    dis+= abs(im1[i] - im2[i]);
+  }
+
+  return dis*dis;
 }
 
 template<typename Dato,typename Etiqueta>
@@ -31,6 +37,7 @@ public:
     return(datos_entrenamiento.size());
   }
   void ejecutar(const unsigned k,const unsigned indice);
+  //TO-DO: llama a clasifica (la actual ejecutar y luego cuenta los éxitos)
   void detener(){}
   void cargar_datos_test(std::vector<Dato>& d_t)
   {

@@ -26,14 +26,14 @@ void Vista::crea_controles(unsigned anc,unsigned alt)
   tgui::EditBox::Ptr edit_box_val2;
 
   boton_cargar=tgui::Button::create();
-  boton_cargar->setText("CARGAR MNIST");
+  boton_cargar->setText("LOAD MNIST");
   boton_cargar->setSize(anc-20, 40);
   boton_cargar->setPosition(10,15);
   boton_cargar->setTextSize(25);
   boton_cargar->hide();
 
   boton_ejecutar=tgui::Button::create();
-  boton_ejecutar->setText("CLASIFICA");
+  boton_ejecutar->setText("CLASSIFY");
   boton_ejecutar->setSize(anc-20, 40);
   boton_ejecutar->setPosition(10,170);
   boton_ejecutar->setTextSize(25);

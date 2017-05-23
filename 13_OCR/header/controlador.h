@@ -6,8 +6,8 @@
 #include "../header/knn.h"
 #include "../header/mnist.h"
 #include "../header/sf_extension.h"
-#include "../MNIST/include/MNIST/mnist_reader.h"
-#include "../MNIST/include/MNIST/mnist_utils.h"
+#include "../MNIST/include/mnist_reader.h"
+#include "../MNIST/include/mnist_utils.h"
 #include <thread>
 #include <chrono>
 #include <atomic>

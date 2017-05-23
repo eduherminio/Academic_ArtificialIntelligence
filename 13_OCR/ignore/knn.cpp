@@ -1,6 +1,6 @@
 #include "../header/knn.h"
 
-#include "../MNIST/include/MNIST/mnist_reader.h"
+#include "../MNIST/include/mnist_reader.h"
 #include <queue>
 #include <cmath>
 

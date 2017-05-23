@@ -1,7 +1,7 @@
 #ifndef MNIST_H_INCLUDED
 #define MNIST_H_INCLUDED
 
-#include "../MNIST/include/MNIST/mnist_reader.h"
+#include "../MNIST/include/mnist_reader.h"
 #include <cstdint>
 #include <vector>
 
