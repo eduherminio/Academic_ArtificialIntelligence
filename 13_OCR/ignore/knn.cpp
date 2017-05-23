@@ -4,8 +4,9 @@
 #include <queue>
 #include <cmath>
 
-uint8_t Knn::ejecutar(const unsigned k,const unsigned indice) const //indice de imagen en el vector de imagenes de test
+uint8_t Knn::ejecutar(const unsigned k,const unsigned indice,const unsigned num_etiquetas) const //indice de imagen en el vector de imagenes de test
 {
+  knn_num_etiquetas= num_etiquetas
   std::cout<<"k="<<k<<"\n";
   std::cout<<"indice="<<indice<<"\n";
   if(indice>=0 && indice<imagenes_test.size())
@@ -18,7 +19,7 @@ uint8_t Knn::ejecutar(const unsigned k,const unsigned indice) const //indice de 
     for(auto &im_entrenamiento:imagenes_entrenamiento)
     {
       cola_prioridad.push({distancia(im_entrenamiento,im_test),indice_imagen});
-      indice_imagen++;
+      ++indice_imagen;
     }
     //Calcula la frecuencia con la que aparece cada digito en los k mejores vecinos
     unsigned frecuencia[10]= {0};  //10  -->tenemos 10 digitos, ergo 10 etiquetas
@@ -59,7 +60,7 @@ double Knn::distancia(const std::vector<uint8_t> &im1,const std::vector<uint8_t>
   {
     dif=dato-im2.at(indice_pixel);
     distancia_al_cuadrado+=dif*dif;
-    indice_pixel++;
+    ++indice_pixel;
   }
   return sqrt(distancia_al_cuadrado);  //¿Hace falta?
 

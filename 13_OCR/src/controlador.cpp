@@ -82,7 +82,7 @@ namespace controlador
   {
     //Estas dimensiones podrian ser leidas desde un fichero de configuracion
     //o elegidas por linea de comandos
-    const unsigned alto=400;      // TO-DO
+    const unsigned alto=400;      // FIXED SIZE
     const unsigned ancho=300;
 
     //Lanzamos el hilo vista
@@ -114,7 +114,7 @@ namespace controlador
         fin_algoritmo=false;
 
         // hilo_modelo=std::thread(knn.ejecutar,&knn,vista.k(),vista.indice());
-        hilo_modelo=std::thread(&Knn<std::vector<uint8_t>,uint8_t>::ejecutar, &knn, vista.k(), vista.indice());
+        hilo_modelo=std::thread(&Knn<std::vector<uint8_t>,uint8_t>::ejecutar, &knn, vista.k(), vista.indice(), mnist.get_num_etiquetas());
 
         if(hilo_modelo.joinable())
         hilo_modelo.join();
