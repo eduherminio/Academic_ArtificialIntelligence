@@ -54,14 +54,14 @@ void Vista::crea_controles(unsigned anc,unsigned alt)
   label_val1=tgui::Label::create();
   label_val1->setSize((anc/2)+10, 40);
   label_val1->setPosition(10,60);
-  label_val1->setText("Valor k");
+  label_val1->setText("k value");
   label_val1->setTextSize(25);
   label_val1->hide();
 
   label_val2=tgui::Label::create();
   label_val2->setSize((anc/2)+10, 40);
   label_val2->setPosition(10,110);
-  label_val2->setText("Imagen N�");
+  label_val2->setText("Pic num. ");
   label_val2->setTextSize(25);
   label_val2->hide();
 

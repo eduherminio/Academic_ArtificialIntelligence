@@ -37,7 +37,7 @@ namespace controlador
   void Controlador::inicia_programa()
   {
     inicio_vista=true;
-    //La vista nos garantiza que todos sus recursos est�n listos
+    //La vista nos garantiza que todos sus recursos estan listos
   }
   void Controlador::finaliza_programa()
   {
@@ -55,11 +55,11 @@ namespace controlador
     auto indice=vista.indice();
     if(k<1 || k>mnist.get_imagenes_entrenamiento().size()-1)
     {
-      vista.muestra_error("El valor seleccionado de k no es v�lido");
+      vista.muestra_error("Invalid k value");
     }
     else if(indice<0 || indice>mnist.get_imagenes_test().size()-1)
     {
-      vista.muestra_error("El valor seleccionado de �ndice no es v�lido");
+      vista.muestra_error("Invalid index");
     }
     else
     {
@@ -80,13 +80,13 @@ namespace controlador
   }
   void Controlador::ejecutar()
   {
-    //Estas dimensiones podr�an ser leidas desde un fichero de configuracion
-    //o elegidas por l�nea de comandos
-    const unsigned alto=300;
-    const unsigned ancho=250;
+    //Estas dimensiones podrian ser leidas desde un fichero de configuracion
+    //o elegidas por linea de comandos
+    const unsigned alto=400;      // TO-DO
+    const unsigned ancho=300;
 
     //Lanzamos el hilo vista
-    hilo_vista=std::thread(vista.ejecutar,&vista,ancho,alto);
+    hilo_vista=std::thread(&Vista::ejecutar,&vista,ancho,alto);
 
 
     inicio_vista=false;
@@ -113,7 +113,8 @@ namespace controlador
       {
         fin_algoritmo=false;
 
-        hilo_modelo=std::thread(knn.ejecutar,&knn,vista.k(),vista.indice());
+        // hilo_modelo=std::thread(knn.ejecutar,&knn,vista.k(),vista.indice());
+        hilo_modelo=std::thread(&Knn<std::vector<uint8_t>,uint8_t>::ejecutar, &knn, vista.k(), vista.indice());
 
         if(hilo_modelo.joinable())
         hilo_modelo.join();

@@ -1,10 +1,11 @@
 #ifndef CONTROLADOR_H_INCLUDED
 
 #define CONTROLADOR_H_INCLUDED
-#include "vista.h"   // Nuestra clase vista
-#include "knn.h"
-#include "mnist.h"
-#include "sf_extension.h"
+
+#include "../header/vista.h"   // Nuestra clase vista
+#include "../header/knn.h"
+#include "../header/mnist.h"
+#include "../header/sf_extension.h"
 #include "../MNIST/include/MNIST/mnist_reader.h"
 #include "../MNIST/include/MNIST/mnist_utils.h"
 #include <thread>

@@ -63,8 +63,8 @@ private:
 template<typename Dato,typename Etiqueta>
 void Knn<Dato,Etiqueta>::ejecutar(const unsigned k,const unsigned indice) //indice de imagen en el vector de imagenes de test
 {
-  assert(indice>=0 && indice<datos_test.size() && "indice de imagen no valido");
-  assert(k>0 && k<datos_entrenamiento.size()-1 && "parametro k no valido");
+  assert(indice>=0 && indice<datos_test.size() && "Invalid pic index");
+  assert(k>0 && k<datos_entrenamiento.size()-1 && "Invalid k parameter");
 
   auto &dato_actual=datos_test[indice];
   std::priority_queue<std::pair<double, unsigned>,std::vector<std::pair<double, unsigned>>, std::greater<std::pair<double, unsigned>>> cola_prioridad;

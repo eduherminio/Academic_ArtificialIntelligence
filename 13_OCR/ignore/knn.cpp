@@ -61,6 +61,6 @@ double Knn::distancia(const std::vector<uint8_t> &im1,const std::vector<uint8_t>
     distancia_al_cuadrado+=dif*dif;
     indice_pixel++;
   }
-  return sqrt(distancia_al_cuadrado);  //�Hace falta?
+  return sqrt(distancia_al_cuadrado);  //¿Hace falta?
 
 }
