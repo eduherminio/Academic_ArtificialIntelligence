@@ -38,6 +38,10 @@ public:
   }
   void ejecutar(const unsigned k,const unsigned indice);
   //TO-DO: llama a clasifica (la actual ejecutar y luego cuenta los éxitos)
+  // {
+    // clasifica()
+    // porcentaje_aciertos(k)
+  // }
   void detener(){}
   void cargar_datos_test(std::vector<Dato>& d_t)
   {

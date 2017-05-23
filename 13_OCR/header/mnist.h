@@ -1,7 +1,7 @@
 #ifndef MNIST_H_INCLUDED
 #define MNIST_H_INCLUDED
 
-#include "../MNIST/include/mnist_reader.h"
+#include "../MNIST/include/MNIST/mnist_reader.h"
 #include <cstdint>
 #include <vector>
 
@@ -33,8 +33,10 @@ public:
   {
     return dataset.training_labels;
   }
+  const unsigned get_num_etiquetas() { return num_etiquetas; }
 private:
   struct mnist::MNIST_dataset<std::vector,std::vector<uint8_t>,uint8_t> dataset;
+  const unsigned num_etiquetas=10;  // TO-CHECK -- how to call it
 };
 
 #endif // MNIST_H_INCLUDED
