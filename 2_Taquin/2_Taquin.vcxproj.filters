@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="2_Taquin.cpp" />
+    <ClCompile Include="src\busqueda_a_estrella.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\busqueda_a_estrella_p_i.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\busqueda_amplitud.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\busqueda_profundidad.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\busqueda_profundizacion_iterativa.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\problema_busqueda_taquin.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\taquin.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="header">
+      <UniqueIdentifier>{61cd8d37-fd0d-40d3-bebd-df925ebd2501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{57519dba-4497-4dbb-91c2-f4d1627aa67b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\problema_busqueda_taquin.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\taquin.h">
+      <Filter>header</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

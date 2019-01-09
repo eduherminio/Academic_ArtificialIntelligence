@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="3_Trajectories.cpp" />
+    <ClCompile Include="src\casilla.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\controlador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mapa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nodo_trayectoria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rejilla.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vista.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\busqueda_a_estrella.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\busqueda_amplitud.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\busqueda_coste_uniforme.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\busqueda_profundidad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\busqueda_voraz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\problema_busqueda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\nodo_trayectoria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\mapa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\casilla.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\controlador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\rejilla.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\vista.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\observador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{22653ff6-ba12-4339-a52d-7a943d21d54f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{830b8bc4-b5e0-4014-bccc-df4d48f1a363}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{d016fb14-6441-413b-b02e-7403595db43f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\sansation.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
+</Project>
