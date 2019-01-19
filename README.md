@@ -12,7 +12,7 @@ Projects can be compiled using build scripts (`.compile.sh` ) or VisualStudio.
 
 Some of them require SFML and TGUI libraries.
 
-VS settings expect them to be located at `C:/External/gtest`.
+VS settings expect them to be located at `C:/External/sfml` and `C:/External/tgui`.
 
 Compiled versions of them (for VS2017) can be found at:
 

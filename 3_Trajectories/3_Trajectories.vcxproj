@@ -65,21 +65,21 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\External\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\External\sfml\SFML\include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\External\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\External\sfml\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\External\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\External\sfml\SFML\include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\External\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\External\sfml\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

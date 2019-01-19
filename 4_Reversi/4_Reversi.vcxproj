@@ -129,13 +129,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\External\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\External\sfml\SFML\include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\External\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\External\sfml\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -182,7 +182,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\External\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\External\sfml\SFML\include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
@@ -190,7 +190,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\External\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\External\sfml\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
