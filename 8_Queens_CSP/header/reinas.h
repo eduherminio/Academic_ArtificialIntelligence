@@ -35,7 +35,7 @@ namespace reinas
 
 		bool consistente(const unsigned var_1, const unsigned val_1, const unsigned var_2, const unsigned val_2) override // inline to improve speed
 		{
-			if ((val_1 == val_2) || (abs(val_1 - static_cast<int>(val_2)) == abs(var_1 - static_cast<int>(var_2))))
+			if ((val_1 == val_2) || (abs(static_cast<int>(val_1) - static_cast<int>(val_2)) == abs(static_cast<int>(var_1) - static_cast<int>(var_2))))
 				// if( misma_columna || misma diagonal )
 			{
 				return false;

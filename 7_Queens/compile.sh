@@ -6,7 +6,7 @@ let "n_cores++"
 source filedata.txt
 export env_filename=$filename
 mkdir -p build && cd build
-cmake ..  &> /dev/null
+cmake ..  #&> /dev/null
 make -j$n_cores #-B
 ./$filename | tee ../$filename.txt
 

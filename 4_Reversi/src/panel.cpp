@@ -7,7 +7,7 @@ void Panel::inicializa(unsigned ancho, unsigned alto, unsigned ancho_panel)
 	std::string root_path =
 #if _MSC_VER && !__INTEL_COMPILER
 		"./";
-#elif
+#else
 		"../";
 #endif
 

@@ -91,7 +91,13 @@ void single_sample(type_queens_noset problema, type_queens_set problema_set)
 void multiple_sample(type_queens_noset problema, type_queens_set problema_set)
 {
 	auto t = std::time(nullptr);
-	auto tm = *std::localtime(&t);
+	tm tm;
+
+#if _MSC_VER && !__INTEL_COMPILER
+	::localtime_s(&tm, &t);
+#else
+	tm = *std::localtime(&t);
+#endif
 
 	double nodos_promedio_profundidad_no_set;
 	double nodos_promedio_profundidad_set;

@@ -11,7 +11,7 @@ public:
 		std::string root_path =
 #if _MSC_VER && !__INTEL_COMPILER
 			"./";
-#elif
+#else
 			"../";
 #endif
 			if (
