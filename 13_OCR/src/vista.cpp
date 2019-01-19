@@ -8,7 +8,7 @@
 void Vista::inicializar()
 {
 	render_window.create(sf::VideoMode(ancho, alto), "MNIST");
-	gui.setWindow(render_window);
+	gui.setTarget(render_window);
 	crea_controles(ancho, alto);
 }
 

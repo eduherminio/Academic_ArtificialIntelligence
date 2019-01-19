@@ -6,7 +6,7 @@
 void Vista::inicializar()
 {
 	render_window.create(sf::VideoMode(ancho, alto), "TSP - Simulated annealing");
-	gui.setWindow(render_window);
+	gui.setTarget(render_window);
 	canvas.inicializa(offset_x, offset_y, ancho - ancho_panel, alto);
 	panel.inicializa(ancho_panel, alto, ancho - ancho_panel, 0);
 	gui.add(panel.boton_cargar);
