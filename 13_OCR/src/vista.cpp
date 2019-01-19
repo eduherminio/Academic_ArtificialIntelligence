@@ -30,52 +30,52 @@ void Vista::crea_controles(unsigned anc, unsigned alt)
 	boton_cargar->setSize(anc - 20, 40);
 	boton_cargar->setPosition(10, 15);
 	boton_cargar->setTextSize(25);
-	boton_cargar->hide();
+	boton_cargar->hideWithEffect(hide_animation, hide_time);
 
 	boton_ejecutar = tgui::Button::create();
 	boton_ejecutar->setText("CLASSIFY");
 	boton_ejecutar->setSize(anc - 20, 40);
 	boton_ejecutar->setPosition(10, 170);
 	boton_ejecutar->setTextSize(25);
-	boton_ejecutar->hide();
+	boton_ejecutar->hideWithEffect(hide_animation, hide_time);
 
 	label_error = tgui::Label::create();
 	label_error->setSize(anc - 20, 60);
 	label_error->setPosition(10, 225);
 	label_error->setTextSize(22);
-	label_error->hide();
+	label_error->hideWithEffect(hide_animation, hide_time);
 
 	label_resultado = tgui::Label::create();
 	label_resultado->setSize(anc - 20, 60);
 	label_resultado->setPosition(anc - 110, 222);
 	label_resultado->setTextSize(40);
-	label_resultado->hide();
+	label_resultado->hideWithEffect(hide_animation, hide_time);
 
 	label_val1 = tgui::Label::create();
 	label_val1->setSize((anc / 2) + 10, 40);
 	label_val1->setPosition(10, 60);
 	label_val1->setText("k value");
 	label_val1->setTextSize(25);
-	label_val1->hide();
+	label_val1->hideWithEffect(hide_animation, hide_time);
 
 	label_val2 = tgui::Label::create();
 	label_val2->setSize((anc / 2) + 10, 40);
 	label_val2->setPosition(10, 110);
 	label_val2->setText("Pic num. ");
 	label_val2->setTextSize(25);
-	label_val2->hide();
+	label_val2->hideWithEffect(hide_animation, hide_time);
 
 	edit_box_val1 = tgui::EditBox::create();
 	edit_box_val1->setSize((anc / 2) - 30, 40);
 	edit_box_val1->setPosition((anc / 2) + 20, 55);
 	edit_box_val1->setAlignment(tgui::EditBox::Alignment::Right);
-	edit_box_val1->hide();
+	edit_box_val1->hideWithEffect(hide_animation, hide_time);
 
 	edit_box_val2 = tgui::EditBox::create();
 	edit_box_val2->setSize((anc / 2) - 30, 40);
 	edit_box_val2->setPosition((anc / 2) + 20, 105);
 	edit_box_val2->setAlignment(tgui::EditBox::Alignment::Right);
-	edit_box_val2->hide();
+	edit_box_val2->hideWithEffect(hide_animation, hide_time);
 
 	//CALLBACKS
 	//cambios que afectan al modelo. Informamos al controlador

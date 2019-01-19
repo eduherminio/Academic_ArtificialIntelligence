@@ -29,6 +29,9 @@ private:
 	unsigned pos_x;
 	unsigned pos_y;
 	sf::RectangleShape marco;
+
+	tgui::ShowAnimationType hide_animation = tgui::ShowAnimationType::Scale;
+	sf::Time hide_time = sf::Time::Zero;
 };
 
 

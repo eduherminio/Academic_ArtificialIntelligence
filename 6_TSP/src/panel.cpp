@@ -17,19 +17,19 @@ void Panel::inicializa(unsigned anc, unsigned alt, unsigned px, unsigned py)
 	boton_cargar->setSize(ancho - 20, 40);
 	boton_cargar->setPosition(pos_x + 10, 15);
 	boton_cargar->setTextSize(25);
-	boton_cargar->hide();
+	boton_cargar->hideWithEffect(hide_animation, hide_time);
 	boton_ejecutar = tgui::Button::Ptr(theme->load("button"));
 	boton_ejecutar->setText("CALCULATE");
 	boton_ejecutar->setSize(ancho - 20, 40);
 	boton_ejecutar->setPosition(pos_x + 10, 60);
 	boton_ejecutar->setTextSize(25);
-	boton_ejecutar->hide();
+	boton_ejecutar->hideWithEffect(hide_animation, hide_time);
 	boton_detener = tgui::Button::Ptr(theme->load("button"));
 	boton_detener->setText("STOP");
 	boton_detener->setSize(ancho - 20, 40);
 	boton_detener->setPosition(pos_x + 10, 105);
 	boton_detener->setTextSize(25);
-	boton_detener->hide();
+	boton_detener->hideWithEffect(hide_animation, hide_time);
 
 	distancia_optima = tgui::Label::Ptr(theme->load("label"));
 	distancia_optima->setPosition(pos_x + 10, 150);

@@ -23,34 +23,34 @@ public:
 	void set_boton_cargar(bool valor)
 	{
 		if (valor == true)
-			gui.get<tgui::Button>("boton_cargar")->show();
+			gui.get<tgui::Button>("boton_cargar")->showWithEffect(show_animation, show_time);
 		else
-			gui.get<tgui::Button>("boton_cargar")->hide();
+			gui.get<tgui::Button>("boton_cargar")->hideWithEffect(hide_animation, hide_time);
 	}
 	void set_boton_ejecutar(bool valor)
 	{
 		if (valor == true)
-			gui.get<tgui::Button>("boton_ejecutar")->show();
+			gui.get<tgui::Button>("boton_ejecutar")->showWithEffect(show_animation, show_time);
 		else
-			gui.get<tgui::Button>("boton_ejecutar")->hide();
+			gui.get<tgui::Button>("boton_ejecutar")->hideWithEffect(hide_animation, hide_time);
 	}
 	void oculta_label_error()
 	{
-		gui.get<tgui::Label>("label_error")->hide();
+		gui.get<tgui::Label>("label_error")->hideWithEffect(hide_animation, hide_time);
 	}
 	void oculta_label_resultado()
 	{
-		gui.get<tgui::Label>("label_resultado")->hide();
+		gui.get<tgui::Label>("label_resultado")->hideWithEffect(hide_animation, hide_time);
 	}
 	void muestra_botones_seleccion()
 	{
-		gui.get<tgui::Label>("label_val1")->show();
-		gui.get<tgui::Label>("label_val2")->show();
+		gui.get<tgui::Label>("label_val1")->showWithEffect(show_animation, show_time);
+		gui.get<tgui::Label>("label_val2")->showWithEffect(show_animation, show_time);
 
-		gui.get<tgui::EditBox>("edit_box_val1")->show();
-		gui.get<tgui::EditBox>("edit_box_val2")->show();
+		gui.get<tgui::EditBox>("edit_box_val1")->showWithEffect(show_animation, show_time);
+		gui.get<tgui::EditBox>("edit_box_val2")->showWithEffect(show_animation, show_time);
 
-		gui.get<tgui::Button>("boton_ejecutar")->show();
+		gui.get<tgui::Button>("boton_ejecutar")->showWithEffect(show_animation, show_time);
 	}
 
 	unsigned k() const
@@ -75,18 +75,18 @@ public:
 	void muestra_error(const std::string& cadena)
 	{
 		gui.get<tgui::Label>("label_error")->setText(cadena);
-		gui.get<tgui::Label>("label_error")->show();
+		gui.get<tgui::Label>("label_error")->showWithEffect(show_animation, show_time);
 	}
 	void muestra_resultado(const unsigned resultado)
 	{
 		std::stringstream ss;
 		ss << resultado;
 		gui.get<tgui::Label>("label_resultado")->setText(ss.str());
-		gui.get<tgui::Label>("label_resultado")->show();
+		gui.get<tgui::Label>("label_resultado")->showWithEffect(show_animation, show_time);
 	}
 	void oculta_error()
 	{
-		gui.get<tgui::Label>("label_error")->hide();
+		gui.get<tgui::Label>("label_error")->hideWithEffect(hide_animation, hide_time);
 	}
 private:
 	unsigned ancho;
@@ -104,6 +104,11 @@ private:
 
 	bool visualiza_imagen = false;
 	unsigned lee_valor(const std::string&) const;
+
+	tgui::ShowAnimationType show_animation = tgui::ShowAnimationType::Scale;
+	tgui::ShowAnimationType hide_animation = tgui::ShowAnimationType::Scale;
+	sf::Time show_time = sf::Time::Zero;
+	sf::Time hide_time = sf::Time::Zero;
 };
 
 #endif // VISTA_H_INCLUDED

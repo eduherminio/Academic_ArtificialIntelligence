@@ -49,27 +49,27 @@ public:
 	void inicializar();
 	void muestra_boton_cargar()
 	{
-		panel.boton_cargar->show();
+		panel.boton_cargar->showWithEffect(show_animation, show_time);
 	}
 	void oculta_boton_cargar()
 	{
-		panel.boton_cargar->hide();
+		panel.boton_cargar->hideWithEffect(hide_animation, hide_time);
 	}
 	void muestra_boton_detener()
 	{
-		panel.boton_detener->show();
+		panel.boton_detener->showWithEffect(show_animation, show_time);
 	}
 	void oculta_boton_detener()
 	{
-		panel.boton_detener->hide();
+		panel.boton_detener->hideWithEffect(hide_animation, hide_time);
 	}
 	void muestra_boton_ejecutar()
 	{
-		panel.boton_ejecutar->show();
+		panel.boton_ejecutar->showWithEffect(show_animation, show_time);
 	}
 	void oculta_boton_ejecutar()
 	{
-		panel.boton_ejecutar->hide();
+		panel.boton_ejecutar->hideWithEffect(hide_animation, hide_time);
 	}
 	void set_texto_distancia_optima(const std::string&& texto)
 	{
@@ -108,6 +108,11 @@ private:
 	std::mutex barrera_render;
 	void procesa_eventos();
 	void render();
+
+	tgui::ShowAnimationType show_animation = tgui::ShowAnimationType::Scale;
+	tgui::ShowAnimationType hide_animation = tgui::ShowAnimationType::Scale;
+	sf::Time show_time = sf::Time::Zero;
+	sf::Time hide_time = sf::Time::Zero;
 
 	Observador<Evento_Vista> observador;
 };
