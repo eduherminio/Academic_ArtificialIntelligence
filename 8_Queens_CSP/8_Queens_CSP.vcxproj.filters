@@ -15,16 +15,35 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="header\cronometro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\csp_backtracking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\csp_fc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\csp_look_ahead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\csp_seleccion_algoritmo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\csp_seleccion_variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\problema_csp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\reinas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="src\reinas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="8_Queens_CSP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include="8_Queens_CSP.cpp" />
   </ItemGroup>
 </Project>
