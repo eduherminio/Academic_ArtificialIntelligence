@@ -67,20 +67,22 @@
     <ClCompile>
       <AdditionalIncludeDirectories>C:\External\sfml\SFML\include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\External\sfml\SFML\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-s-d.lib;;sfml-system-s-d.lib;sfml-window-s-d.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>C:\External\sfml\SFML\include</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
+      <PreprocessorDefinitions>SFML_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\External\sfml\SFML\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-s.lib;sfml-system-s.lib;sfml-window-s.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

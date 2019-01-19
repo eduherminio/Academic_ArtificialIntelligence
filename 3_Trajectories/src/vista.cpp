@@ -36,7 +36,14 @@ void Vista::ejecutar()
 void Vista::carga_mensajes(int alto)
 {
 	//Load font
-	font.loadFromFile("../resources/sansation.ttf");
+	std::string root_path =
+#if _MSC_VER && !__INTEL_COMPILER
+		"./";
+#elif
+		"../";
+#endif
+
+	font.loadFromFile(root_path + "resources/sansation.ttf");
 
 	const auto green = sf::Color(0, 140, 0);
 

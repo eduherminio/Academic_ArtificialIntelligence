@@ -8,16 +8,23 @@ class Textura
 public:
 	Textura()
 	{
-		if (!tile1.loadFromFile("../pics/tile1.jpg")
-			|| !tile2.loadFromFile("../pics/tile2.jpg")
-			|| !piece1.loadFromFile("../pics/piece1.png")
-			|| !piece2.loadFromFile("../pics/piece2.png")
-			|| !glow.loadFromFile("../pics/glow.png")
-			|| !wood.loadFromFile("../pics/wood.jpg")
-			|| !button.loadFromFile("../pics/button.png"))
-		{
-			exit(1);
-		}
+		std::string root_path =
+#if _MSC_VER && !__INTEL_COMPILER
+			"./";
+#elif
+			"../";
+#endif
+			if (
+				!tile1.loadFromFile(root_path + "pics/tile1.jpg")
+				|| !tile2.loadFromFile(root_path + "pics/tile2.jpg")
+				|| !piece1.loadFromFile(root_path + "pics/piece1.png")
+				|| !piece2.loadFromFile(root_path + "pics/piece2.png")
+				|| !glow.loadFromFile(root_path + "pics/glow.png")
+				|| !wood.loadFromFile(root_path + "pics/wood.jpg")
+				|| !button.loadFromFile(root_path + "pics/button.png"))
+			{
+				exit(1);
+			}
 		piece1.setSmooth(true);
 		piece2.setSmooth(true);
 		glow.setSmooth(true);

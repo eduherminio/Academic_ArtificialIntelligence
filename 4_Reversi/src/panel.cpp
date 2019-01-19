@@ -3,7 +3,15 @@
 
 void Panel::inicializa(unsigned ancho, unsigned alto, unsigned ancho_panel)
 {
-	font.loadFromFile("../resources/sansation.ttf");
+	//Load font
+	std::string root_path =
+#if _MSC_VER && !__INTEL_COMPILER
+		"./";
+#elif
+		"../";
+#endif
+
+	font.loadFromFile(root_path + "resources/sansation.ttf");
 	fondo_panel = sf::RectangleShape(sf::Vector2f(ancho_panel, alto));
 	fondo_panel.setPosition(ancho - ancho_panel, 0);
 	fondo_panel.setFillColor(sf::Color(255, 0, 0, 175));
