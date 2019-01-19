@@ -46,4 +46,22 @@
     </ClCompile>
     <ClCompile Include="13_OCR.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\Black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\Black.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\DejaVuSans.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="resources\sansation.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
 </Project>

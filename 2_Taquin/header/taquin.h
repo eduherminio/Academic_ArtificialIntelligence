@@ -12,7 +12,8 @@ namespace taquin
 	class Nodo_taquin //Limitado a 256 posibles valores
 	{
 	public:
-		Nodo_taquin(uint8_t fil, uint8_t col, std::vector<uint8_t> posicion) :posicion(posicion) {
+		Nodo_taquin(uint8_t fil, uint8_t col, std::vector<uint8_t> posicion) :posicion(posicion)
+		{
 			filas = fil;
 			columnas = col;
 
@@ -41,10 +42,12 @@ namespace taquin
 		//      unsigned get_clave() const;
 		std::string get_clave() const;
 
-		std::vector<uint8_t> get_posicion() const {
+		std::vector<uint8_t> get_posicion() const
+		{
 			return posicion;
 		}
-		uint8_t get_columnas() const {
+		uint8_t get_columnas() const
+		{
 			return columnas;
 		}
 	private:
@@ -54,14 +57,16 @@ namespace taquin
 		uint8_t pos_cas_vac;  //Miembro instrumental para agilizar la expansion de un nodo
 	};
 
-	inline bool operator==(const Nodo_taquin& nodo1, const Nodo_taquin& nodo2) { //Prueba de meta   // Helper función. Redifinición de == -> coge dos taquines, y devuelve igualdad si coinciden sus vectores de posición
+	inline bool operator==(const Nodo_taquin& nodo1, const Nodo_taquin& nodo2)
+	{ //Prueba de meta   // Helper función. Redifinición de == -> coge dos taquines, y devuelve igualdad si coinciden sus vectores de posición
 
 		return(nodo1.get_posicion() == nodo2.get_posicion());
 	}
 
 	size_t heuristica(const Nodo_taquin& nodo1, const Nodo_taquin& nodo2);
 
-	inline size_t coste_operador(const Nodo_taquin& nodo1, const Nodo_taquin& nodo2) {
+	inline size_t coste_operador(const Nodo_taquin& nodo1, const Nodo_taquin& nodo2)
+	{
 		return 1;   // coste de moverse de un nodo al otro, en el caso del taquin: 1
 	}
 }

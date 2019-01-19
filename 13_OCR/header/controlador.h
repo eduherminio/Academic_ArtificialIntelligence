@@ -17,51 +17,51 @@
 
 namespace parche
 {
-  template < typename T > std::string to_string( const T& n )
-  {
-    std::ostringstream stm ;
-    stm << n ;
-    return stm.str() ;
-  }
+	template < typename T > std::string to_string(const T& n)
+	{
+		std::ostringstream stm;
+		stm << n;
+		return stm.str();
+	}
 }
 namespace controlador
 {
-  class Controlador
-  {
-  public:
-    Controlador(Vista &vista,Knn<std::vector<uint8_t>,uint8_t> &knn,Mnist &mnist):vista(vista),knn(knn),mnist(mnist)
-    {
-      registra_observadores();
-    }
-    void ejecutar();
-  private:
+	class Controlador
+	{
+	public:
+		Controlador(Vista &vista, Knn<std::vector<uint8_t>, uint8_t> &knn, Mnist &mnist) :vista(vista), knn(knn), mnist(mnist)
+		{
+			registra_observadores();
+		}
+		void ejecutar();
+	private:
 
-    Vista &vista;
-    Knn<std::vector<uint8_t>,uint8_t> &knn;
-    Mnist &mnist;
+		Vista &vista;
+		Knn<std::vector<uint8_t>, uint8_t> &knn;
+		Mnist &mnist;
 
-    std::thread hilo_vista;
-    std::thread hilo_modelo;
+		std::thread hilo_vista;
+		std::thread hilo_modelo;
 
-    std::atomic<bool> inicio_vista;
-    std::atomic<bool> fin_vista;
-    std::atomic<bool> inicio_algoritmo;
-    std::atomic<bool> fin_algoritmo;
+		std::atomic<bool> inicio_vista;
+		std::atomic<bool> fin_vista;
+		std::atomic<bool> inicio_algoritmo;
+		std::atomic<bool> fin_algoritmo;
 
-    std::mutex barrera_knn;
-    std::condition_variable c_v_barrera_knn;
+		std::mutex barrera_knn;
+		std::condition_variable c_v_barrera_knn;
 
-    void registra_observadores();
+		void registra_observadores();
 
-    bool carga_imagenes_mnist();
+		bool carga_imagenes_mnist();
 
-    void inicia_programa();
-    void finaliza_programa();
+		void inicia_programa();
+		void finaliza_programa();
 
-    void ejecuta_knn();  //Hilo sa_tsp
-    void detiene_knn();
+		void ejecuta_knn();  //Hilo sa_tsp
+		void detiene_knn();
 
-  };
+	};
 }
 
 #endif // CONTROLADOR_H_INCLUDED

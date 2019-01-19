@@ -5,7 +5,8 @@ namespace problema_busqueda
 	template <typename T>
 	bool Problema_busqueda<T>::coste_uniforme()
 	{
-		struct Nodo_prioridad {
+		struct Nodo_prioridad
+		{
 			size_t indice_en_lista;
 			decltype(nodo_inicial.tipo_dato_coste()) coste_estimado;
 			bool operator <(const Nodo_prioridad &nodo) const
@@ -13,7 +14,8 @@ namespace problema_busqueda
 				return nodo.coste_estimado < coste_estimado;
 			}
 		};
-		struct Nodo {
+		struct Nodo
+		{
 			T nodo;
 			size_t padre;
 			decltype(nodo_inicial.tipo_dato_coste()) coste_actual;
@@ -46,7 +48,8 @@ namespace problema_busqueda
 
 			if (exito == false)
 			{
-				if (lista[iter_lista].visitado == false) {     // No contamos las re-expansiones
+				if (lista[iter_lista].visitado == false)
+				{     // No contamos las re-expansiones
 					lista[iter_lista].visitado = true;
 					++nodos_expandidos;
 				}
@@ -60,7 +63,8 @@ namespace problema_busqueda
 					// Comprobamos si el coste de un nodo repetido es menor que el original, y sie s así sustituimos ese coste en el nodo de la lsita y actualizamos la lista de propridad
 					typename std::unordered_map <decltype(nodo_inicial.get_clave()), size_t>::iterator it = claves.find(clave_hijo);
 
-					if (it == claves.end()) {  // No repetido
+					if (it == claves.end())
+					{  // No repetido
 						Nodo newNodo{
 						  hijo,
 						  iter_lista,
@@ -78,7 +82,8 @@ namespace problema_busqueda
 						claves[clave_hijo] = lista.size() - 1;
 
 					}
-					else if (lista[it->second].coste_actual > (lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo))) {    // Repetido, pero el nuevo con menor coste
+					else if (lista[it->second].coste_actual > (lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)))
+					{    // Repetido, pero el nuevo con menor coste
 
 						lista[it->second].padre = iter_lista;
 						lista[it->second].coste_actual = lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo);

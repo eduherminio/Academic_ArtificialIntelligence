@@ -4,17 +4,17 @@
 //Los valores alphabeta iniciales son [-filas*columnas+1,filas*columnas+1]
 void Nodo_reversi_minimax::set_nodo_inicial()
 {
-  padre=-1;
-  minimax=-int(2*posicion.get_filas()*posicion.get_columnas())-1;
-  visitado=false;
-  profundidad=0;
+	padre = -1;
+	minimax = -int(2 * posicion.get_filas()*posicion.get_columnas()) - 1;
+	visitado = false;
+	profundidad = 0;
 }
 
 void Nodo_reversi_alpha_beta::set_nodo_inicial()
 {
-  padre=-1;
-  alpha=-int(2*posicion.get_filas()*posicion.get_columnas())-1;
-  beta=int(2*posicion.get_filas()*posicion.get_columnas())+1;
-  visitado=false;
-  profundidad=0;
+	padre = -1;
+	alpha = -int(2 * posicion.get_filas()*posicion.get_columnas()) - 1;
+	beta = int(2 * posicion.get_filas()*posicion.get_columnas()) + 1;
+	visitado = false;
+	profundidad = 0;
 }

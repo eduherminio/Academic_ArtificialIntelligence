@@ -76,7 +76,8 @@ namespace taquin
 	//        return clave;
 	//    }
 
-	std::string Nodo_taquin::get_clave() const {
+	std::string Nodo_taquin::get_clave() const
+	{
 		std::string clave;
 		clave.reserve(posicion.size());
 		for (auto x : posicion)
@@ -84,11 +85,13 @@ namespace taquin
 		return clave;
 	}
 
-	uint8_t mi_abs(uint8_t x, uint8_t y) {
+	uint8_t mi_abs(uint8_t x, uint8_t y)
+	{
 		return x < y ? y - x : x - y;
 	}
 	//Heuristica Distancia de Manhattan
-	size_t heuristica(const Nodo_taquin& nodo1, const Nodo_taquin& nodo2) {
+	size_t heuristica(const Nodo_taquin& nodo1, const Nodo_taquin& nodo2)
+	{
 		auto pos1 = nodo1.get_posicion();
 		auto pos2 = nodo2.get_posicion();
 		auto columnas = nodo1.get_columnas();

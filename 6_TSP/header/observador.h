@@ -10,22 +10,22 @@ template <typename Evento>
 class Observador
 {
 public:
-  //////////////////  OBSERVADOR ///////////////////////////////////////////////
-  template <typename Funcion>
-  void registra_observador(const Evento& evento, Funcion&& observador)
-  {
-    lista_observadores[evento].push_back(std::forward<Funcion>(observador));
-  }
+	//////////////////  OBSERVADOR ///////////////////////////////////////////////
+	template <typename Funcion>
+	void registra_observador(const Evento& evento, Funcion&& observador)
+	{
+		lista_observadores[evento].push_back(std::forward<Funcion>(observador));
+	}
 
-  void notifica(const Evento& evento) const
-  {
-    for (const auto& obs : lista_observadores.at(evento))
-    obs();
-  }
-  //////////////////////////////////////////////////////////////////////////////
+	void notifica(const Evento& evento) const
+	{
+		for (const auto& obs : lista_observadores.at(evento))
+			obs();
+	}
+	//////////////////////////////////////////////////////////////////////////////
 
 private:
-  std::map<Evento,std::vector<std::function<void()>>> lista_observadores;
+	std::map<Evento, std::vector<std::function<void()>>> lista_observadores;
 };
 
 

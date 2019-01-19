@@ -20,9 +20,9 @@ bool lee_nombre_fichero(std::string& fichero_tsp)
   ofn.Flags = OFN_PATHMUSTEXIST|OFN_FILEMUSTEXIST;
   if (GetOpenFileName(&ofn))  // displays open file dialog box
   {
-    fichero_tsp = ofn.lpstrFile;
-    fichero_tsp.c_str();
-    return true;
+	fichero_tsp = ofn.lpstrFile;
+	fichero_tsp.c_str();
+	return true;
   }
   return false;
 }

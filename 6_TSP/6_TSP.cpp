@@ -2,6 +2,6 @@
 
 int main()
 {
-  controlador::Controlador c;
-  c.ejecutar();
+	controlador::Controlador c;
+	c.ejecutar();
 }

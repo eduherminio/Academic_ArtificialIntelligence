@@ -31,7 +31,8 @@ namespace taquin
 		// El menor define el método de ordenador de los nodos de la cola de prioridad (porque podrían ordenarse por índice, etc.)
 		//
 
-		struct Nodo_prioridad {
+		struct Nodo_prioridad
+		{
 			size_t indice_en_lista; // indice del nodo en vector<Nodo> lista
 			size_t coste_estimado;
 			bool operator <(const Nodo_prioridad &nodo) const     // el const no te deja modificar los miembros privados de la clase
@@ -40,7 +41,8 @@ namespace taquin
 			}
 		};
 
-		struct Nodo {
+		struct Nodo
+		{
 			Nodo_taquin nodo;
 			size_t padre;
 			size_t coste_actual;  // coste hasta el nodo actual
@@ -78,7 +80,8 @@ namespace taquin
 
 			if (exito == false)
 			{
-				if (lista[iter_lista].visitado == false) {     // No contamos las re-expansiones
+				if (lista[iter_lista].visitado == false)
+				{     // No contamos las re-expansiones
 					lista[iter_lista].visitado = true;
 					++nodos_expandidos;
 				}
@@ -119,7 +122,8 @@ namespace taquin
 					// Comprobamos si el coste de un nodo repetido es menor que el original, y sie s así sustituimos ese coste en el nodo de la lsita y actualizamos la lista de propridad
 					std::unordered_map<std::string, size_t>::iterator it = claves.find(clave_hijo);
 
-					if (it == claves.end()) {  // No repetido
+					if (it == claves.end())
+					{  // No repetido
 						Nodo newNodo{
 						  hijo,
 						  iter_lista,
@@ -137,9 +141,10 @@ namespace taquin
 						claves[clave_hijo] = lista.size() - 1;
 
 					}
-					else if (lista[it->second].coste_actual > (lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo))) {    // Repetido, pero el nuevo con menor coste
+					else if (lista[it->second].coste_actual > (lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)))
+					{    // Repetido, pero el nuevo con menor coste
 
-					  // std::cout<<lista[it->second].coste_actual<<" "<<lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)<<std::endl;
+// std::cout<<lista[it->second].coste_actual<<" "<<lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo)<<std::endl;
 
 						lista[it->second].padre = iter_lista;
 						lista[it->second].coste_actual = lista[iter_lista].coste_actual + coste_operador(hijo, nodo_objetivo);

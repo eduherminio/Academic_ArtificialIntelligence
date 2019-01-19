@@ -55,7 +55,8 @@ int main()
 		start= clock();
 	  }
 	*/
-	if (problema.a_estrella()) {
+	if (problema.a_estrella())
+	{
 		muestra_solucion(problema);
 
 		std::cout << "\n*****Búsqueda A* ******" << std::endl;

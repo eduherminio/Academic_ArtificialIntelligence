@@ -8,27 +8,27 @@
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 
-class Panel:public sf::Drawable
+class Panel :public sf::Drawable
 {
 public:
-  Panel()
-  {
+	Panel()
+	{
 
-  }
-  void inicializa(unsigned anc,unsigned alt,unsigned px,unsigned py);
-  virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-  tgui::Button::Ptr boton_cargar;
-  tgui::Button::Ptr boton_ejecutar;
-  tgui::Button::Ptr boton_detener;
-  tgui::Label::Ptr distancia_optima;
-  tgui::Label::Ptr mejor_distancia;
-  tgui::Label::Ptr iteracion;
+	}
+	void inicializa(unsigned anc, unsigned alt, unsigned px, unsigned py);
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	tgui::Button::Ptr boton_cargar;
+	tgui::Button::Ptr boton_ejecutar;
+	tgui::Button::Ptr boton_detener;
+	tgui::Label::Ptr distancia_optima;
+	tgui::Label::Ptr mejor_distancia;
+	tgui::Label::Ptr iteracion;
 private:
-  unsigned ancho;
-  unsigned alto;
-  unsigned pos_x;
-  unsigned pos_y;
-  sf::RectangleShape marco;
+	unsigned ancho;
+	unsigned alto;
+	unsigned pos_x;
+	unsigned pos_y;
+	sf::RectangleShape marco;
 };
 
 

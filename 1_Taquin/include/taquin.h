@@ -7,7 +7,8 @@
 
 namespace taquin
 {
-	struct Nodo_Taquin { // Nodo_taquin  regla de estilo
+	struct Nodo_Taquin
+	{ // Nodo_taquin  regla de estilo
 		unsigned posicion[9];
 		unsigned pos_cas_vac;   // posicion casi ya vacia, refleja la posicion del 0 sin tener que iterar por el vector para encontrarlo
 		int padre;  //int pues el nodo inicial tiene un valor de indice invalido -1. Componente basico para reconstruir luego el camino (ver def. de solucion).
@@ -16,15 +17,18 @@ namespace taquin
 						// sirve para eliminar nodos
 	};
 
-	class Taquin {
+	class Taquin
+	{
 	public:
-		Taquin(unsigned i[], unsigned f[]) {  //Constructor
+		Taquin(unsigned i[], unsigned f[])
+		{  //Constructor
 			set_inicial(i);
 			set_objetivo(f);
 		}
 		void amplitud();
 
-		void profundidad() {
+		void profundidad()
+		{
 			size_t max_valor = std::numeric_limits<size_t>::max();
 			profundidad(max_valor);
 		}

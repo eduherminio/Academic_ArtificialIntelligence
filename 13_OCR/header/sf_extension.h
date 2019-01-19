@@ -6,7 +6,7 @@
 
 namespace sf_extension
 {
-  sf::Image raw_a_sfml(const std::vector<uint8_t>& m,const unsigned fil,const unsigned col);
+	sf::Image raw_a_sfml(const std::vector<uint8_t>& m, const unsigned fil, const unsigned col);
 }
 
 

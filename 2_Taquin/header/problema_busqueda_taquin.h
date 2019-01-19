@@ -10,7 +10,8 @@ namespace taquin
 	{
 	public:
 
-		Problema_busqueda_taquin(Nodo_taquin &i, Nodo_taquin &o) :nodo_inicial(i), nodo_objetivo(o) {
+		Problema_busqueda_taquin(Nodo_taquin &i, Nodo_taquin &o) :nodo_inicial(i), nodo_objetivo(o)
+		{
 			assert(nodo_inicial.get_posicion().size() == nodo_objetivo.get_posicion().size() && "Error: nodos de diferentes dimensiones");
 		}
 
@@ -18,25 +19,29 @@ namespace taquin
 		bool a_estrella_p_i();
 		bool amplitud();
 
-		bool profundidad() {
+		bool profundidad()
+		{
 			size_t max_valor = std::numeric_limits<size_t>::max();
 			return(profundidad(max_valor));
 		}
 
 		bool profundidad(size_t limite);
 
-		bool profundizacion_iterativa() {
+		bool profundizacion_iterativa()
+		{
 			size_t max_valor = std::numeric_limits<size_t>::max();
 			return(profundizacion_iterativa(max_valor));
 		}
 
 		bool profundizacion_iterativa(size_t limite);
 
-		std::vector<Nodo_taquin> get_solucion() const {
+		std::vector<Nodo_taquin> get_solucion() const
+		{
 			return solucion;
 		}
 
-		size_t get_nodos_expandidos() const {
+		size_t get_nodos_expandidos() const
+		{
 			return nodos_expandidos;
 		}
 
