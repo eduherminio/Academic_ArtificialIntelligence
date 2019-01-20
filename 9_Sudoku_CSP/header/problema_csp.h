@@ -152,7 +152,7 @@ namespace csp
 	template <typename T>
 	void Problema_csp<T>::imprime_dominio()
 	{
-		for (unsigned i = 0; i != num_variables(); ++i)
+		for (unsigned i = 0; i != num_variables; ++i)
 		{
 			for (auto j : dominio(i))
 				std::cout << j << " ";
