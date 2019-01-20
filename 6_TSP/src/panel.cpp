@@ -11,35 +11,46 @@ void Panel::inicializa(unsigned anc, unsigned alt, unsigned px, unsigned py)
 	alto = alt;
 	pos_x = px;
 	pos_y = py;
-	tgui::Theme::Ptr theme = std::make_shared<tgui::Theme>("../resources/Black.txt");
-	boton_cargar = tgui::Button::Ptr(theme->load("button"));
-	boton_cargar->setText("LOAD TSP");
+
+	std::string root_path =
+#if _MSC_VER && !__INTEL_COMPILER
+		"./";
+#else
+		"../";
+#endif
+
+	tgui::Theme theme(root_path + "resources/Black.txt");
+	boton_cargar = tgui::Button::create("LOAD TSP");
+	boton_cargar->setRenderer(theme.getRenderer("button"));
 	boton_cargar->setSize(ancho - 20, 40);
 	boton_cargar->setPosition(pos_x + 10, 15);
 	boton_cargar->setTextSize(25);
 	boton_cargar->hideWithEffect(hide_animation, hide_time);
-	boton_ejecutar = tgui::Button::Ptr(theme->load("button"));
-	boton_ejecutar->setText("CALCULATE");
+	boton_ejecutar = tgui::Button::create("CALCULATE");
+	boton_ejecutar->setRenderer(theme.getRenderer("button"));
 	boton_ejecutar->setSize(ancho - 20, 40);
 	boton_ejecutar->setPosition(pos_x + 10, 60);
 	boton_ejecutar->setTextSize(25);
 	boton_ejecutar->hideWithEffect(hide_animation, hide_time);
-	boton_detener = tgui::Button::Ptr(theme->load("button"));
-	boton_detener->setText("STOP");
+	boton_detener = tgui::Button::create("STOP");
+	boton_detener->setRenderer(theme.getRenderer("button"));
 	boton_detener->setSize(ancho - 20, 40);
 	boton_detener->setPosition(pos_x + 10, 105);
 	boton_detener->setTextSize(25);
 	boton_detener->hideWithEffect(hide_animation, hide_time);
 
-	distancia_optima = tgui::Label::Ptr(theme->load("label"));
+	distancia_optima = tgui::Label::create();
+	distancia_optima->setRenderer(theme.getRenderer("label"));
 	distancia_optima->setPosition(pos_x + 10, 150);
 	distancia_optima->setTextSize(18);
 
-	iteracion = tgui::Label::Ptr(theme->load("label"));
+	iteracion = tgui::Label::create();
+	iteracion->setRenderer(theme.getRenderer("label"));
 	iteracion->setPosition(pos_x + 10, 170);
 	iteracion->setTextSize(18);
 
-	mejor_distancia = tgui::Label::Ptr(theme->load("label"));
+	mejor_distancia = tgui::Label::create();
+	mejor_distancia->setRenderer(theme.getRenderer("label"));
 	mejor_distancia->setPosition(pos_x + 10, 190);
 	mejor_distancia->setTextSize(18);
 
